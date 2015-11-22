@@ -12,11 +12,11 @@ def setup
   sketch_title 'Physics Type'
   @input = 'Hello!'
   RG.init(self)
-  fnt = RG.loadFont('ReplicaBold.ttf')  # file name
-  RG.textFont(fnt, 330)   # RFont object, size
-  @font = RG.getText(input)  # String to RShape
-  RG.setPolygonizer(RCommand::UNIFORMLENGTH)
-  RG.setPolygonizerLength(10)    # length of segment
+  fnt = RG.load_font('ReplicaBold.ttf') # file name
+  RG.text_font(fnt, 330) # RFont object, size
+  @font = RG.get_text(input) # String to RShape
+  RG.set_polygonizer(RCommand::UNIFORMLENGTH)
+  RG.set_polygonizer_length(10) # length of segment
   init_physics
   fill(255)
 end
@@ -40,16 +40,16 @@ def init_physics
   # add gravity along positive Y axis
   physics.add_behavior(Physics::GravityBehavior2D.new(TVec2D.new(0, 0.1)))
   # multidimensional array of x and y coordinates
-  paths = font.get_points_in_paths 
+  paths = font.get_points_in_paths
   offset = TVec2D.new(200, 250)
-  return if (paths.nil?)
+  return if paths.nil?
   paths.length.times do |ii|
     points = paths[ii]
     path_particles = []
     points.length.times do |i|
       p = Physics::VerletParticle2D.new(
-        points[i].x+offset.x,
-        points[i].y+offset.y
+        points[i].x + offset.x,
+        points[i].y + offset.y
       )
       physics.addParticle(p)
       path_particles << p
@@ -64,11 +64,11 @@ def init_physics
     end
     first = path_particles.first
     last = path_particles.last
-    physics.addSpring(
+    physics.add_spring(
       Physics::VerletSpring2D.new(
         first,
         last,
-        first.distanceTo(last),
+        first.distance_to(last),
         1
       )
     )
