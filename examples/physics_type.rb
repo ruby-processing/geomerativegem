@@ -1,8 +1,6 @@
 require 'toxiclibs'
 require 'geomerative'
 
-include_package 'geomerative'
-
 attr_reader :font, :input, :physics
 
 def settings
