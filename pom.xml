@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.ruby-processing</groupId>
-  <artifactId>toxiclibs</artifactId>
-  <version>0.5.0</version>
+  <artifactId>geomerative</artifactId>
+  <version>0.1.0</version>
   <packaging>jar</packaging>
   <description>
-    toxiclibs-library for JRubyArt
+    geomerative-library for JRubyArt
   </description>
 
   <parent>
@@ -17,13 +17,13 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/ruby-processing/toxiclibs/issues</url>
+    <url>https://github.com/ruby-processing/geomerativegem/issues</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:git:git://github.com/ruby-processing/toxiclibs.git</connection>
-    <developerConnection>scm:git:git@github.com:ruby-processing/toxiclibs.git</developerConnection>
-    <url>https://github.com/ruby-processing/toxiclibs</url>
+    <connection>scm:git:git://github.com/ruby-processing/geomerativegem.git</connection>
+    <developerConnection>scm:git:git@github.com:ruby-processing/geomerativegem.git</developerConnection>
+    <url>https://github.com/ruby-processing/geomerative</url>
   </scm>
 
   <licenses>
@@ -43,11 +43,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>args4j</groupId>
-      <artifactId>args4j</artifactId>
-      <version>2.0.31</version>
-    </dependency>
-    <dependency>
       <groupId>org.processing</groupId>
       <artifactId>core</artifactId>
       <scope>system</scope>
@@ -62,11 +57,11 @@
     <!-- for Mac developers, non Archlinux and Windows can probably figure it out
     <processing.home>/Applications/Processing.app/Contents/Java</processing.home> 
     -->
-    <processing.home>${user.home}/processing-3.0.1</processing.home>
+    <processing.home>/usr/share/processing</processing.home>
   </properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
-    <finalName>toxiclibs</finalName>
+    <finalName>geomerative</finalName>
     <extensions>
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
@@ -103,17 +98,6 @@
         <executions>
           <execution>
             <id>default-cli</id>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>args4j</groupId>
-                  <artifactId>args4j</artifactId>
-                  <version>2.0.31</version>
-                  <type>jar</type>
-                  <outputDirectory>lib</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
           </execution>
         </executions>
       </plugin>

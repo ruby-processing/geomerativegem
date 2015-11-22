@@ -1,8 +1,8 @@
-require_relative 'lib/toxiclibs/version'
+require_relative 'lib/geomerative/version'
 
 def create_manifest
-  title =  'Implementation-Title: toxiclibs (java extension for toxicgem)    '        
-  version =  format('Implementation-Version: %s', Toxiclibs::VERSION)
+  title =  'Implementation-Title: geomerative (java extension for geomerative gem)'        
+  version =  format('Implementation-Version: %s', Geomerative::VERSION)
   file = File.open('MANIFEST.MF', 'w') do |f|
     f.puts(title)
     f.puts(version)
@@ -18,14 +18,13 @@ end
 
 desc 'Build gem'
 task :gem do
-  sh "gem build toxiclibs.gemspec" 
+  sh "gem build geomerative.gemspec" 
 end
 
 desc 'Compile'
 task :compile do
   sh "mvn package"
-  sh "mvn dependency:copy"
-  sh "mv target/toxiclibs.jar lib"
+  sh "mv target/geomerative.jar lib"
 end
 
 desc 'clean'
