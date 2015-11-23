@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   Geomerative java library wrapped in a rubygem. Updated to use String switch
   etc available since jdk8.
   EOS
-  spec.licenses = %w{LGPL-3.0}
+  spec.licenses = %w{Apache-2.0 AGPL-3.0}
   spec.authors = %w{Ricard\ Marxer Martin\ Prout}
   spec.email = 'martin_p@lineone.net'
   spec.homepage = 'https://github.com/ruby-processing/geomerativegem'
