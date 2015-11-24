@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.licenses = %w{Apache-2.0 AGPL-3.0}
   spec.authors = %w{Ricard\ Marxer Martin\ Prout}
   spec.email = 'martin_p@lineone.net'
-  spec.homepage = 'https://github.com/ruby-processing/geomerativegem'
+  spec.homepage = 'http://ruby-processing.github.io/geomerativegem/'
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.files << 'lib/geomerative.jar'
   spec.require_paths = ['lib']

@@ -391,6 +391,8 @@ public class RSVG
                 break;
             case "defs":
                 break;
+            case "#text":
+                break;    
             default:
                 PApplet.println("Element '" + name + "' not know. Ignoring it.");
                 break; // If the geometrical element has been correctly created
@@ -520,6 +522,8 @@ public class RSVG
             case "line":
                 geomElem = elemToLine(element);
                 break;
+            case "#text":
+                break;  
             case "defs":
                 break;
             default:

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.ruby-processing</groupId>
   <artifactId>geomerative</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <packaging>jar</packaging>
   <description>
     geomerative-library for JRubyArt
@@ -61,7 +61,7 @@
     <!-- for Mac developers, non Archlinux and Windows can probably figure it out
     <processing.home>/Applications/Processing.app/Contents/Java</processing.home> 
     -->
-    <processing.home>/usr/share/processing</processing.home>
+    <processing.home>${user.home}/processing-3.0.1</processing.home>
   </properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
