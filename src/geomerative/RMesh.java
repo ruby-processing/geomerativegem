@@ -18,7 +18,12 @@
 */
 
 package geomerative ;
-import processing.core.*;
+
+
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
+
 
 /**
  * RMesh is a reduced interface for creating, holding and drawing meshes. A mesh is a group of triangular strips (RStrip).
@@ -239,7 +244,7 @@ public class RMesh extends RGeomElem
     }
     
     RPoint[] result=null;
-    RPoint[] newresult=null;
+    RPoint[] newresult;
     for(int i=0;i<numStrips;i++){
       RPoint[] newPoints = strips[i].getHandles();
       if(newPoints!=null){
@@ -270,7 +275,7 @@ public class RMesh extends RGeomElem
     }
     
     RPoint[] result=null;
-    RPoint[] newresult=null;
+    RPoint[] newresult;
     for(int i=0;i<numStrips;i++){
       RPoint[] newPoints = strips[i].getPoints();
       if(newPoints!=null){

@@ -55,6 +55,7 @@ public class RGroup extends RGeomElem
 
   /**
    * Use this method to create a copy of a group.
+     * @param grp
    * @eexample RGroup
    */
   public RGroup(RGroup grp){
@@ -91,6 +92,7 @@ public class RGroup extends RGeomElem
    * @related getBounds ( )
    * @related getCenter ( )
    */
+  @Override
   public RPoint getCentroid(){
     RPoint bestCentroid = new RPoint();
     float bestArea = Float.NEGATIVE_INFINITY;
@@ -120,6 +122,7 @@ public class RGroup extends RGeomElem
     return elements.length;
   }
   
+  @Override
   public void print(){
     System.out.println("group: ");
     for(int i=0;i<countElements();i++)
@@ -135,6 +138,7 @@ public class RGroup extends RGeomElem
    * @eexample RGroup_draw
    * @param g PGraphics, the graphics object on which to draw the group
    */
+  @Override
   public void draw(PGraphics g){
     if(!RG.ignoreStyles){
       saveContext(g);
@@ -150,6 +154,7 @@ public class RGroup extends RGeomElem
     }
   }
   
+  @Override
   public void draw(PApplet a){
     if(!RG.ignoreStyles){
       saveContext(a);
@@ -171,7 +176,7 @@ public class RGroup extends RGeomElem
    * @param elem RGeomElem, any kind of RGeomElem to add.  It accepts the classes RShape, RPolygon and RMesh.
    * @related removeElement ( )
    */
-  public void addElement(RGeomElem elem){
+  public final void addElement(RGeomElem elem){
     this.append(elem);
   }
   
@@ -257,8 +262,10 @@ public class RGroup extends RGeomElem
   }
   
   /**
+     * @return 
    * @invisible
    */
+  @Override
   public RMesh toMesh() throws RuntimeException{
     //throw new RuntimeException("Transforming a Group to a Mesh is not yet implemented.");
     RGroup meshGroup = toMeshGroup();
@@ -274,8 +281,10 @@ public class RGroup extends RGeomElem
   }
   
   /**
+     * @return 
    * @invisible
    */
+  @Override
   public RPolygon toPolygon() throws RuntimeException{
     //throw new RuntimeException("Transforming a Group to a Polygon is not yet implemented.");
     //RGroup polygonGroup = toPolygonGroup();
@@ -291,8 +300,10 @@ public class RGroup extends RGeomElem
   }
   
   /**
+     * @return 
    * @invisible
    */
+  @Override
   public RShape toShape() throws RuntimeException{
     //throw new RuntimeException("Transforming a Group to a Shape is not yet implemented.");
     RShape result = new RShape();
@@ -311,6 +322,7 @@ public class RGroup extends RGeomElem
    * @eexample RGroup_getHandles
    * @return RPoint[], the points returned in an array.
    * */
+  @Override
   public RPoint[] getHandles(){
     int numElements = countElements();
     if(numElements == 0){
@@ -318,7 +330,7 @@ public class RGroup extends RGeomElem
     }
     
     RPoint[] result=null;
-    RPoint[] newresult=null;
+    RPoint[] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[] newPoints = elements[i].getHandles();
       if(newPoints!=null){
@@ -336,6 +348,12 @@ public class RGroup extends RGeomElem
     return result;
   }  
   
+    /**
+     *
+     * @param t
+     * @return
+     */
+    @Override
   public RPoint getPoint(float t){
     float[] indAndAdv = indAndAdvAt(t);
     int indOfElement = (int)(indAndAdv[0]);
@@ -349,6 +367,7 @@ public class RGroup extends RGeomElem
    * @eexample RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    * */
+  @Override
   public RPoint[] getPoints(){
     int numElements = countElements();
     if(numElements == 0){
@@ -357,7 +376,7 @@ public class RGroup extends RGeomElem
 
     RCommand.segmentAccOffset = RCommand.segmentOffset;    
     RPoint[] result=null;
-    RPoint[] newresult=null;
+    RPoint[] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[] newPoints = elements[i].getPoints();
       if(newPoints!=null){
@@ -376,6 +395,7 @@ public class RGroup extends RGeomElem
     return result;
   }
 
+  @Override
   public RPoint getTangent(float t){
     float[] indAndAdv = indAndAdvAt(t);
     int indOfElement = (int)(indAndAdv[0]);
@@ -389,6 +409,7 @@ public class RGroup extends RGeomElem
    * @eexample RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    * */
+  @Override
   public RPoint[] getTangents(){
     int numElements = countElements();
     if(numElements == 0){
@@ -396,7 +417,7 @@ public class RGroup extends RGeomElem
     }
     
     RPoint[] result=null;
-    RPoint[] newresult=null;
+    RPoint[] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[] newPoints = elements[i].getTangents();
       if(newPoints!=null){
@@ -419,6 +440,7 @@ public class RGroup extends RGeomElem
    * @eexample RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    * */
+  @Override
   public RPoint[][] getPointsInPaths(){
     int numElements = countElements();
     if(numElements == 0){
@@ -426,7 +448,7 @@ public class RGroup extends RGeomElem
     }
     
     RPoint[][] result=null;
-    RPoint[][] newresult=null;
+    RPoint[][] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[][] newPointPaths = elements[i].getPointsInPaths();
       if(newPointPaths != null){
@@ -444,14 +466,14 @@ public class RGroup extends RGeomElem
     return result;    
   }
 
+  @Override
   public RPoint[][] getHandlesInPaths(){
     int numElements = countElements();
     if(numElements == 0){
       return null;
-    }
-    
+    }    
     RPoint[][] result=null;
-    RPoint[][] newresult=null;
+    RPoint[][] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[][] newHandlePaths = elements[i].getHandlesInPaths();
       if(newHandlePaths != null){
@@ -469,14 +491,14 @@ public class RGroup extends RGeomElem
     return result;    
   }
 
+  @Override
   public RPoint[][] getTangentsInPaths(){
     int numElements = countElements();
     if(numElements == 0){
       return null;
-    }
-    
+    }    
     RPoint[][] result=null;
-    RPoint[][] newresult=null;
+    RPoint[][] newresult;
     for(int i=0;i<numElements;i++){
       RPoint[][] newTangentPaths = elements[i].getTangentsInPaths();
       if(newTangentPaths != null){
@@ -499,6 +521,7 @@ public class RGroup extends RGeomElem
    * @param p  the point for which to test containment..
    * @return boolean, true if the point is in the path.
    * */
+  @Override
   public boolean contains(RPoint p){
     float testx = p.x;
     float testy = p.y;
@@ -529,6 +552,7 @@ public class RGroup extends RGeomElem
    * @eexample RPolygon_getType
    * @return int, will allways return RGeomElem.POLYGON
    */
+  @Override
   public int getType(){
     return type;
   }
@@ -714,12 +738,11 @@ public class RGroup extends RGeomElem
           ((RShape)element).insertHandleInPaths(t);
           break;
         }
-    }
-    
-    return;
+    }    
   }
   
   
+  @Override
   protected void calculateCurveLengths(){
     lenCurves = new float[countElements()];
     lenCurve = 0F;
@@ -732,6 +755,8 @@ public class RGroup extends RGeomElem
   
   /**
    * Use this method to adapt a group of of figures to a group.
+     * @param wght
+     * @param lngthOffset
    * @eexample RGroup_adapt
    * @param grp  the path to which to adapt
    */
@@ -749,20 +774,17 @@ public class RGroup extends RGeomElem
         RGeomElem elem = this.elements[i];
         RPoint[] ps = elem.getHandles();
         if(ps != null){
-          for(int k=0;k<ps.length;k++){
-            float px = ps[k].x;
-            float py = ps[k].y;
-            
-            float t = ((px-xmin)/(xmax-xmin) + lngthOffset ) % 1.001F;
-            float amp = (ymax-py);
-            
-            RPoint tg = grp.getTangent(t);
-            RPoint p = grp.getPoint(t);
-            float angle = (float)Math.atan2(tg.y, tg.x) - (float)Math.PI/2F;
-            
-            ps[k].x = p.x + wght*amp*(float)Math.cos(angle);
-            ps[k].y = p.y + wght*amp*(float)Math.sin(angle);
-          }
+            for (RPoint p1 : ps) {
+                float px = p1.x;
+                float py = p1.y;
+                float t = ((px-xmin)/(xmax-xmin) + lngthOffset ) % 1.001F;
+                float amp = (ymax-py);
+                RPoint tg = grp.getTangent(t);
+                RPoint p = grp.getPoint(t);
+                float angle = (float)Math.atan2(tg.y, tg.x) - (float)Math.PI/2F;
+                p1.x = p.x + wght*amp*(float)Math.cos(angle);
+                p1.y = p.y + wght*amp*(float)Math.sin(angle);
+            }
         }
       }
       break;

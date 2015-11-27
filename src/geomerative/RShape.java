@@ -18,7 +18,12 @@
  */
 package geomerative;
 
-import processing.core.*;
+
+
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
+
 
 /**
  * RShape is a reduced interface for creating, holding and drawing complex
@@ -749,7 +754,7 @@ public class RShape extends RGeomElem {
         int numPaths = countPaths();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = paths[i].getHandles();
             if (newPoints != null) {
@@ -819,7 +824,7 @@ public class RShape extends RGeomElem {
 
         RCommand.segmentAccOffset = RCommand.segmentOffset;
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = paths[i].getPoints();
             if (newPoints != null) {
@@ -931,7 +936,7 @@ public class RShape extends RGeomElem {
             return false;
         }
         int nvert = verts.length;
-        int i, j = 0;
+        int i, j;
         boolean c = false;
         for (i = 0, j = nvert - 1; i < nvert; j = i++) {
             if (((verts[i].y > testy) != (verts[j].y > testy))
@@ -950,11 +955,12 @@ public class RShape extends RGeomElem {
      * @return RPoint[], the points returned in an array.
      *
      */
+    @Override
     public RPoint[] getTangents() {
         int numPaths = countPaths();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = paths[i].getTangents();
             if (newPoints != null) {
@@ -995,11 +1001,12 @@ public class RShape extends RGeomElem {
      * @return RPoint[], the points returned in an array.
      *
      */
+    @Override
     public RPoint[][] getPointsInPaths() {
         int numPaths = countPaths();
 
         RPoint[][] result = null;
-        RPoint[][] newresult = null;
+        RPoint[][] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[][] newPointPaths = paths[i].getPointsInPaths();
             if (newPointPaths != null) {
@@ -1042,7 +1049,7 @@ public class RShape extends RGeomElem {
         int numPaths = countPaths();
 
         RPoint[][] result = null;
-        RPoint[][] newresult = null;
+        RPoint[][] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[][] newHandlePaths = paths[i].getHandlesInPaths();
             if (newHandlePaths != null) {
@@ -1084,7 +1091,7 @@ public class RShape extends RGeomElem {
         }
 
         RPoint[][] result = null;
-        RPoint[][] newresult = null;
+        RPoint[][] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[][] newTangentPaths = paths[i].getTangentsInPaths();
             if (newTangentPaths != null) {
@@ -1305,7 +1312,7 @@ public class RShape extends RGeomElem {
         int numPaths = countPaths();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = paths[i].intersectionPoints(other);
             if (newPoints != null) {
@@ -1344,7 +1351,7 @@ public class RShape extends RGeomElem {
         int numPaths = countPaths();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
 
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = paths[i].intersectionPoints(other);
@@ -1384,7 +1391,7 @@ public class RShape extends RGeomElem {
         int numPaths = countPaths();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
 
         for (int i = 0; i < numPaths; i++) {
             RPoint[] newPoints = other.polygonIntersectionPoints(paths[i]);

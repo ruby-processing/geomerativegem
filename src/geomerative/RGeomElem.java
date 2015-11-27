@@ -17,8 +17,8 @@
  * Geomerative. If not, see <http://www.gnu.org/licenses/>.
  */
 package geomerative;
-
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PGraphics;
 
 /**
  * RGeomElem is an interface to any geometric element that can be drawn and
@@ -86,6 +86,10 @@ public abstract class RGeomElem {
     // They must be overrided
     public abstract void draw(PGraphics g);
 
+    /**
+     *
+     * @param g
+     */
     public abstract void draw(PApplet g);
 
     public void draw() {
@@ -142,15 +146,10 @@ public abstract class RGeomElem {
         RPoint bl = shp.getBottomRight();
         RPoint br = shp.getBottomLeft();
 
-        if (this.contains(tl)
+        return this.contains(tl)
             && this.contains(tr)
             && this.contains(bl)
-            && this.contains(br)) {
-
-            return true;
-        }
-
-        return false;
+            && this.contains(br);
     }
 
     /**

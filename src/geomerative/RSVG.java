@@ -19,8 +19,11 @@
 
 package geomerative;
 
-import processing.core.*;
-import processing.data.*;
+
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
+import processing.data.XML;
 
 /**
  * @extended
@@ -90,8 +93,8 @@ public class RSVG
   }
 
   public float unitsToPixels(String units, float originalPxSize, float dpi) {
-    int chars = 0;
-    float multiplier = 1.0f;
+    int chars;
+    float multiplier;
 
     if (units.endsWith("em")) {
       chars = 2;
@@ -295,13 +298,13 @@ public class RSVG
       result += "stroke-linecap:";
 
       switch (style.strokeCap) {
-      case RG.PROJECT:
+      case PConstants.PROJECT:
         result += "butt";
         break;
-      case RG.ROUND:
+      case PConstants.ROUND:
         result += "round";
         break;
-      case RG.SQUARE:
+      case PConstants.SQUARE:
         result += "square";
         break;
 
@@ -316,13 +319,13 @@ public class RSVG
       result += "stroke-linejoin:";
 
       switch (style.strokeJoin) {
-      case RG.MITER:
+      case PConstants.MITER:
         result += "miter";
         break;
-      case RG.ROUND:
+      case PConstants.ROUND:
         result += "round";
         break;
-      case RG.BEVEL:
+      case PConstants.BEVEL:
         result += "bevel";
         break;
 

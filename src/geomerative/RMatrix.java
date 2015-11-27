@@ -106,56 +106,52 @@ public class RMatrix
   public RMatrix(String transformationString){
     String[] transfTokens = PApplet.splitTokens(transformationString, ")");
     
-    // Loop through all transformations
-    for(int i=0; i<transfTokens.length; i++){
-      // Check the transformation and the parameters
-      String[] transf = PApplet.splitTokens(transfTokens[i], "(");
-      String[] params = PApplet.splitTokens(transf[1], ", ");
-      float[] fparams = new float[params.length];
-      for(int j=0; j<params.length; j++){
-        fparams[j] = PApplet.parseFloat(params[j]);
+      // Loop through all transformations
+      for (String transfToken : transfTokens) {
+          // Check the transformation and the parameters
+          String[] transf = PApplet.splitTokens(transfToken, "(");
+          String[] params = PApplet.splitTokens(transf[1], ", ");
+          float[] fparams = new float[params.length];
+          for(int j=0; j<params.length; j++){
+              fparams[j] = PApplet.parseFloat(params[j]);
+          }   transf[0] = PApplet.trim(transf[0]);
+        switch (transf[0]) {
+            case "translate":
+                if(params.length == 1){
+                    this.translate(fparams[0]);
+                    
+                }else if(params.length == 2){
+                    this.translate(fparams[0], fparams[1]);
+                    
+                } break;
+            case "rotate":
+                if(params.length == 1){
+                    this.rotate(PApplet.radians(fparams[0]));
+                    
+                }else if(params.length == 3){
+                    this.rotate(PApplet.radians(fparams[0]), fparams[1], fparams[2]);
+                    
+                } break;
+            case "scale":
+                if(params.length == 1){
+                    this.scale(fparams[0]);
+                    
+                }else if(params.length == 2){
+                    this.scale(fparams[0], fparams[1]);
+              } break;
+            case "skewX":
+                this.skewX(PApplet.radians(fparams[0]));
+                break;
+            case "skewY":
+                this.skewY(PApplet.radians(fparams[0]));
+                break;
+            case "matrix":
+                this.apply(fparams[0], fparams[2], fparams[4], fparams[1], fparams[3], fparams[5]);
+                break;
+            default:
+                throw new RuntimeException("Transformation unknown. '"+ transf[0]  +"'");
+        }
       }
-      
-      transf[0] = PApplet.trim(transf[0]);
-      
-      if(transf[0].equals("translate")){
-        if(params.length == 1){
-          this.translate(fparams[0]);
-          
-        }else if(params.length == 2){
-          this.translate(fparams[0], fparams[1]);
-          
-        }
-      }else if(transf[0].equals("rotate")){
-        if(params.length == 1){
-          this.rotate(PApplet.radians(fparams[0]));
-          
-        }else if(params.length == 3){
-          this.rotate(PApplet.radians(fparams[0]), fparams[1], fparams[2]);
-          
-        }
-        
-      }else if(transf[0].equals("scale")){
-        if(params.length == 1){
-          this.scale(fparams[0]);
-          
-        }else if(params.length == 2){
-          this.scale(fparams[0], fparams[1]);
-        }
-        
-      }else if(transf[0].equals("skewX")){
-        this.skewX(PApplet.radians(fparams[0]));
-        
-      }else if(transf[0].equals("skewY")){
-        this.skewY(PApplet.radians(fparams[0]));
-        
-      }else if(transf[0].equals("matrix")){
-        this.apply(fparams[0], fparams[2], fparams[4], fparams[1], fparams[3], fparams[5]);
-        
-      }else{
-        throw new RuntimeException("Transformation unknown. '"+ transf[0]  +"'");
-      }
-    }
   }
   
   private void set(float m00, float m01, float m02,
@@ -185,7 +181,7 @@ public class RMatrix
    * @related scale ( )
    * @related shear ( )
    */ 
-  public void apply(float n00, float n01, float n02,
+  public final void apply(float n00, float n01, float n02,
                     float n10, float n11, float n12) {
     
     float r00 = m00*n00 + m01*n10;
@@ -225,12 +221,12 @@ public class RMatrix
    * @related scale ( )
    * @related shear ( )
    */
-  public void translate(float tx, float ty)
+  public final void translate(float tx, float ty)
   {
     apply(1, 0, tx, 0, 1, ty);
   }
 
-  public void translate(float tx)
+  public final void translate(float tx)
   {
     translate(tx, 0);
   }
@@ -260,14 +256,14 @@ public class RMatrix
    * @related translate ( )
    * @related scale ( )
    */ 
-  public void rotate(float angle, float vx, float vy)
+  public final void rotate(float angle, float vx, float vy)
   {
     translate(vx,vy);
     rotate(angle);
     translate(-vx,-vy);
   }
 
-  public void rotate(float angle)
+  public final void rotate(float angle)
   {
     float c = (float)Math.cos(angle);
     float s = (float)Math.sin(angle);
@@ -308,7 +304,7 @@ public class RMatrix
     translate(-x,-y);
   }
 
-  public void scale(float sx, float sy)
+  public final void scale(float sx, float sy)
   {
     apply(sx, 0, 0,  0, sy, 0);
   }
@@ -360,7 +356,7 @@ public class RMatrix
     scale(s, s, p.x, p.y);
   }
   
-  public void scale(float s)
+  public final void scale(float s)
   {
     scale(s, s);
   }
@@ -374,12 +370,12 @@ public class RMatrix
    * @related scale ( )
    * @related translate ( )
    */
-  public void skewX(float angle)
+  public final void skewX(float angle)
   {
     apply(1, (float)Math.tan(angle), 0,  0, 1, 0);
   }
   
-  public void skewY(float angle)
+  public final void skewY(float angle)
   {
     apply(1, 0, 0, (float)Math.tan(angle), 1, 0);
   }

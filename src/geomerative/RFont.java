@@ -18,10 +18,13 @@
 */
 
 package geomerative;
-import processing.core.*;
+
 
 import org.apache.batik.svggen.font.*;
 import org.apache.batik.svggen.font.table.*;
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
 
 /**
  * RShape is a reduced interface for creating, holding and drawing text from TrueType Font files. It's a basic interpreter of TrueType fonts enabling to access any String in the form of a group of shapes.  Enabling us in this way to access their geometry.
@@ -98,7 +101,7 @@ public class RFont implements PConstants{
    * @related size
    * @related RFont
    */
-  public void setSize(int size){
+  public final void setSize(int size){
     short unitsPerEm = f.getHeadTable().getUnitsPerEm();
     int resolution = RG.dpi();
     this.scaleFactor = ((float)size * (float)resolution) / (72F * (float)unitsPerEm);
@@ -140,7 +143,7 @@ public class RFont implements PConstants{
    * @related align
    * @related RFont
    */
-  public void setAlign(int align) throws RuntimeException{
+  public final void setAlign(int align) throws RuntimeException{
     if(align!=LEFT && align!=CENTER && align!=RIGHT){
       throw new RuntimeException("Alignment unknown.  The only accepted values are: RFont.LEFT, RFont.CENTER and RFont.RIGHT");
     }
@@ -148,6 +151,7 @@ public class RFont implements PConstants{
   }
   
   /**
+     * @return 
    * @invisible
    **/
   public String getFamily(){
@@ -437,8 +441,7 @@ public class RFont implements PConstants{
   
   public void draw(char character) throws RuntimeException{
     this.toShape(character).draw();
-  }
-  
+  } 
   
   
   private static float midValue(float a, float b) {

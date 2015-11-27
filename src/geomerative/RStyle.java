@@ -18,7 +18,11 @@
 */
 
 package geomerative ;
-import processing.core.*;
+
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
+import processing.core.PImage;
 
 /**
  * @extended
@@ -44,10 +48,10 @@ public class RStyle{
   public float strokeWeight = 1F;
 
   public boolean strokeCapDef = false;
-  public int strokeCap = RG.PROJECT;
+  public int strokeCap = PConstants.PROJECT;
 
   public boolean strokeJoinDef = false;
-  public int strokeJoin = RG.MITER;
+  public int strokeJoin = PConstants.MITER;
 
   private boolean oldFill = false;
   private int oldFillColor = 0;
@@ -55,8 +59,8 @@ public class RStyle{
   private boolean oldStroke = false;
   private int oldStrokeColor = 0;
   private float oldStrokeWeight = 1F;
-  private int oldStrokeCap = RG.PROJECT;
-  private int oldStrokeJoin = RG.MITER;
+  private int oldStrokeCap = PConstants.PROJECT;
+  private int oldStrokeJoin = PConstants.MITER;
 
   public RStyle(){}
 
@@ -192,13 +196,13 @@ public class RStyle{
 
       switch (str) {
           case "butt":
-              strokeCap = RG.PROJECT;
+              strokeCap = PConstants.PROJECT;
               break;
           case "round":
-              strokeCap = RG.ROUND;
+              strokeCap = PConstants.ROUND;
               break;
           case "square":
-              strokeCap = RG.SQUARE;
+              strokeCap = PConstants.SQUARE;
               break;
       }
   }
@@ -209,13 +213,13 @@ public class RStyle{
 
       switch (str) {
           case "miter":
-              strokeJoin = RG.MITER;
+              strokeJoin = PConstants.MITER;
               break;
           case "round":
-              strokeJoin = RG.ROUND;
+              strokeJoin = PConstants.ROUND;
               break;
           case "bevel":
-              strokeJoin = RG.BEVEL;
+              strokeJoin = PConstants.BEVEL;
               break;
       }
   }

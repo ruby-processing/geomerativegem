@@ -127,7 +127,7 @@ class FastRClip
    */
   static RPolygon clip( OperationType op, RPolygon subj, RPolygon clip, Class polyClass )
   {
-    RPolygon result = createNewPoly( polyClass );
+    RPolygon result = createNewPoly(polyClass);
     TopPolygonNode out_poly = new TopPolygonNode(); // used to create resulting RPolygon
     
     /* Test for trivial NULL result cases */

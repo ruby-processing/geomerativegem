@@ -18,9 +18,12 @@
  */
 package geomerative;
 
-import processing.core.*;
+
 
 import java.util.List;
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
 
 /**
  * RContour is a reduced interface for creating, holding and drawing contours.
@@ -111,6 +114,10 @@ public class RContour extends RGeomElem {
         }
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void draw(PApplet g) {
         int numPoints = countPoints();

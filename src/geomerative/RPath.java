@@ -1,7 +1,7 @@
 /**
  * Copyright 2004-2008 Ricard Marxer  <email@ricardmarxer.com>
  *
-    This file is part of Geomerative.
+ * This file is part of Geomerative.
  *
  * Geomerative is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -18,7 +18,10 @@
  */
 package geomerative;
 
-import processing.core.*;
+//import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
 
 /**
  * RPath is a reduced interface for creating, holding and drawing contours.
@@ -152,14 +155,14 @@ public class RPath extends RGeomElem {
      *
      * @eexample getHandles
      * @return RPoint[], the start, control and end points returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[] getHandles() {
         int numCommands = countCommands();
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numCommands; i++) {
             RPoint[] newPoints = commands[i].getHandles();
             if (newPoints != null) {
@@ -187,7 +190,7 @@ public class RPath extends RGeomElem {
      *
      * @eexample getPoints
      * @return RPoint[], the vertices returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[] getPoints() {
@@ -196,11 +199,11 @@ public class RPath extends RGeomElem {
             return null;
         }
 
-    // Add the curve points of each command
+        // Add the curve points of each command
         // First set the accumulated offset to the value of the inital offset
         RCommand.segmentAccOffset = RCommand.segmentOffset;
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numCommands; i++) {
             RPoint[] newPoints = commands[i].getPoints(false);
             if (newPoints != null) {
@@ -208,7 +211,7 @@ public class RPath extends RGeomElem {
                     result = new RPoint[newPoints.length];
                     System.arraycopy(newPoints, 0, result, 0, newPoints.length);
                 } else {
-          // Check for overlapping
+                    // Check for overlapping
                     // Overlapping happens when the last point of the last command 
                     // is the same as the first point of the current command
                     RPoint lastp = result[result.length - 1];
@@ -224,12 +227,13 @@ public class RPath extends RGeomElem {
                 }
             }
         }
-
         // Always add last point
+        if (result == null) {
+            return result;
+        }
         newresult = new RPoint[result.length + 1];
         System.arraycopy(result, 0, newresult, 0, result.length);
         newresult[newresult.length - 1] = new RPoint(commands[numCommands - 1].endPoint);
-
         return newresult;
     }
 
@@ -239,7 +243,7 @@ public class RPath extends RGeomElem {
      *
      * @eexample RGroup_getPoints
      * @return RPoint[], the points returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[][] getPointsInPaths() {
@@ -253,7 +257,7 @@ public class RPath extends RGeomElem {
      *
      * @eexample RGroup_getHandles
      * @return RPoint[], the handles returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[][] getHandlesInPaths() {
@@ -267,7 +271,7 @@ public class RPath extends RGeomElem {
      *
      * @eexample RGroup_getTangents
      * @return RPoint[], the tangents returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[][] getTangentsInPaths() {
@@ -291,7 +295,7 @@ public class RPath extends RGeomElem {
      *
      * @eexample getTangents
      * @return RPoint[], the tangent vectors returned in an array.
-   *
+     *
      */
     @Override
     public RPoint[] getTangents() {
@@ -301,7 +305,7 @@ public class RPath extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numCommands; i++) {
             RPoint[] newTangents = commands[i].getTangents();
             if (newTangents != null) {
@@ -328,7 +332,7 @@ public class RPath extends RGeomElem {
      *
      * @param other
      * @return RPoint[], the intersection points returned in an array.
-   *
+     *
      */
     public RPoint[] intersectionPoints(RCommand other) {
         int numCommands = countCommands();
@@ -337,7 +341,7 @@ public class RPath extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numCommands; i++) {
             RPoint[] newPoints = commands[i].intersectionPoints(other);
             if (newPoints != null) {
@@ -361,7 +365,7 @@ public class RPath extends RGeomElem {
      *
      * @param other
      * @return RPoint[], the intersection points returned in an array.
-   *
+     *
      */
     public RPoint[] intersectionPoints(RPath other) {
         int numCommands = countCommands();
@@ -372,7 +376,7 @@ public class RPath extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
 
         for (int j = 0; j < numOtherCommands; j++) {
             for (int i = 0; i < numCommands; i++) {
@@ -400,7 +404,7 @@ public class RPath extends RGeomElem {
      *
      * @param other
      * @return RPoint[], the intersection points returned in an array.
-   *
+     *
      */
     public RClosest closestPoints(RCommand other) {
         int numCommands = countCommands();
@@ -428,7 +432,7 @@ public class RPath extends RGeomElem {
      *
      * @param other
      * @return RPoint[], the intersection points returned in an array.
-   *
+     *
      */
     public RClosest closestPoints(RPath other) {
         int numCommands = countCommands();
@@ -461,7 +465,7 @@ public class RPath extends RGeomElem {
      * @param t the parameter of advancement on the curve. t must have values
      * between 0 and 1.
      * @return RPoint, the vertice returned.
-   *
+     *
      */
     @Override
     public RPoint getPoint(float t) {
@@ -492,7 +496,7 @@ public class RPath extends RGeomElem {
      * @param t float, the parameter of advancement on the curve. t must have
      * values between 0 and 1.
      * @return RPoint, the vertice returned.
-   *
+     *
      */
     @Override
     public RPoint getTangent(float t) {
@@ -540,7 +544,7 @@ public class RPath extends RGeomElem {
      *
      * @param p the point for which to test containement..
      * @return boolean, true if the point is in the path.
-   *
+     *
      */
     @Override
     public boolean contains(RPoint p) {
@@ -567,7 +571,8 @@ public class RPath extends RGeomElem {
         }
 
         int nvert = verts.length;
-        int i, j = 0;
+        int i;
+        int j;
         boolean c = false;
         for (i = 0, j = nvert - 1; i < nvert; j = i++) {
             if (((verts[i].y > testy) != (verts[j].y > testy))
@@ -584,7 +589,7 @@ public class RPath extends RGeomElem {
      * @eexample insertHandle
      * @param t float, the parameter of advancement on the curve. t must have
      * values between 0 and 1.
-   *
+     *
      */
     public void insertHandle(float t) {
         if ((t == 0F) || (t == 1F)) {
@@ -620,7 +625,7 @@ public class RPath extends RGeomElem {
      * @eexample insertHandleInPaths
      * @param t float, the parameter of advancement on the curve. t must have
      * values between 0 and 1.
-   *
+     *
      */
     public void insertHandleInPaths(float t) {
         if ((t == 0F) || (t == 1F)) {
@@ -657,7 +662,7 @@ public class RPath extends RGeomElem {
      * @param t float, the parameter of advancement on the curve. t must have
      * values between 0 and 1.
      * @return RPath[], an array of two RPath.
-   *
+     *
      */
     public RPath[] split(float t) {
         RPath[] result = new RPath[2];
@@ -973,7 +978,7 @@ public class RPath extends RGeomElem {
      * @param m RMatrix, the matrix defining the affine transformation
      * @related draw ( )
      */
-  // OPT: not transform the EndPoint since it's equal to the next StartPoint
+    // OPT: not transform the EndPoint since it's equal to the next StartPoint
   /*
      public void transform(RMatrix m){
      RPoint[] ps = getHandles();

@@ -18,7 +18,11 @@
  */
 package geomerative;
 
-import processing.core.*;
+//import processing.core.*;
+
+import processing.core.PApplet;
+import processing.core.PGraphics;
+
 
 /**
  * RPolygon is a reduced interface for creating, holding and drawing complex
@@ -504,7 +508,7 @@ public class RPolygon extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numContours; i++) {
             RPoint[] newPoints = contours[i].getHandles();
             if (newPoints != null) {
@@ -538,7 +542,7 @@ public class RPolygon extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult = null;
+        RPoint[] newresult;
         for (int i = 0; i < numContours; i++) {
             RPoint[] newPoints = contours[i].getPoints();
             if (newPoints != null) {

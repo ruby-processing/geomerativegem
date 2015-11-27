@@ -18,7 +18,11 @@
  */
 package geomerative;
 
-import processing.core.*;
+
+
+import processing.core.PConstants;
+import processing.core.PGraphics;
+
 
 /**
  * RStrip is a reduced interface for creating, holding and drawing triangle

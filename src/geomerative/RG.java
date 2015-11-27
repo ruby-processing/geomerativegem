@@ -18,14 +18,19 @@
  */
 package geomerative;
 
-import processing.core.*;
+
+
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PGraphics;
+
 
 /**
  * RG is a static class containing all the states, modes, etc.. Geomerative is
  * mostly used by calling RG methods. e.g. RShape s = RG.getEllipse(30, 40, 80,
  * 80)
  */
-public class RG implements PConstants {
+public class RG { 
 
     /**
      * @invisible
@@ -304,7 +309,7 @@ public class RG implements PConstants {
      * @eexample createShape
      */
     public static void breakShape(int endMode) {
-        if (endMode == CLOSE) {
+        if (endMode == PConstants.CLOSE) {
             shape.addClose();
         }
 
