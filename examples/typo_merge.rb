@@ -37,12 +37,12 @@ end
 def setup
   sketch_title TEXT.join ' ' 
   RG.init(self)
-  @my_font = RFont.new('FreeSans.ttf', 230, Java::ProcessingCore::PConstants::CENTER)
+  @my_font = RFont.new('FreeSans.ttf', 230, CENTER)
   @stop = false
   no_fill
   stroke(255)
   stroke_weight(0.5)
-  rect_mode(Java::ProcessingCore::PConstants::CENTER)
+  rect_mode(CENTER)
   @xoff = 0.0
   @yoff = 0.0
   @x_inc= 0.01
