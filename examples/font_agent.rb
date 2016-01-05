@@ -1,28 +1,21 @@
-# FontAgent class handles motion and display
 class FontAgent
-  include Processing::Proxy # gives java 'inner class like' access to App
-  attr_reader :loc, :offset, :increment
+  include Processing::Proxy
+  attr_reader :loc, :mot
 
-  def initialize(loc:, increment:)
-    @loc = loc.copy
-    @offset = Vec2D.new
-    @increment = increment
+  def initialize(location:)
+    @loc = location
+    @mot = 0
   end
 
   def motion
-    @offset += increment
-    loc.dist(Vec2D.new(noise(offset.x) * width, noise(offset.y) * height))
+    noise_scale = map1d(mouse_x, (0..width), (0.001..0.01))
+    noise_z = map1d(mouse_x, (0..height), (frame_count * 0.0003..frame_count * 0.02))
+    @mot = noise(loc.x * noise_scale * noise_z, loc.y * noise_scale * noise_z) * 53
   end
 
-  def display(xr:, yr:, m_point:)
+  def display(step:)
     no_stroke
-    fill(255, 73)
-    dia = (150 / m_point) * 5
-    # to get weird non-deterministic behaviour of original, created by use of 
-    # negative inputs to a random range surely not intended, use original:-
-    # ellipse(loc.x + random(-xr, xr), loc.y + random(-yr, yr), dia, dia)
-    xr *= -1 if xr < 0 # guards against an invalid hi..low range
-    yr *= -1 if yr < 0
-    ellipse(loc.x + rand(-xr..xr), loc.y + rand(-yr..yr), dia, dia)
+    fill(255, 53)
+    ellipse(loc.x, loc.y, mot + step, mot + step)
   end
 end

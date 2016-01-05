@@ -20,9 +20,9 @@
 # www.freeartbureau.org/blog
 # translated for JRubyArt by Martin Prout
 require 'geomerative'
-require_relative 'font_agent'
+require_relative 'f_agent'
 
-attr_reader :my_agents, :x_incr, :y_incr
+attr_reader :my_agents
 
 def settings
   size(900, 350)
@@ -32,8 +32,8 @@ def setup
   sketch_title 'Extra Bright'
   background(0)
   my_text = 'EXTRA BRIGHT'
-  @x_incr = 0.000005
-  @y_incr = 0.000008
+  x_incr = 0.000005
+  y_incr = 0.000008
   RG.init(self)
   my_font = RFont.new('FreeSans.ttf', 97, CENTER)
   RCommand.set_segment_length(1)
