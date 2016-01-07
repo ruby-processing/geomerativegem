@@ -5,5 +5,8 @@
 
 Gem wrapper for [Ricard Marxer Geomerative library][] for processing-3.0 and JRubyArt, paradoxically sketches seem to need `--nojruby` flag to run (which is supposed not to work with gems see [README.md][] with examples).
 
+Read more [web pages] here.
+
 [README.md]:https://github.com/ruby-processing/geomerativegem/blob/master/examples/README.md
+[web pages]:http://ruby-processing.github.io/geomerativegem
 [Ricard Marxer Geomerative library]:https://github.com/rikrd/geomerative
