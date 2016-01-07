@@ -8,3 +8,7 @@ rvm:
 jdk:
   - oraclejdk8
 
+matrix:
+  include:
+    - rvm: jruby-head
+      env: JRUBY_OPTS="" BUNDLER_VERSION="~> 1.9.9"
