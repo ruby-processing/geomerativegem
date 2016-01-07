@@ -1,11 +1,13 @@
 sudo: false
 
+language: ruby
+
+bundler_args: --without production
+
 addons:
   apt:
     packages:
       - oracle-java8-installer
-
-language: ruby
 
 rvm: 
   - jruby-head

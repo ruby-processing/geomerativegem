@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.add_dependency 'jruby_art', '~> 1.0' 
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'minitest', '~> 5.8'
   # spec.add_development_dependency 'maven', '~> 3.3', '>= 3.3.3'
   spec.platform = 'java'
   spec.requirements << 'A decent graphics card'

@@ -1,3 +1,10 @@
 source 'https://rubygems.org'
-gem 'github-pages'
+
+# Specify your gem's dependencies in geomerative.gemspec
+gemspec
+
+group :production do
+  gem 'jruby_art'
+end
+
 
