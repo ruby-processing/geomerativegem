@@ -30,10 +30,10 @@ project 'geomerative' do
 
   jar 'org.processing:core:3.0.1'
 
-  plugin( :compiler, '3.1',
+  plugin( :compiler, '3.3',
           'source' =>  '1.8',
           'target' =>  '1.8' )
-  plugin( :jar, '2.4',
+  plugin( :jar, '2.6',
           'archive' => {
             'manifestFile' =>  'MANIFEST.MF'
           } )
