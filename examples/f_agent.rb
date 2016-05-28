@@ -1,3 +1,5 @@
+# encoding: utf-8
+# frozen_literal: true
 # FontAgent class handles motion and display
 class FontAgent
   include Processing::Proxy # gives java 'inner class like' access to App
@@ -18,7 +20,7 @@ class FontAgent
     no_stroke
     fill(255, 73)
     dia = (150 / m_point) * 5
-    # to get weird non-deterministic behaviour of original, created by use of 
+    # to get weird non-deterministic behaviour of original, created by use of
     # negative inputs to a random range surely not intended, use original:-
     # ellipse(loc.x + random(-xr, xr), loc.y + random(-yr, yr), dia, dia)
     xr *= -1 if xr < 0 # guards against an invalid hi..low range

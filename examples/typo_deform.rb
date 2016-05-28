@@ -23,8 +23,8 @@
 require 'geomerative'
 require_relative 'font_agent'
 
-attr_reader :myFont, :myGroup, :myPoints, :myText
-attr_reader :myAgents, :step, :stopAnime
+attr_reader :my_font, :my_group, :my_points, :my_text
+attr_reader :my_agents, :step, :stop_anime
 
 def settings
   size(800, 350)
@@ -35,22 +35,21 @@ def setup
   sketch_title 'Bubbles'
   background(0)
   @step = 3
-  @myText = 'BUBBLES'
+  @my_text = 'BUBBLES'
   RG.init(self)
-  @myFont = RFont.new('FreeSans.ttf', 113, CENTER)
-  @stopAnime = false
+  @my_font = RFont.new(data_path('FreeSans.ttf'), 113, CENTER)
+  @stop_anime = false
   RCommand.setSegmentLength(10)
   RCommand.setSegmentator(RCommand::UNIFORMLENGTH)
-  @myPoints = myFont.toGroup(myText).getPoints  
-  @myAgents = myPoints.map { |point| FontAgent.new(location: Vec2D.new(point.x, point.y)) }
+  @my_points = my_font.toGroup(my_text).getPoints
+  @my_agents = my_points.map { |point| FontAgent.new(location: Vec2D.new(point.x, point.y)) }
 end
-
 
 def draw
   translate(400, 205)
   background(0)
   fill(255)
-  myAgents.each do |point|
+  my_agents.each do |point|
     point.display(step: step)
     point.motion
   end
@@ -59,8 +58,8 @@ end
 def key_pressed
   case key
   when 'f', 'F'
-    @stopAnime = !stopAnime
-    stopAnime ? no_loop : loop
+    @stop_anime = !stop_anime
+    stop_anime ? no_loop : loop
   when '+'
     @step += 1
   when '-'

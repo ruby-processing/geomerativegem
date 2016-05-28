@@ -1,7 +1,7 @@
 project 'geomerative' do
 
   model_version '4.0.0'
-  id 'ruby-processing:geomerative:0.3.1'
+  id 'ruby-processing:geomerative:0.3.2'
   packaging 'jar'
 
   description 'geomerative-library for JRubyArt'
@@ -10,7 +10,7 @@ project 'geomerative' do
 
   developer 'monkstone' do
     name 'Martin Prout'
-    email 'martin_p@lineone.net'
+    email 'mamba2928@yahoo.co.uk'
     roles 'developer' 
   end
 
@@ -28,7 +28,7 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.0.1'
+  jar 'org.processing:core:3.1'
 
   plugin( :compiler, '3.3',
           'source' =>  '1.8',

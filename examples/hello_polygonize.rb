@@ -13,7 +13,7 @@ end
 def setup
   sketch_title 'polygonize'
   RG.init(self)
-  shp = RG.load_shape('lion.svg')
+  shp = RG.load_shape(data_path('lion.svg'))
   @shp = RG.center_in(shp, g, 100)
 end
 

@@ -1,6 +1,7 @@
 require 'geomerative'
 
-# Declare the objects we are going to use, so that they are accesible from setup() and from draw()
+# Declare the objects we are going to use, so that they are accesible from setup
+# and from draw
 attr_reader :grp
 
 def settings
@@ -15,7 +16,7 @@ def setup
   background(255)
   fill(255, 102, 0)
   stroke(0)
-  @grp = RG.getText('Hola Mundo!', 'FreeSans.ttf', 72, CENTER)
+  @grp = RG.getText('Hola Mundo!', data_path('FreeSans.ttf'), 72, CENTER)
 end
 
 def draw
@@ -24,5 +25,3 @@ def draw
   grp.children[0].rotate(PI / 20, grp.children[0].get_center)
   grp.draw
 end
-
-

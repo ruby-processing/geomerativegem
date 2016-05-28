@@ -1,4 +1,4 @@
-#######################/
+#######################
 # --------- GEOMERATIVE EXAMPLES ---------------
 #######################
 # Title   :   TypoGeo_Merge
@@ -28,16 +28,16 @@ require 'geomerative'
 
 attr_reader :my_font, :stop, :xoff, :yoff, :x_inc, :y_inc
 
-TEXT = %w{RubyArt Processing}
+TEXT = %w(RubyArt Processing).freeze
 
 def settings
   size(960, 640)
 end
 
 def setup
-  sketch_title TEXT.join ' ' 
+  sketch_title TEXT.join ' '
   RG.init(self)
-  @my_font = RFont.new('FreeSans.ttf', 200, CENTER)
+  @my_font = RFont.new(data_path('FreeSans.ttf'), 200, CENTER)
   @stop = false
   no_fill
   stroke(255)
@@ -45,7 +45,7 @@ def setup
   rect_mode(CENTER)
   @xoff = 0.0
   @yoff = 0.0
-  @x_inc= 0.01
+  @x_inc = 0.01
   @y_inc = 0.015
 end
 
@@ -60,7 +60,7 @@ def draw
   RCommand.set_segment_length(frequency)
   my_points = my_font.to_group(TEXT[0]).get_points
   begin_shape
-  my_points.each do |point|    
+  my_points.each do |point|
     vertex(point.x, point.y)
     rotation = map1d(displace_y, (0..height), (0..TWO_PI))
     push_matrix
@@ -89,6 +89,6 @@ def key_pressed
     @stop = !stop
     stop ? no_loop : loop
   when 's', 'S'
-    save_frame('000_###.png')
+    save_frame(data_path('000_###.png'))
   end
 end
