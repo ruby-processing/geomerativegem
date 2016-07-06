@@ -28,12 +28,12 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.1'
+  jar 'org.processing:core:3.1.1'
 
-  plugin( :compiler, '3.3',
+  plugin( :compiler, '3.5.1',
           'source' =>  '1.8',
           'target' =>  '1.8' )
-  plugin( :jar, '2.6',
+  plugin( :jar, '3.0.2',
           'archive' => {
             'manifestFile' =>  'MANIFEST.MF'
           } )
