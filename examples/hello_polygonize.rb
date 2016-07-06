@@ -1,7 +1,6 @@
 # Move image round screen with mouse
 # top left to view least polygonized version
 # NB: constrained_map is a JRubyArt method
-
 require 'geomerative'
 
 attr_reader :shp

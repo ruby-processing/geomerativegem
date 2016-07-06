@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_literal: true
 # FontAgent class handles motion and display
 class FontAgent
