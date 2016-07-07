@@ -31,8 +31,8 @@ project 'geomerative' do
   jar 'org.processing:core:3.1.1'
 
   plugin( :compiler, '3.5.1',
-          'source' =>  '1.8',
-          'target' =>  '1.8' )
+          'source' =>  '${maven.compiler.source}',
+          'target' =>  '${maven.compiler.target}' )
   plugin( :jar, '3.0.2',
           'archive' => {
             'manifestFile' =>  'MANIFEST.MF'
