@@ -44,4 +44,15 @@ project 'geomerative' do
     source_directory 'src'
     final_name 'geomerative'
   end
+  
+  reporting do
+    plugin( :pmd, '3.6',
+      'linkXRef' =>  'true',
+      'sourceEncoding' =>  'utf-8',
+      'minimumTokens' =>  '100',
+      'targetJdk' => '${maven.compiler.target}' )
+    end
+    plugin( :checkstyle, '2.17',
+      'configLocation' =>  'config/sun_checks.xml'  
+    end
 end
