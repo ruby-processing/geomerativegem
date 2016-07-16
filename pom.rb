@@ -51,8 +51,7 @@ project 'geomerative' do
       'sourceEncoding' =>  'utf-8',
       'minimumTokens' =>  '100',
       'targetJdk' => '${maven.compiler.target}' )
-    end
     plugin( :checkstyle, '2.17',
-      'configLocation' =>  'config/sun_checks.xml'  
-    end
+      'configLocation' =>  'config/sun_checks.xml' )
+  end
 end
