@@ -15,17 +15,17 @@ Gem::Specification.new do |spec|
   EOS
   spec.licenses = %w{Apache-2.0 AGPL-3.0}
   spec.authors = %w{Ricard\ Marxer Martin\ Prout}
-  spec.email = 'martin_p@lineone.net'
+  spec.email = 'mamba2928@yahoo.co.uk'
   spec.homepage = 'http://ruby-processing.github.io/geomerativegem/'
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.files << 'lib/geomerative.jar'
   spec.require_paths = ['lib']
-  spec.add_dependency 'jruby_art', '~> 1.1' 
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_dependency 'jruby_art', '~> 1.2' 
+  spec.add_development_dependency 'rake', '~> 11.1'
   # spec.add_development_dependency 'maven', '~> 3.3', '>= 3.3.3'
   spec.platform = 'java'
   spec.requirements << 'A decent graphics card'
   spec.requirements << 'java runtime >= 1.8+'
-  spec.requirements << 'processing = 3.0.1+'
-  spec.requirements << 'jruby_art = 1.0+'
+  spec.requirements << 'processing = 3.1.1+'
+  spec.requirements << 'jruby_art = 1.2+'
 end

@@ -1,7 +1,7 @@
 project 'geomerative' do
 
   model_version '4.0.0'
-  id 'ruby-processing:geomerative:0.3.3'
+  id 'ruby-processing:geomerative:0.4.0'
   packaging 'jar'
 
   description 'geomerative-library for JRubyArt'
