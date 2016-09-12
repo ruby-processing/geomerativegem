@@ -1,0 +1,23 @@
+# Site settings
+port: 4000
+title: Geomerative gem for JRubyArt
+email: mamba2928@yahoo.co.uk
+description: > # this means to ignore newlines until "baseurl:"
+  The geomerative gem is wrapper around the geomerative library by Ricard 
+  Marxer, that makes it very easy to use with JRubyArt. Do fancy things with 
+  text, like rotating words, huge font, dissolving font etc.
+baseurl: "" # the subpath of your site, e.g. /blog
+# url: "https://ruby-processing.github.io/geomerativegem"
+urls:
+  bugs: https://github.com/ruby-processing/geomerativegem/issues
+  github: https://github.com/ruby-processing/geomerativegem/
+twitter_username: monkstoneT
+github_username:  monkstone
+
+syntax-highlighting:
+  enabled: true
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-sitemap  
+
