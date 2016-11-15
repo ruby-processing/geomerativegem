@@ -61,6 +61,6 @@ See more refined examples [here][examples], and even more [here][amon] including
 
 Usage with propane is very similar see [examples here][here]
 
-[here]:https://github.com/ruby-processing/propane-examples/tree/master/external_library/gem/geomerative/
-[examples]:https://github.com/ruby-processing/geomerativegem/tree/master/examples
+[examples]:https://github.com/ruby-processing/geomerativegem/tree/master/examples/
 [amon]:http://www.creativeapplications.net/processing/generative-typography-processing-tutorial/
+[here]:https://github.com/ruby-processing/propane-examples/tree/master/external_library/gem/geomerative/
