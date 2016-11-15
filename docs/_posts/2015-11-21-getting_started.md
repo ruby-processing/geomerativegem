@@ -32,7 +32,7 @@ Edit sketch as follows:-
 {% highlight ruby %}
 require 'geomerative'
 
-# Declare the objects we are going to use, so that they are accessible from 
+# Declare the objects we are going to use, so that they are accessible from
 # setup and from draw (use '@' prefix in declare)
 attr_reader :grp
 
@@ -59,5 +59,8 @@ end
 
 See more refined examples [here][examples], and even more [here][amon] including rotating text and text obeying physics.
 
+Usage with propane is very similar see [examples here][here]
+
+[here]:https://github.com/ruby-processing/propane-examples/tree/master/external_library/gem/geomerative/
 [examples]:https://github.com/ruby-processing/geomerativegem/tree/master/examples
 [amon]:http://www.creativeapplications.net/processing/generative-typography-processing-tutorial/
