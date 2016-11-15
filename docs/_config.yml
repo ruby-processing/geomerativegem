@@ -1,6 +1,6 @@
 # Site settings
 port: 4000
-title: Geomerative gem for JRubyArt
+title: Geomerative gem for JRubyArt and propane
 email: mamba2928@yahoo.co.uk
 description: > # this means to ignore newlines until "baseurl:"
   The geomerative gem is wrapper around the geomerative library by Ricard
@@ -8,7 +8,7 @@ description: > # this means to ignore newlines until "baseurl:"
   text, like rotating words, huge font, dissolving font etc.
 baseurl: "" # the subpath of your site, e.g. /blog
 regenerate: true
-url: https://ruby-processing.github.io/geomerativegem
+url: "https://ruby-processing.github.io/geomerativegem"
 
 urls:
   bugs: https://github.com/ruby-processing/geomerativegem/issues
