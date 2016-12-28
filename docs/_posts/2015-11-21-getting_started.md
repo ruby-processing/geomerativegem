@@ -11,25 +11,25 @@ Requires JRubyArt-1.0.1+ (hence jruby-9.0.3.0+)
 
 ### Install the generative gem
 
-{% highlight bash %}
+```bash
 jruby -S gem install geomerative # safe way
 gem install geomerative # using rvm rbenv to use jruby instead of MRI
-{% endhighlight %}
+```
 
 Create basic sketch
 
-{% highlight bash %}
+```bash
 mkdir 'fred'
 mkdir 'fred/data'
 cp '/usr/share/fonts/TTF/FreeMono.ttf fred/data' # other fonts are available
 # '/usr/share/fonts/TTF/LiberationMono-Bold.ttf' Mac and Windows paths differ
 cd fred
 k9 create fred 600 400
-{% endhighlight %}
+```
 
 Edit sketch as follows:-
 
-{% highlight ruby %}
+```ruby
 require 'geomerative'
 
 # Declare the objects we are going to use, so that they are accessible from
@@ -53,7 +53,7 @@ end
 def settings
   size(600, 400)
 end
-{% endhighlight %}
+```
 
 ![fred.png]({{site.github.url}}/assets/fred.png)
 

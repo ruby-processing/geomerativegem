@@ -9,7 +9,7 @@ keywords: tutorial, design, merge
 
 Bertrand Fevre should be particulary proud of this little gem, it is not immediately obvious why it should work.
 
-{% highlight ruby %}
+```ruby
 #######################/
 # --------- GEOMERATIVE EXAMPLES ---------------
 #######################
@@ -104,7 +104,7 @@ def key_pressed
     save_frame(data_path('000_###.png'))
   end
 end
-{% endhighlight %}
+
 
 <iframe src="https://player.vimeo.com/video/56827310" width="500" height="276" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <!-- In case video goes missing

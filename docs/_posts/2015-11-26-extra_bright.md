@@ -7,7 +7,7 @@ date:   2015-11-26 13:48:13
 ### Extra Bright
 
 
-{% highlight ruby %}
+```ruby
 # --------- GEOMERATIVE EXAMPLES ---------------
 # //////////////////////////////////////////////
 # Title   :   TypoGeo_ExtraBright
@@ -66,10 +66,10 @@ def draw
     point.display(xr: xr, yr: yr, m_point: m_point)
   end
 end
-{% endhighlight %}
+
 
 ### FontAgent class
-{% highlight ruby %}
+```ruby
 # FontAgent class handles motion and display
 class FontAgent
   include Processing::Proxy # gives java 'inner class like' access to App
@@ -98,6 +98,6 @@ class FontAgent
     ellipse(loc.x + rand(-xr..xr), loc.y + rand(-yr..yr), dia, dia)
   end
 end
-{% endhighlight %}
+
 
 ![bright.png]({{ site.github.url }}/assets/bright.png)
