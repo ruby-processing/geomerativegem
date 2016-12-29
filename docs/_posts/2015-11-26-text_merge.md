@@ -104,7 +104,7 @@ def key_pressed
     save_frame(data_path('000_###.png'))
   end
 end
-
+```
 
 <iframe src="https://player.vimeo.com/video/56827310" width="500" height="276" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <!-- In case video goes missing

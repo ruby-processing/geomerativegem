@@ -66,7 +66,7 @@ def draw
     point.display(xr: xr, yr: yr, m_point: m_point)
   end
 end
-
+```
 
 ### FontAgent class
 ```ruby
@@ -98,6 +98,6 @@ class FontAgent
     ellipse(loc.x + rand(-xr..xr), loc.y + rand(-yr..yr), dia, dia)
   end
 end
-
+```
 
 ![bright.png]({{ site.github.url }}/assets/bright.png)
