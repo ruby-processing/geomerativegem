@@ -1,3 +1,6 @@
+### version-0.4.2
+Bump versions
+
 ### version-0.4.1
 No particular reason but java, jruby and processing have all been updated since last release
 
