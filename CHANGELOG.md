@@ -1,5 +1,5 @@
 ### version-0.4.2
-Bump versions
+Bump versions processing-3.3, jruby-9.1.8.0
 
 ### version-0.4.1
 No particular reason but java, jruby and processing have all been updated since last release

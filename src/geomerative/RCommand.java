@@ -73,10 +73,10 @@ public class RCommand extends RGeomElem {
     public static int segmentType = UNIFORMLENGTH;
 
     /* Parameters for ADAPTATIVE (dependent of the PGraphics on which drawing) */
-    static final int segmentRecursionLimit = 32;
-    static final float segmentDistanceEpsilon = 1.192092896e-07F;
-    static final float segmentCollinearityEpsilon = 1.192092896e-07F;
-    static final float segmentAngleTolEpsilon = 0.01F;
+    static final int SEGMENT_RECURSION_LIMIT = 32;
+    static final float SEGMENT_DISTANCE_EPSILON = 1.192092896e-07F;
+    static final float SEGMENT_COLLINEARITY_EPSILON = 1.192092896e-07F;
+    static final float SEGMENT_ANGLE_TOL_EPSILON = 0.01F;
 
     static float segmentGfxStrokeWeight = 1.0F;
     static float segmentGfxScale = 1.0F;
@@ -1057,7 +1057,7 @@ public class RCommand extends RGeomElem {
 
     private void quadBezierAdaptativeRecursive(float x1, float y1, float x2, float y2, float x3, float y3, int level) {
 
-        if (level > segmentRecursionLimit) {
+        if (level > SEGMENT_RECURSION_LIMIT) {
             return;
         }
 
@@ -1074,14 +1074,14 @@ public class RCommand extends RGeomElem {
         float dy = y3 - y1;
         float d = Math.abs(((x2 - x3) * dy - (y2 - y3) * dx));
 
-        if (d > segmentCollinearityEpsilon) {
+        if (d > SEGMENT_COLLINEARITY_EPSILON) {
         // Regular care
             //-----------------
             if (d * d <= segmentDistTolSqr * (dx * dx + dy * dy)) {
             // If the curvature doesn't exceed the distance_tolerance value
                 // we tend to finish subdivisions.
                 //----------------------
-                if (segmentAngleTol < segmentAngleTolEpsilon) {
+                if (segmentAngleTol < SEGMENT_ANGLE_TOL_EPSILON) {
                     addCurvePoint(new RPoint(x123, y123));
                     return;
                 }
@@ -1120,7 +1120,7 @@ public class RCommand extends RGeomElem {
     }
 
     private void cubicBezierAdaptativeRecursive(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int level) {
-        if (level > segmentRecursionLimit) {
+        if (level > SEGMENT_RECURSION_LIMIT) {
             return;
         }
 
@@ -1148,8 +1148,8 @@ public class RCommand extends RGeomElem {
         float d3 = Math.abs(((x3 - x4) * dy - (y3 - y4) * dx));
         float da1, da2;
 
-        int d2b = (d2 > segmentCollinearityEpsilon) ? 1 : 0;
-        int d3b = (d3 > segmentCollinearityEpsilon) ? 1 : 0;
+        int d2b = (d2 > SEGMENT_COLLINEARITY_EPSILON) ? 1 : 0;
+        int d3b = (d3 > SEGMENT_COLLINEARITY_EPSILON) ? 1 : 0;
         switch ((d2b << 1) + d3b) {
             case 0:
       // All collinear OR p1==p4
@@ -1167,7 +1167,7 @@ public class RCommand extends RGeomElem {
       // p1,p2,p4 are collinear, p3 is considerable
                 //----------------------
                 if (d3 * d3 <= segmentDistTolSqr * (dx * dx + dy * dy)) {
-                    if (segmentAngleTol < segmentAngleTolEpsilon) {
+                    if (segmentAngleTol < SEGMENT_ANGLE_TOL_EPSILON) {
                         addCurvePoint(new RPoint(x23, y23));
                         return;
                     }
@@ -1198,7 +1198,7 @@ public class RCommand extends RGeomElem {
       // p1,p3,p4 are collinear, p2 is considerable
                 //----------------------
                 if (d2 * d2 <= segmentDistTolSqr * (dx * dx + dy * dy)) {
-                    if (segmentAngleTol < segmentAngleTolEpsilon) {
+                    if (segmentAngleTol < SEGMENT_ANGLE_TOL_EPSILON) {
                         addCurvePoint(new RPoint(x23, y23));
                         return;
                     }
@@ -1232,7 +1232,7 @@ public class RCommand extends RGeomElem {
           // If the curvature doesn't exceed the distance_tolerance value
                     // we tend to finish subdivisions.
                     //----------------------
-                    if (segmentAngleTol < segmentAngleTolEpsilon) {
+                    if (segmentAngleTol < SEGMENT_ANGLE_TOL_EPSILON) {
                         addCurvePoint(new RPoint(x23, y23));
                         return;
                     }

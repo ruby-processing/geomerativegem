@@ -12,7 +12,7 @@ def setup
   sketch_title 'SVG to PDF sketch'
   RG.init(self)
   @grp = RG.load_shape(data_path('bot1.svg'))
-  @pdf = create_graphics(width, height, PDF, 'bot1.pdf')
+  @pdf = create_graphics(width, height, PDF, data_path('bot1.pdf'))
 end
 
 def draw
