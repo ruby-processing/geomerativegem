@@ -20,12 +20,11 @@ Gem::Specification.new do |spec|
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.files << 'lib/geomerative.jar'
   spec.require_paths = ['lib']
-  spec.add_dependency 'jruby_art', '~> 1.2' 
-  spec.add_development_dependency 'rake', '~> 11.2'
+  spec.add_development_dependency 'rake', '~> 12'
   # spec.add_development_dependency 'maven', '~> 3.3', '>= 3.3.3'
   spec.platform = 'java'
   spec.requirements << 'A decent graphics card'
   spec.requirements << 'java runtime >= 1.8+'
-  spec.requirements << 'processing = 3.2.1+'
+  spec.requirements << 'processing = 3.3.2+'
   spec.requirements << 'jruby_art = 1.2+'
 end
