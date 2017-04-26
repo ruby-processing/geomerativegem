@@ -1,3 +1,6 @@
+### version-0.4.3
+Bump versions processing-3.3.2 removed JRubyArt dependecy sin can be used with propane as well
+
 ### version-0.4.2
 Bump versions processing-3.3, jruby-9.1.8.0
 
