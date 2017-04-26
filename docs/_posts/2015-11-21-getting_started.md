@@ -7,7 +7,8 @@ categories: geomerativegem update
 
 ### Requirements
 
-Requires JRubyArt-1.0.1+ (hence jruby-9.0.3.0+)
+Requires JRubyArt-1.3.1+ (hence jruby-9.0.8.0+)
+or propane-2.3.2+
 
 ### Install the generative gem
 

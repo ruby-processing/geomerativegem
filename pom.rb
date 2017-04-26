@@ -1,17 +1,17 @@
 project 'geomerative' do
 
   model_version '4.0.0'
-  id 'ruby-processing:geomerative:0.4.2'
+  id 'ruby-processing:geomerative:0.4.3'
   packaging 'jar'
 
   description 'geomerative-library for JRubyArt'
-  
+
   organization 'ruby-processing', 'https://ruby-processing.github.io'
 
   developer 'monkstone' do
     name 'Martin Prout'
     email 'mamba2928@yahoo.co.uk'
-    roles 'developer' 
+    roles 'developer'
   end
 
   license 'GPL 3', 'http://www.gnu.org/licenses/gpl-3.0-standalone.html'
@@ -28,7 +28,7 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.3.0'
+  jar 'org.processing:core:3.3.2'
 
   plugin( :compiler, '3.5.1',
           'source' =>  '${maven.compiler.source}',
@@ -38,13 +38,13 @@ project 'geomerative' do
             'manifestFile' =>  'MANIFEST.MF'
           } )
   plugin :resources, '2.6'
-  
+
   build do
     default_goal 'package'
     source_directory 'src'
     final_name 'geomerative'
   end
-  
+
   reporting do
     plugin( :pmd, '3.6',
       'linkXRef' =>  'true',
