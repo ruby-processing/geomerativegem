@@ -1,7 +1,7 @@
 project 'geomerative' do
 
   model_version '4.0.0'
-  id 'ruby-processing:geomerative:0.4.3'
+  id 'ruby-processing:geomerative:1.0.0'
   packaging 'jar'
 
   description 'geomerative-library for JRubyArt'
@@ -28,7 +28,7 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.3.2'
+  jar 'org.processing:core:3.3.4'
 
   plugin( :compiler, '3.5.1',
           'source' =>  '${maven.compiler.source}',
