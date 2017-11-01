@@ -28,7 +28,7 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.3.4'
+  jar 'org.processing:core:3.3.5'
 
   plugin( :compiler, '3.5.1',
           'source' =>  '${maven.compiler.source}',
