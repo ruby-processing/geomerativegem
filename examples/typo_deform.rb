@@ -42,7 +42,7 @@ def setup
   RCommand.setSegmentLength(10)
   RCommand.setSegmentator(RCommand::UNIFORMLENGTH)
   @my_points = my_font.toGroup(my_text).getPoints
-  @my_agents = my_points.map { |point| FontAgent.new(location: Vec2D.new(point.x, point.y)) }
+  @my_agents = my_points.map { |point| FontAgent.new(location: Vec2D.new(point)) }
 end
 
 def draw
