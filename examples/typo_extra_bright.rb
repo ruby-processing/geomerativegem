@@ -20,7 +20,7 @@
 # www.freeartbureau.org/blog
 # translated for JRubyArt by Martin Prout
 require 'geomerative'
-require_relative 'f_agent'
+load_library :f_agent
 
 attr_reader :my_agents
 

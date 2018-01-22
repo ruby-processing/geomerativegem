@@ -67,12 +67,13 @@ def draw
   index = 0 # Letter index within the string message
   # loop through and place a letter at each point
   MESSAGE.each_char do |letter|
-    center = RCommand.new(points[index], points[index + 1]).get_center
+    pts = [points[index], points[index.succ]]
+    center = RCommand.new(*pts).get_center
     fill(255)
     no_stroke
     push_matrix
     translate(center.x, center.y)
-    rotate(get_angle(points[index], points[index + 1]))
+    rotate(get_angle(*pts))
     translate(5, 20)
     font.draw(letter)
     pop_matrix

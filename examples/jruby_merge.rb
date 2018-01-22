@@ -28,7 +28,7 @@ require 'geomerative'
 
 attr_reader :my_font, :stop, :xoff, :yoff, :x_inc, :y_inc
 
-TEXT = %w(RubyArt Processing).freeze
+TEXT = %w[RubyArt Processing].freeze
 
 def settings
   size(960, 640)

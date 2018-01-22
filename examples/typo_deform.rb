@@ -21,7 +21,7 @@
 # www.freeartbureau.org/blog
 #
 require 'geomerative'
-require_relative 'font_agent'
+load_library :font_agent
 
 attr_reader :my_font, :my_group, :my_points, :my_text
 attr_reader :my_agents, :step, :stop_anime

@@ -125,7 +125,6 @@ public class RPath extends RGeomElem {
                 lastPoint = commands[i].endPoint;
             }
         }
-
         closed = s.closed;
         setStyle(s);
     }
