@@ -1,3 +1,6 @@
+### version-1.0.1
+Bump versions processing-3.3.6, jruby-9.1.15.0 
+
 ### version-1.0.0
 Bump versions processing-3.3.4, jruby-9.1.12.0 about time we bumped to a full release version number
 
