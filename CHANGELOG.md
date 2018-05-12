@@ -1,11 +1,14 @@
+### version-1.0.2
+Bump versions processing-3.3.7 (changes to smooth) , jruby-9.1.17.0
+
 ### version-1.0.1
-Bump versions processing-3.3.6, jruby-9.1.15.0 
+Bump versions processing-3.3.6, jruby-9.1.15.0
 
 ### version-1.0.0
 Bump versions processing-3.3.4, jruby-9.1.12.0 about time we bumped to a full release version number
 
 ### version-0.4.3
-Bump versions processing-3.3.2 removed JRubyArt dependecy sin can be used with propane as well
+Bump versions processing-3.3.2 removed JRubyArt dependency since can be used with propane as well
 
 ### version-0.4.2
 Bump versions processing-3.3, jruby-9.1.8.0

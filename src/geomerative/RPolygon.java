@@ -18,11 +18,7 @@
  */
 package geomerative;
 
-//import processing.core.*;
-
-import processing.core.PApplet;
-import processing.core.PGraphics;
-
+import processing.core.*;
 
 /**
  * RPolygon is a reduced interface for creating, holding and drawing complex
@@ -61,7 +57,7 @@ public class RPolygon extends RGeomElem {
     public RContour[] contours;
     int currentContour = 0;
 
-  // ----------------------
+    // ----------------------
     // --- Public Methods ---
     // ----------------------
     /**
@@ -126,8 +122,8 @@ public class RPolygon extends RGeomElem {
         double radiansPerStep = 2 * Math.PI / detail;
         for (int i = 0; i < detail; i++) {
             points[i] = new RPoint(
-                radius * Math.cos(i * radiansPerStep) + x,
-                radius * Math.sin(i * radiansPerStep) + y
+                    radius * Math.cos(i * radiansPerStep) + x,
+                    radius * Math.sin(i * radiansPerStep) + y
             );
         }
         return new RPolygon(points);
@@ -186,12 +182,12 @@ public class RPolygon extends RGeomElem {
         double radiansPerStep = Math.PI / spikes;
         for (int i = 0; i < numPoints; i += 2) {
             points[i] = new RPoint(
-                radiusBig * Math.cos(i * radiansPerStep) + x,
-                radiusBig * Math.sin(i * radiansPerStep) + y
+                    radiusBig * Math.cos(i * radiansPerStep) + x,
+                    radiusBig * Math.sin(i * radiansPerStep) + y
             );
             points[i + 1] = new RPoint(
-                radiusSmall * Math.cos(i * radiansPerStep) + x,
-                radiusSmall * Math.sin(i * radiansPerStep) + y
+                    radiusSmall * Math.cos(i * radiansPerStep) + x,
+                    radiusSmall * Math.sin(i * radiansPerStep) + y
             );
         }
         return new RPolygon(points);
@@ -218,12 +214,12 @@ public class RPolygon extends RGeomElem {
         double radiansPerStep = 2 * Math.PI / detail;
         for (int i = 0; i < detail; i++) {
             inner[i] = new RPoint(
-                radiusSmall * Math.cos(i * radiansPerStep) + x,
-                radiusSmall * Math.sin(i * radiansPerStep) + y
+                    radiusSmall * Math.cos(i * radiansPerStep) + x,
+                    radiusSmall * Math.sin(i * radiansPerStep) + y
             );
             outer[i] = new RPoint(
-                radiusBig * Math.cos(i * radiansPerStep) + x,
-                radiusBig * Math.sin(i * radiansPerStep) + y
+                    radiusBig * Math.cos(i * radiansPerStep) + x,
+                    radiusBig * Math.sin(i * radiansPerStep) + y
             );
         }
         RPolygon ring = new RPolygon();
@@ -440,7 +436,7 @@ public class RPolygon extends RGeomElem {
      * points to form a triangle at least. This is useful to avoid the clipping
      * algorithm from breaking.
      *
-     * @return
+     * @return 
      * @invisible
      */
     protected RPolygon removeOpenContours() {
@@ -455,7 +451,8 @@ public class RPolygon extends RGeomElem {
     }
 
     /**
-     * @return @invisible
+     * @return 
+     * @invisible
      */
     @Override
     public RPolygon toPolygon() {
@@ -463,7 +460,8 @@ public class RPolygon extends RGeomElem {
     }
 
     /**
-     * @return @invisible
+     * @return 
+     * @invisible
      */
     @Override
     public RShape toShape() {
@@ -508,7 +506,7 @@ public class RPolygon extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult;
+        RPoint[] newresult = null;
         for (int i = 0; i < numContours; i++) {
             RPoint[] newPoints = contours[i].getHandles();
             if (newPoints != null) {
@@ -542,7 +540,7 @@ public class RPolygon extends RGeomElem {
         }
 
         RPoint[] result = null;
-        RPoint[] newresult;
+        RPoint[] newresult = null;
         for (int i = 0; i < numContours; i++) {
             RPoint[] newPoints = contours[i].getPoints();
             if (newPoints != null) {
@@ -566,7 +564,6 @@ public class RPolygon extends RGeomElem {
      * @eexample RPolygon_getType
      * @return int, will allways return RGeomElem.POLYGON
      */
-    @Override
     public int getType() {
         return type;
     }
@@ -617,19 +614,19 @@ public class RPolygon extends RGeomElem {
 
                 // Check whether to draw the fill or not
                 if (g.fill) {
-          // Since we are drawing the different tristrips we must turn off the stroke or make it the same color as the fill
+                    // Since we are drawing the different tristrips we must turn off the stroke or make it the same color as the fill
                     // NOTE: there's currently no way of drawing the outline of a mesh, since no information is kept about what vertices are at the edge
 
                     // Save the information about the current stroke color and turn off
                     boolean stroking = g.stroke;
                     g.noStroke();
 
-          // Save smoothing state and turn off
-                    // boolean smoothing = g.smooth;
+                    // Save smoothing state and turn off
+                    int smoothing = g.smooth;
                     try {
-
-                        g.noSmooth();
-
+                        if (smoothing > 0) {
+                            g.noSmooth();
+                        }
                     } catch (Exception e) {
                     }
 
@@ -641,6 +638,13 @@ public class RPolygon extends RGeomElem {
                         g.stroke(g.strokeColor);
                     }
 
+                    // Restore the old smoothing state
+                    try {
+                        if (smoothing > 0) {
+                            g.smooth();
+                        }
+                    } catch (Exception e) {
+                    }
                 }
 
                 // Check whether to draw the stroke or not
@@ -657,10 +661,6 @@ public class RPolygon extends RGeomElem {
         }
     }
 
-    /**
-     *
-     * @param g
-     */
     @Override
     public void draw(PApplet g) {
         int numContours = countContours();
@@ -673,12 +673,21 @@ public class RPolygon extends RGeomElem {
 
                 // Check whether to draw the fill or not
                 if (g.g.fill) {
-          // Since we are drawing the different tristrips we must turn off the stroke or make it the same color as the fill
+                    // Since we are drawing the different tristrips we must turn off the stroke or make it the same color as the fill
                     // NOTE: there's currently no way of drawing the outline of a mesh, since no information is kept about what vertices are at the edge
 
                     // Save the information about the current stroke color and turn off
                     boolean stroking = g.g.stroke;
                     g.noStroke();
+
+                    // Save smoothing state and turn off
+                    int smoothing = g.g.smooth;
+                    try {
+                        if (smoothing > 0) {
+                            g.noSmooth();
+                        }
+                    } catch (Exception e) {
+                    }
 
                     RMesh tempMesh = this.toMesh();
                     if (tempMesh != null) {
@@ -690,6 +699,13 @@ public class RPolygon extends RGeomElem {
                         g.stroke(g.g.strokeColor);
                     }
 
+                    // Restore the old smoothing state
+                    try {
+                        if (smoothing > 0) {
+                            g.smooth();
+                        }
+                    } catch (Exception e) {
+                    }
                 }
 
                 // Check whether to draws the stroke or not
@@ -795,11 +811,6 @@ public class RPolygon extends RGeomElem {
         return null;
     }
 
-    /**
-     *
-     * @param t
-     * @return
-     */
     @Override
     public RPoint getTangent(float t) {
         PApplet.println("Feature not yet implemented for this class.");
@@ -816,10 +827,6 @@ public class RPolygon extends RGeomElem {
         return null;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public RPoint[][] getPointsInPaths() {
         PApplet.println("Feature not yet implemented for this class.");
@@ -852,16 +859,16 @@ public class RPolygon extends RGeomElem {
      * polygon
      */
     /*
-     public void transform(RMatrix m){
-     int numContours = countContours();
-     if(numContours!=0){
-     for(int i=0;i<numContours;i++){
-     contours[i].transform(m);
-     }
-     }
-     }
+    public void transform(RMatrix m){
+    int numContours = countContours();
+    if(numContours!=0){
+    for(int i=0;i<numContours;i++){
+    contours[i].transform(m);
+    }
+    }
+    }
      */
-  // ----------------------
+    // ----------------------
     // --- Private Methods ---
     // ----------------------
     /**
@@ -873,7 +880,6 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Add a point to the first inner polygon.
-     *
      * @param x
      * @param y
      */
@@ -886,7 +892,6 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Add a point to the first inner polygon.
-     *
      * @param p
      */
     protected void add(RPoint p) {
@@ -899,13 +904,12 @@ public class RPolygon extends RGeomElem {
     /**
      * Add an inner polygon to this polygon - assumes that adding polygon does
      * not have any inner polygons.
-     *
      * @param p
      */
     protected void add(RPolygon p) {
         /*if (this.contours.length > 0 && this.isHole){
-         throw new IllegalStateException("Cannot add polys to something designated as a hole.");
-         }*/
+      throw new IllegalStateException("Cannot add polys to something designated as a hole.");
+      }*/
         RContour c = new RContour();
         for (int i = 0; i < p.getNumPoints(); i++) {
             c.addPoint(p.getX(i), p.getY(i));
@@ -916,20 +920,18 @@ public class RPolygon extends RGeomElem {
     /**
      * Add an inner polygon to this polygon - assumes that adding polygon does
      * not have any inner polygons.
-     *
      * @param c
      */
     protected void add(RContour c) {
         /*if (this.contours.length > 0 && this.isHole){
-         throw new IllegalStateException("Cannot add polys to something designated as a hole.");
-         }*/
+      throw new IllegalStateException("Cannot add polys to something designated as a hole.");
+      }*/
         this.append(c);
     }
 
     /**
      * Return true if the polygon is empty
-     *
-     * @return
+     * @return 
      */
     protected boolean isEmpty() {
         return (this.contours == null);
@@ -937,8 +939,7 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Returns the bounding box of the polygon.
-     *
-     * @return
+     * @return 
      */
     protected RRectangle getBBox() {
         if (this.contours == null) {
@@ -979,9 +980,8 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Returns the polygon at this index.
-     *
      * @param polyIndex
-     * @return
+     * @return 
      */
     protected RPolygon getInnerPoly(int polyIndex) {
         return new RPolygon(this.contours[polyIndex]);
@@ -990,8 +990,7 @@ public class RPolygon extends RGeomElem {
     /**
      * Returns the number of inner polygons - inner polygons are assumed to
      * return one here.
-     *
-     * @return
+     * @return 
      */
     protected int getNumInnerPoly() {
         if (this.contours == null) {
@@ -1002,8 +1001,7 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Return the number points of the first inner polygon
-     *
-     * @return
+     * @return 
      */
     protected int getNumPoints() {
         if (this.contours == null) {
@@ -1017,9 +1015,8 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Return the X value of the point at the index in the first inner polygon
-     *
      * @param index
-     * @return
+     * @return 
      */
     protected float getX(int index) {
         if (this.contours == null) {
@@ -1030,9 +1027,8 @@ public class RPolygon extends RGeomElem {
 
     /**
      * Return the Y value of the point at the index in the first inner polygon
-     *
      * @param index
-     * @return
+     * @return 
      */
     protected float getY(int index) {
         if (this.contours == null) {
@@ -1045,7 +1041,7 @@ public class RPolygon extends RGeomElem {
      * Return true if this polygon is a hole. Holes are assumed to be inner
      * polygons of a more complex polygon.
      *
-     * @return
+     * @return 
      * @throws IllegalStateException if called on a complex polygon.
      */
     public boolean isHole() {
@@ -1072,9 +1068,8 @@ public class RPolygon extends RGeomElem {
     /**
      * Return true if the given inner polygon is contributing to the set
      * operation. This method should NOT be used outside the Clip algorithm.
-     *
      * @param polyIndex
-     * @return
+     * @return 
      */
     protected boolean isContributing(int polyIndex) {
         return this.contours[polyIndex].isContributing;
@@ -1083,16 +1078,15 @@ public class RPolygon extends RGeomElem {
     /**
      * Set whether or not this inner polygon is constributing to the set
      * operation. This method should NOT be used outside the Clip algorithm.
-     *
      * @param polyIndex
      * @param contributes
      */
     protected void setContributing(int polyIndex, boolean contributes) {
         /*
-         if( this.contours.length != 1 )
-         {
-         throw new IllegalStateException( "Only applies to polys of size 1" );
-         }
+    if( this.contours.length != 1 )
+      {
+        throw new IllegalStateException( "Only applies to polys of size 1" );
+      }
          */
         this.contours[polyIndex].isContributing = contributes;
     }
