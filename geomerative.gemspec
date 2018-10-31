@@ -6,12 +6,11 @@ require 'geomerative/version'
 Gem::Specification.new do |spec|
   spec.name = 'geomerative'
   spec.version = Geomerative::VERSION
-  spec.has_rdoc = true
   spec.extra_rdoc_files = %w{README.md LICENSE.md}
   spec.summary = %q{Updated geomerative library for JRubyArt}
   spec.description =<<-EOS
   Geomerative java library wrapped in a rubygem. Updated to use String switch
-  etc available since jdk8.
+  etc available since jdk8, and somewhat hacked see CHANGELOG.
   EOS
   spec.licenses = %w{Apache-2.0 AGPL-3.0}
   spec.authors = %w{Ricard\ Marxer Martin\ Prout}
@@ -25,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.platform = 'java'
   spec.requirements << 'A decent graphics card'
   spec.requirements << 'java runtime >= 1.8+'
-  spec.requirements << 'processing = 3.3.7+'
+  spec.requirements << 'processing = 3.4+'
 end

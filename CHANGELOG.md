@@ -1,3 +1,6 @@
+### version-1.1
+Bump versions processing-3.4 (changes to smooth) , jruby-9.2.1.0. Fix `contains(RRoints[])` then rename to `containsPoints` and similarly `contains(RGeomElement shp)` to `containsShape(RShape shp)` in this respect we are deviating for original geomerative library that was flawed (and overloading `contains` method way too much).
+
 ### version-1.0.2
 Bump versions processing-3.3.7 (changes to smooth) , jruby-9.1.17.0
 

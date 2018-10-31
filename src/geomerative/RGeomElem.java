@@ -17,6 +17,7 @@
  * Geomerative. If not, see <http://www.gnu.org/licenses/>.
  */
 package geomerative;
+import java.util.Arrays;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -125,8 +126,8 @@ public abstract class RGeomElem {
      * @related containsBounds ( )
      * @related containsHandles ( )
      */
-    public boolean contains(RGeomElem shp) {
-        return contains(shp.getPoints());
+    public boolean containsShape(RShape shp) {
+        return containsPoints(shp.getPoints());
     }
 
     /**
@@ -165,7 +166,7 @@ public abstract class RGeomElem {
      * @related contains ( )
      */
     public boolean containsHandles(RGeomElem shp) {
-        return contains(shp.getHandles());
+        return containsPoints(shp.getHandles());
     }
 
     /**
@@ -174,20 +175,23 @@ public abstract class RGeomElem {
      * @param ps
      * @eexample contains
      * @return boolean, true if the shape contains all the points
-     * @related contains ( )
+     * @related containsShape ( )
      * @related containsBounds ( )
      * @related containsHandles ( )
      */
-    public boolean contains(RPoint[] ps) {
-        boolean contains = false;
-        if (ps != null) {
-            for (RPoint p : ps) {
-                contains &= this.contains(p);
+    public boolean containsPoints(RPoint[] ps) {
+        if (ps.length == 0) {
+            return false;
+        }
+        for (RPoint p : ps) {
+            if (!this.contains(p)) {
+                return false;
             }
         }
-        return contains;
+        return true;
     }
-
+    
+  
     /**
      * Use this method to test if the shape intersects another shape.
      *

@@ -13,3 +13,4 @@ MANIFEST.MF
 hs_err_pid*
 target
 *~
+/nbproject/
