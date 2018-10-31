@@ -928,10 +928,10 @@ public class RShape extends RGeomElem {
         }
         RPoint[] verts = pointpaths[0];
         for (int k = 1; k < pointpaths.length; k++) {
-            verts = (RPoint[]) PApplet.append(verts, new RPoint(0F, 0F));
+            verts = (RPoint[]) PApplet.append(verts, new RPoint());
             verts = (RPoint[]) PApplet.concat(verts, pointpaths[k]);
         }
-        verts = (RPoint[]) PApplet.append(verts, new RPoint(0F, 0F));
+        verts = (RPoint[]) PApplet.append(verts, new RPoint());
         if (verts == null) {
             return false;
         }
