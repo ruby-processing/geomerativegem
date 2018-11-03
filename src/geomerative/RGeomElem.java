@@ -1,7 +1,7 @@
 /**
  * Copyright 2004-2008 Ricard Marxer  <email@ricardmarxer.com>
  *
-    This file is part of Geomerative.
+ * This file is part of Geomerative.
  *
  * Geomerative is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -17,7 +17,9 @@
  * Geomerative. If not, see <http://www.gnu.org/licenses/>.
  */
 package geomerative;
+
 import java.util.Arrays;
+import java.util.stream.Stream;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -83,7 +85,7 @@ public abstract class RGeomElem {
     float origWidth;
     float origHeight;
 
-  // Functions dependent of the type of element
+    // Functions dependent of the type of element
     // They must be overrided
     public abstract void draw(PGraphics g);
 
@@ -148,9 +150,9 @@ public abstract class RGeomElem {
         RPoint br = shp.getBottomLeft();
 
         return this.contains(tl)
-            && this.contains(tr)
-            && this.contains(bl)
-            && this.contains(br);
+                && this.contains(tr)
+                && this.contains(bl)
+                && this.contains(br);
     }
 
     /**
@@ -172,26 +174,27 @@ public abstract class RGeomElem {
     /**
      * Use this method to test if the shape contains an array of points.
      *
-     * @param ps
+     * @param pts
      * @eexample contains
      * @return boolean, true if the shape contains all the points
      * @related containsShape ( )
      * @related containsBounds ( )
      * @related containsHandles ( )
      */
-    public boolean containsPoints(RPoint[] ps) {
-        if (ps.length == 0) {
+    public boolean containsPoints(RPoint[] pts) {
+        if (pts.length == 0) {
             return false;
         }
-        for (RPoint p : ps) {
-            if (!this.contains(p)) {
-                return false;
+        boolean inside = true;
+        for (RPoint pt : pts) {
+            if (!contains(pt)) {
+                inside = false;
+                break;
             }
         }
-        return true;
+        return inside;
     }
-    
-  
+
     /**
      * Use this method to test if the shape intersects another shape.
      *
@@ -223,9 +226,9 @@ public abstract class RGeomElem {
         RPoint bl = shp.getBottomRight();
         RPoint br = shp.getBottomLeft();
         return (this.contains(tl)
-            || this.contains(tr)
-            || this.contains(bl)
-            || this.contains(br));
+                || this.contains(tr)
+                || this.contains(bl)
+                || this.contains(br));
     }
 
     /**
@@ -266,7 +269,7 @@ public abstract class RGeomElem {
 
     public abstract int getType();
 
-  //public abstract RMesh toMesh();
+    //public abstract RMesh toMesh();
     //public abstract RPolygon toPolygon();
     public abstract RShape toShape();
 
@@ -420,7 +423,7 @@ public abstract class RGeomElem {
      *
      * @eexample getCurveLength
      * @return float[], the arclengths of each command on the curve.
-   *
+     *
      */
     public float[] getCurveLengths() {
         /* If the cache with the commands lengths is empty, we fill it up */
@@ -436,7 +439,7 @@ public abstract class RGeomElem {
      *
      * @eexample getCurveLength
      * @return float, the arclength of the path.
-   *
+     *
      */
     public float getCurveLength() {
         /* If the cache with the commands lengths is empty, we fill it up */
@@ -455,7 +458,7 @@ public abstract class RGeomElem {
         return toShape().toPolygon().toMesh();
     }
 
-  // Functions independent of the type of element
+    // Functions independent of the type of element
     // No need of being overrided
     public void transform(RMatrix m) {
         RPoint[] ps = getHandles();
