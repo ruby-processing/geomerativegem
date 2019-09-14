@@ -26,22 +26,22 @@ import processing.core.*;
  * interface allows us to perform binary operations (difference, xor, union and
  * intersection) on polygons.
  *
- * @eexample RPolygon
- * @usage Geometry
- * @related RContour
- * @related createCircle ( )
- * @related createRing ( )
- * @related createStar ( )
- * @related diff ( )
- * @related xor ( )
- * @related union ( )
- * @related intersection ( )
- * @extended
+ RPolygon
+ * Geometry
+ * RContour
+ * createCircle ( )
+ * createRing ( )
+ * createStar ( )
+ * diff ( )
+ * xor ( )
+ * union ( )
+ * intersection ( )
+
  */
 public class RPolygon extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.POLYGON;
   public static int defaultDetail = 50;
@@ -49,10 +49,10 @@ public class RPolygon extends RGeomElem {
   /**
    * Array of RContour objects holding the contours of the polygon.
    *
-   * @eexample contours
-   * @related RContour
-   * @related countContours ( )
-   * @related addContour ( )
+   contours
+   * RContour
+   * countContours ( )
+   * addContour ( )
    */
   public RContour[] contours;
   int currentContour = 0;
@@ -63,7 +63,7 @@ public class RPolygon extends RGeomElem {
   /**
    * Make a copy of the given polygon.
    *
-   * @eexample createPolygon
+   createPolygon
    * @param p the object of which to make a copy
    */
   public RPolygon(RPolygon p) {
@@ -82,7 +82,7 @@ public class RPolygon extends RGeomElem {
   /**
    * Create a new polygon given an array of points.
    *
-   * @eexample createPolygon
+   createPolygon
    * @param points the points for the new polygon.
    */
   public RPolygon(RPoint[] points) {
@@ -112,7 +112,7 @@ public class RPolygon extends RGeomElem {
    *
    * @param x
    * @param y
-   * @eexample createCircle
+   createCircle
    * @param radius the radius of the circle
    * @param detail the number of vertices of the polygon
    * @return RPolygon, the circular polygon newly created
@@ -144,7 +144,7 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to create a new rectangle polygon.
    *
-   * @eexample createRectangle
+   createRectangle
    * @param x the upper-left corner x coordinate
    * @param y the upper-left corner y coordinate
    * @param w the width
@@ -170,7 +170,7 @@ public class RPolygon extends RGeomElem {
    *
    * @param x
    * @param y
-   * @eexample createStar
+   createStar
    * @param radiusBig the outter radius of the star polygon
    * @param radiusSmall the inner radius of the star polygon
    * @param spikes the amount of spikes on the star polygon
@@ -202,7 +202,7 @@ public class RPolygon extends RGeomElem {
    *
    * @param x
    * @param y
-   * @eexample createRing
+   createRing
    * @param radiusBig the outter radius of the ring polygon
    * @param radiusSmall the inner radius of the ring polygon
    * @param detail the number of vertices on each contour of the ring
@@ -243,10 +243,10 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to get the centroid of the element.
    *
-   * @eexample RGroup_getCentroid
+   RGroup_getCentroid
    * @return RPo the centroid point of the element
-   * @related getBounds ( )
-   * @related getCenter ( )
+   * getBounds ( )
+   * getCenter ( )
    */
   @Override
   public RPoint getCentroid() {
@@ -268,9 +268,9 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to count the number of contours in the polygon.
    *
-   * @eexample countContours
+   countContours
    * @return int the number contours in the polygon
-   * @related addContour ( )
+   * addContour ( )
    */
   public int countContours() {
     if (this.contours == null) {
@@ -283,9 +283,9 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new contour to the polygon.
    *
-   * @eexample addContour
+   addContour
    * @param c the contour to be added
-   * @related addPoint ( )
+   * addPoint ( )
    */
   public void addContour(RContour c) {
     this.append(c);
@@ -294,8 +294,8 @@ public class RPolygon extends RGeomElem {
   /**
    * Add an empty contour to the polygon.
    *
-   * @eexample addContour
-   * @related addPoint ( )
+   addContour
+   * addPoint ( )
    */
   public void addContour() {
     this.append(new RContour());
@@ -304,9 +304,9 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new contour to the polygon given an array of points.
    *
-   * @eexample addContour
+   addContour
    * @param points the points of the new contour to be added
-   * @related addPoint ( )
+   * addPoint ( )
    */
   public void addContour(RPoint[] points) {
     this.append(new RContour(points));
@@ -316,8 +316,8 @@ public class RPolygon extends RGeomElem {
    * Use this method to set the current contour to which append points.
    *
    * @param indContour
-   * @eexample addContour
-   * @related addPoint ( )
+   addContour
+   * addPoint ( )
    */
   public void setContour(int indContour) {
     this.currentContour = indContour;
@@ -326,10 +326,10 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new point to the current contour.
    *
-   * @eexample addPoint
+   addPoint
    * @param p the point to be added
-   * @related addContour ( )
-   * @related setCurrent ( )
+   * addContour ( )
+   * setCurrent ( )
    */
   public void addPoint(RPoint p) {
     if (contours == null) {
@@ -341,11 +341,11 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new point to the current contour.
    *
-   * @eexample addPoint
+   addPoint
    * @param x the x coordinate of the point to be added
    * @param y the y coordinate of the point to be added
-   * @related addContour ( )
-   * @related setCurrent ( )
+   * addContour ( )
+   * setCurrent ( )
    */
   public void addPoint(float x, float y) {
     if (contours == null) {
@@ -357,11 +357,11 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new point to the selected contour.
    *
-   * @eexample addPoint
+   addPoint
    * @param indContour the index of the contour to which the point will be added
    * @param p the point to be added
-   * @related addContour ( )
-   * @related setCurrent ( )
+   * addContour ( )
+   * setCurrent ( )
    */
   public void addPoint(int indContour, RPoint p) {
     if (contours == null) {
@@ -373,12 +373,12 @@ public class RPolygon extends RGeomElem {
   /**
    * Add a new point to the selected contour.
    *
-   * @eexample addPoint
+   addPoint
    * @param indContour the index of the contour to which the point will be added
    * @param x the x coordinate of the point to be added
    * @param y the y coordinate of the point to be added
-   * @related addContour ( )
-   * @related setCurrent ( )
+   * addContour ( )
+   * setCurrent ( )
    */
   public void addPoint(int indContour, float x, float y) {
     if (contours == null) {
@@ -398,10 +398,10 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to create a new mesh from a given polygon.
    *
-   * @eexample toMesh
+   toMesh
    * @return RMesh, the mesh made of tristrips resulting of a tesselation of the
    * polygon
-   * @related draw ( )
+   * draw ( )
    */
   @Override
   public RMesh toMesh() {
@@ -435,7 +435,7 @@ public class RPolygon extends RGeomElem {
    * from breaking.
    *
    * @return
-   * @invisible
+   *
    */
   protected RPolygon removeOpenContours() {
     RPolygon clean = new RPolygon();
@@ -449,7 +449,7 @@ public class RPolygon extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RPolygon toPolygon() {
@@ -457,7 +457,7 @@ public class RPolygon extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() {
@@ -490,7 +490,7 @@ public class RPolygon extends RGeomElem {
    * Use this to return the points of the polygon. It returns the points in the
    * way of an array of RPoint.
    *
-   * @eexample RPolygon_getHandles
+   RPolygon_getHandles
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -524,7 +524,7 @@ public class RPolygon extends RGeomElem {
    * Use this to return the points of the polygon. It returns the points in the
    * way of an array of RPoint.
    *
-   * @eexample RPolygon_getPoints
+   RPolygon_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -557,7 +557,7 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to get the type of element this is.
    *
-   * @eexample RPolygon_getType
+   RPolygon_getType
    * @return int, will allways return RGeomElem.POLYGON
    */
   public int getType() {
@@ -567,9 +567,9 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to get the area covered by the polygon.
    *
-   * @eexample getArea
+   getArea
    * @return float, the area covered by the polygon
-   * @related draw ( )
+   * draw ( )
    */
   @Override
   public float getArea() {
@@ -594,9 +594,9 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to draw the polygon.
    *
-   * @eexample drawPolygon
+   drawPolygon
    * @param g PGraphics, the graphics object on which to draw the polygon
-   * @related draw ( )
+   * draw ( )
    */
   @Override
   public void draw(PGraphics g) {
@@ -722,12 +722,12 @@ public class RPolygon extends RGeomElem {
    * Use this method to get the intersection of this polygon with the polygon
    * passed in as a parameter.
    *
-   * @eexample intersection
+   intersection
    * @param p RPolygon, the polygon with which to perform the intersection
    * @return RPolygon, the intersection of the two polygons
-   * @related union ( )
-   * @related xor ( )
-   * @related diff ( )
+   * union ( )
+   * xor ( )
+   * diff ( )
    */
   public RPolygon intersection(RPolygon p) {
     RPolygon res = RClip.intersection(p, this);
@@ -739,12 +739,12 @@ public class RPolygon extends RGeomElem {
    * Use this method to get the union of this polygon with the polygon passed in
    * as a parameter.
    *
-   * @eexample union
+   union
    * @param p RPolygon, the polygon with which to perform the union
    * @return RPolygon, the union of the two polygons
-   * @related intersection ( )
-   * @related xor ( )
-   * @related diff ( )
+   * intersection ( )
+   * xor ( )
+   * diff ( )
    */
   public RPolygon union(RPolygon p) {
     RPolygon res = RClip.union(p, this);
@@ -756,12 +756,12 @@ public class RPolygon extends RGeomElem {
    * Use this method to get the xor of this polygon with the polygon passed in
    * as a parameter.
    *
-   * @eexample xor
+   xor
    * @param p RPolygon, the polygon with which to perform the xor
    * @return RPolygon, the xor of the two polygons
-   * @related union ( )
-   * @related intersection ( )
-   * @related diff ( )
+   * union ( )
+   * intersection ( )
+   * diff ( )
    */
   public RPolygon xor(RPolygon p) {
     RPolygon res = RClip.xor(p, this);
@@ -773,12 +773,12 @@ public class RPolygon extends RGeomElem {
    * Use this method to get the difference between this polygon and the polygon
    * passed in as a parameter.
    *
-   * @eexample diff
+   diff
    * @param p RPolygon, the polygon with which to perform the difference
    * @return RPolygon, the difference of the two polygons
-   * @related union ( )
-   * @related xor ( )
-   * @related intersection ( )
+   * union ( )
+   * xor ( )
+   * intersection ( )
    */
   public RPolygon diff(RPolygon p) {
     RPolygon res = RClip.diff(this, p);
@@ -790,12 +790,12 @@ public class RPolygon extends RGeomElem {
    * Use this method to get a rebuilt version of a given polygon by removing
    * extra points and solving intersecting contours or holes.
    *
-   * @eexample RPolygon_update
+   RPolygon_update
    * @return RPolygon, the updated polygon
-   * @related diff ( )
-   * @related union ( )
-   * @related xor ( )
-   * @related intersection ( )
+   * diff ( )
+   * union ( )
+   * xor ( )
+   * intersection ( )
    */
   public RPolygon update() {
     return RClip.update(this);
@@ -850,7 +850,7 @@ public class RPolygon extends RGeomElem {
   /**
    * Use this method to transform the polygon.
    *
-   * @eexample RPolygon_transform
+   RPolygon_transform
    * @param m RMatrix, the matrix of the affine transformation to apply to the
    * polygon
    */

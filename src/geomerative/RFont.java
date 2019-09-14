@@ -30,11 +30,11 @@ import processing.core.PGraphics;
  * access any String in the form of a group of shapes. Enabling us in this way
  * to access their geometry.
  *
- * @eexample RFont
- * @usage Geometry
- * @related RGroup
+ RFont
+ * Geometry
+ * RGroup
  *
- * @extended
+
  */
 public class RFont implements PConstants {
 
@@ -45,9 +45,9 @@ public class RFont implements PConstants {
   /**
    * The point size of the font.
    *
-   * @eexample size
-   * @related setSize ( )
-   * @related RFont
+   size
+   * setSize ( )
+   * RFont
    */
   public int size = DEFAULT_SIZE;
 
@@ -55,9 +55,9 @@ public class RFont implements PConstants {
    * The alignment of the font. This property can take the following values:
    * RFont.LEFT, RFont.CENTER and RFont.RIGHT
    *
-   * @eexample align
-   * @related setAlign ( )
-   * @related RFont
+   align
+   * setAlign ( )
+   * RFont
    */
   public int align = DEFAULT_ALIGN;
 
@@ -74,17 +74,17 @@ public class RFont implements PConstants {
    * The constructor of the RFont object. Use this in order to create a font
    * with which we will be able to draw and obtain outlines of text.
    *
-   * @eexample RFont
+   RFont
    * @param fontPath String, the name of the TrueType Font file which should be
    * situated in the data folder of the sketch.
    * @param size int, the point size of the font in points.
    * @param align int, this can only take the following values: RFont.LEFT,
    * RFont.CENTER and RFont.RIGHT.
-   * @related toGroup ( )
-   * @related toShape ( )
-   * @related toPolygon ( )
-   * @related toMesh ( )
-   * @related draw ( )
+   * toGroup ( )
+   * toShape ( )
+   * toPolygon ( )
+   * toMesh ( )
+   * draw ( )
    */
   public RFont(String fontPath, int size, int align) throws RuntimeException {
     // Try to find the font as font path
@@ -106,10 +106,10 @@ public class RFont implements PConstants {
   /**
    * Use this method to reset the point size of the font.
    *
-   * @eexample setSize
+   setSize
    * @param size int, the point size of the font in points.
-   * @related size
-   * @related RFont
+   * size
+   * RFont
    */
   public final void setSize(int size) {
     short unitsPerEm = f.getHeadTable().getUnitsPerEm();
@@ -150,11 +150,11 @@ public class RFont implements PConstants {
    * Use this method to reset the alignment of the font. This property can take
    * the following values: RFont.LEFT, RFont.CENTER and RFont.RIGHT
    *
-   * @eexample setAlign
+   setAlign
    * @param align int, this can only take the following values: RFont.LEFT,
    * RFont.CENTER and RFont.RIGHT.
-   * @related align
-   * @related RFont
+   * align
+   * RFont
    */
   public final void setAlign(int align) throws RuntimeException {
     if (align != LEFT && align != CENTER && align != RIGHT) {
@@ -164,7 +164,7 @@ public class RFont implements PConstants {
   }
 
   /**
-   * @return @invisible
+   * @return
    *
    */
   public String getFamily() {
@@ -175,12 +175,12 @@ public class RFont implements PConstants {
    * Use this method to get the outlines of a character in the form of an
    * RShape.
    *
-   * @eexample RFont_toShape
+   RFont_toShape
    * @param character char, the character we want the outline from.
    * @return RShape, the outline of the character.
-   * @related toGroup ( )
-   * @related toPolygon ( )
-   * @related draw ( )
+   * toGroup ( )
+   * toPolygon ( )
+   * draw ( )
    */
   public RShape toShape(char character) {
     RGroup grp = toGroup(Character.toString(character));
@@ -194,12 +194,12 @@ public class RFont implements PConstants {
    * Use this method to get the outlines of a character in the form of an
    * RPolygon.
    *
-   * @eexample RFont_toPolygon
+   RFont_toPolygon
    * @param character char, the character we want the outline from.
    * @return RPolygon, the outline of the character.
-   * @related toGroup ( )
-   * @related toShape ( )
-   * @related draw ( )
+   * toGroup ( )
+   * toShape ( )
+   * draw ( )
    */
   public RPolygon toPolygon(char character) {
     return toShape(character).toPolygon();
@@ -242,12 +242,12 @@ public class RFont implements PConstants {
    * Use this method to get the outlines of a string in the form of an RGroup.
    * All the elements of the group will be RShapes.
    *
-   * @eexample RFont_toGroup
+   RFont_toGroup
    * @param text String, the string we want the outlines from.
    * @return RGroup, the group of outlines of the character. All the elements
    * are RShapes.
-   * @related toShape ( )
-   * @related draw ( )
+   * toShape ( )
+   * draw ( )
    */
   public RGroup toGroup(String text) throws RuntimeException {
     RGroup result = new RGroup();
@@ -408,11 +408,11 @@ public class RFont implements PConstants {
   /**
    * Use this method to draw a character on a certain canvas.
    *
-   * @eexample RFont_draw
+   RFont_draw
    * @param character the character to be drawn
    * @param g the canvas where to draw
-   * @related toShape ( )
-   * @related toGroup ( )
+   * toShape ( )
+   * toGroup ( )
    */
   public void draw(char character, PGraphics g) throws RuntimeException {
     this.toShape(character).draw(g);
@@ -421,11 +421,11 @@ public class RFont implements PConstants {
   /**
    * Use this method to draw a character on a certain canvas.
    *
-   * @eexample RFont_draw
+   RFont_draw
    * @param text the string to be drawn
    * @param g the canvas where to draw
-   * @related toShape ( )
-   * @related toGroup ( )
+   * toShape ( )
+   * toGroup ( )
    */
   public void draw(String text, PGraphics g) throws RuntimeException {
     this.toGroup(text).draw(g);
@@ -434,11 +434,11 @@ public class RFont implements PConstants {
   /**
    * Use this method to draw a character on a certain canvas.
    *
-   * @eexample RFont_draw
+   RFont_draw
    * @param character char, the character to be drawn
    * @param g the canvas where to draw
-   * @related toShape ( )
-   * @related toGroup ( )
+   * toShape ( )
+   * toGroup ( )
    */
   public void draw(char character, PApplet g) throws RuntimeException {
     this.toShape(character).draw(g);
@@ -447,11 +447,11 @@ public class RFont implements PConstants {
   /**
    * Use this method to draw a character on a certain canvas.
    *
-   * @eexample RFont_draw
+   RFont_draw
    * @param text the string to be drawn
    * @param g the canvas where to draw
-   * @related toShape ( )
-   * @related toGroup ( )
+   * toShape ( )
+   * toGroup ( )
    */
   public void draw(String text, PApplet g) throws RuntimeException {
     this.toGroup(text).draw(g);

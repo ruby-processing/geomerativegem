@@ -28,26 +28,26 @@ import processing.core.PGraphics;
  * Contours are ordered lists of points (RPoint) which define the outlines of
  * polygons. Contours can be self-intersecting.
  *
- * @eexample RContour
- * @usage Geometry
- * @related RPoint
- * @related RPolygon
- * @extended
+ RContour
+ * Geometry
+ * RPoint
+ * RPolygon
+
  */
 public class RContour extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.CONTOUR;
 
   /**
    * Array of RPoint objects holding the points of the contour.
    *
-   * @eexample points
-   * @related RPoint
-   * @related countPoints ( )
-   * @related addPoint ( )
+   points
+   * RPoint
+   * countPoints ( )
+   * addPoint ( )
    */
   public RPoint[] points;
   boolean isContributing = true;
@@ -57,7 +57,7 @@ public class RContour extends RGeomElem {
   /**
    * Use this method to count the number of points in the contour.
    *
-   * @eexample countPoints
+   countPoints
    * @return int, the number points in the contour
    */
   public int countPoints() {
@@ -72,7 +72,7 @@ public class RContour extends RGeomElem {
    * Create a countour given an array of points.
    *
    * @param contourpoints the points of the new contour
-   * @invisible
+   *
    */
   public RContour(RPoint[] contourpoints) {
     this.points = contourpoints;
@@ -94,7 +94,7 @@ public class RContour extends RGeomElem {
   /**
    * Use this method to draw the contour.
    *
-   * @eexample drawContour
+   drawContour
    * @param g PGraphics, the graphics object on which to draw the contour
    */
   @Override
@@ -135,7 +135,7 @@ public class RContour extends RGeomElem {
    * Use this method to add new points to the contour.
    *
    * @param p
-   * @eexample addPoint ( )
+   addPoint ( )
    */
   public void addPoint(RPoint p) {
     this.append(p);
@@ -187,7 +187,7 @@ public class RContour extends RGeomElem {
    * Use this to return the points of the contour. It returns the points in the
    * way of an array of RPoint.
    *
-   * @eexample RContour_getHandles
+   RContour_getHandles
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -200,7 +200,7 @@ public class RContour extends RGeomElem {
    * Use this to return the points of the contour. It returns the points in the
    * way of an array of RPoint.
    *
-   * @eexample RContour_getPoints
+   RContour_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -269,9 +269,9 @@ public class RContour extends RGeomElem {
    * Use this method to know if the contour is a hole. Remember to use the
    * method update() on the polygon before using this method.
    *
-   * @eexample RPolygon_isHole
+   RPolygon_isHole
    * @return boolean, true if it is a hole
-   * @related update ( )
+   * update ( )
    */
   public boolean isHole() {
     return isHole;
@@ -304,7 +304,7 @@ public class RContour extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RPolygon toPolygon() {
@@ -312,7 +312,7 @@ public class RContour extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() throws RuntimeException {
@@ -320,7 +320,7 @@ public class RContour extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RMesh toMesh() {
@@ -330,7 +330,7 @@ public class RContour extends RGeomElem {
   /**
    * Use this method to get the type of element this is.
    *
-   * @eexample RPolygon_getType
+   RPolygon_getType
    * @return int, will allways return RGeomElem.POLYGON
    */
   @Override

@@ -28,28 +28,58 @@ import org.apache.batik.svggen.font.table.GlyphDescription;
  */
 public class Glyph {
 
+  /**
+   *
+   */
   protected short leftSideBearing;
+
+  /**
+   *
+   */
   protected int advanceWidth;
   private Point[] points;
 
+  /**
+   *
+   * @param gd
+   * @param lsb
+   * @param advance
+   */
   public Glyph(GlyphDescription gd, short lsb, int advance) {
     leftSideBearing = lsb;
     advanceWidth = advance;
     describe(gd);
   }
 
+  /**
+   *
+   * @return
+   */
   public int getAdvanceWidth() {
     return advanceWidth;
   }
 
+  /**
+   *
+   * @return
+   */
   public short getLeftSideBearing() {
     return leftSideBearing;
   }
 
+  /**
+   *
+   * @param i
+   * @return
+   */
   public Point getPoint(int i) {
     return points[i];
   }
 
+  /**
+   *
+   * @return
+   */
   public int getPointCount() {
     return points.length;
   }

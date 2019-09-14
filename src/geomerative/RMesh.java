@@ -26,25 +26,25 @@ import processing.core.PGraphics;
  * RMesh is a reduced interface for creating, holding and drawing meshes. A mesh
  * is a group of triangular strips (RStrip).
  *
- * @eexample RMesh
- * @usage Geometry
- * @related RStrip
- * @extended
+ RMesh
+ * Geometry
+ * RStrip
+
  */
 public class RMesh extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.MESH;
 
   /**
    * Array of RStrip objects holding the contours of the polygon.
    *
-   * @eexample strips
-   * @related RStrip
-   * @related countStrips ( )
-   * @related addStrip ( )
+   strips
+   * RStrip
+   * countStrips ( )
+   * addStrip ( )
    */
   public RStrip[] strips;
   int currentStrip = 0;
@@ -55,7 +55,7 @@ public class RMesh extends RGeomElem {
   /**
    * Create a new empty mesh.
    *
-   * @eexample createaMesh
+   createaMesh
    */
   public RMesh() {
     strips = null;
@@ -65,7 +65,7 @@ public class RMesh extends RGeomElem {
   /**
    * Copy a mesh.
    *
-   * @eexample createaMesh
+   createaMesh
    * @param m the object of which to make a copy
    */
   public RMesh(RMesh m) {
@@ -84,9 +84,9 @@ public class RMesh extends RGeomElem {
   /**
    * Use this method to count the number of strips in the mesh.
    *
-   * @eexample countStrips
+   countStrips
    * @return int, the number strips in the mesh
-   * @related addStrip ( )
+   * addStrip ( )
    */
   public int countStrips() {
     if (this.strips == null) {
@@ -99,9 +99,9 @@ public class RMesh extends RGeomElem {
   /**
    * Add a new strip.
    *
-   * @eexample addStrip
+   addStrip
    * @param s the strip to be added
-   * @related addPoint ( )
+   * addPoint ( )
    */
   public void addStrip(RStrip s) {
     this.append(s);
@@ -115,9 +115,9 @@ public class RMesh extends RGeomElem {
    * Use this method to set the current strip to which append points.
    *
    * @param indStrip
-   * @eexample addStrip
-   * @related addPoint ( )
-   * @invisible
+   addStrip
+   * addPoint ( )
+   *
    */
   public void setCurrent(int indStrip) {
     this.currentStrip = indStrip;
@@ -126,11 +126,11 @@ public class RMesh extends RGeomElem {
   /**
    * Add a new point to the current strip.
    *
-   * @eexample addPoint
+   addPoint
    * @param p the point to be added
-   * @related addStrip ( )
-   * @related setCurrent ( )
-   * @invisible
+   * addStrip ( )
+   * setCurrent ( )
+   *
    */
   public void addPoint(RPoint p) {
     if (strips == null) {
@@ -142,12 +142,12 @@ public class RMesh extends RGeomElem {
   /**
    * Add a new point to the current strip.
    *
-   * @eexample addPoint
+   addPoint
    * @param x the x coordinate of the point to be added
    * @param y the y coordinate of the point to be added
-   * @related addStrip ( )
-   * @related setCurrent ( )
-   * @invisible
+   * addStrip ( )
+   * setCurrent ( )
+   *
    */
   public void addPoint(float x, float y) {
     if (strips == null) {
@@ -159,12 +159,12 @@ public class RMesh extends RGeomElem {
   /**
    * Add a new point to the given strip.
    *
-   * @eexample addPoint
+   addPoint
    * @param indStrip the index of the strip to which the point will be added
    * @param p the point to be added
-   * @related addStrip ( )
-   * @related setCurrent ( )
-   * @invisible
+   * addStrip ( )
+   * setCurrent ( )
+   *
    */
   public void addPoint(int indStrip, RPoint p) {
     if (strips == null) {
@@ -176,13 +176,13 @@ public class RMesh extends RGeomElem {
   /**
    * Add a new point to the given strip.
    *
-   * @eexample addPoint
+   addPoint
    * @param indStrip the index of the strip to which the point will be added
    * @param x the x coordinate of the point to be added
    * @param y the y coordinate of the point to be added
-   * @related addStrip ( )
-   * @related setCurrent ( )
-   * @invisible
+   * addStrip ( )
+   * setCurrent ( )
+   *
    */
   public void addPoint(int indStrip, float x, float y) {
     if (strips == null) {
@@ -194,7 +194,7 @@ public class RMesh extends RGeomElem {
   /**
    * Use this method to draw the mesh.
    *
-   * @eexample drawMesh
+   drawMesh
    * @param g PGraphics, the graphics object on which to draw the mesh
    */
   @Override
@@ -242,7 +242,7 @@ public class RMesh extends RGeomElem {
    * Use this to get the vertices of the mesh. It returns the points as an array
    * of RPoint.
    *
-   * @eexample RMesh_getHandles
+   RMesh_getHandles
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -276,7 +276,7 @@ public class RMesh extends RGeomElem {
    * Use this to get the vertices of the mesh. It returns the points as an array
    * of RPoint.
    *
-   * @eexample RMesh_getPoints
+   RMesh_getPoints
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -364,7 +364,7 @@ public class RMesh extends RGeomElem {
   /**
    * Use this method to get the type of element this is.
    *
-   * @eexample RMesh_getType
+   RMesh_getType
    * @return int, will allways return RGeomElem.MESH
    */
   @Override
@@ -375,7 +375,7 @@ public class RMesh extends RGeomElem {
   /**
    * Use this method to transform the mesh.
    *
-   * @eexample transformMesh
+   transformMesh
    * @param m RMatrix, the matrix of the affine transformation to apply to the
    * mesh
    */
@@ -390,7 +390,7 @@ public class RMesh extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RMesh toMesh() {
@@ -398,7 +398,7 @@ public class RMesh extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RPolygon toPolygon() throws RuntimeException {
@@ -406,7 +406,7 @@ public class RMesh extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() throws RuntimeException {

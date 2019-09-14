@@ -27,9 +27,9 @@ import processing.core.PApplet;
  * the last row is considered a constant 0, 0, 1 in order to have better
  * performance.
  *
- * @eexample RMatrix
- * @usage Geometry
- * @extended
+ RMatrix
+ * Geometry
+
  */
 public class RMatrix {
 
@@ -48,19 +48,19 @@ public class RMatrix {
   /**
    * Create a new matrix given the coefficients.
    *
-   * @eexample RMatrix
+   RMatrix
    * @param m00 coefficient 00 of the matrix
    * @param m01 coefficient 01 of the matrix
    * @param m02 coefficient 02 of the matrix
    * @param m10 coefficient 10 of the matrix
    * @param m11 coefficient 11 of the matrix
    * @param m12 coefficient 12 of the matrix
-   * @usage Geometry
-   * @related apply ( )
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * apply ( )
+   * translate ( )
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public RMatrix(float m00, float m01, float m02,
     float m10, float m11, float m12) {
@@ -71,13 +71,13 @@ public class RMatrix {
   /**
    * Create a new identity matrix.
    *
-   * @eexample RMatrix
-   * @usage Geometry
-   * @related apply ( )
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   RMatrix
+   * Geometry
+   * apply ( )
+   * translate ( )
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public RMatrix() {
     m00 = 1F;
@@ -92,14 +92,14 @@ public class RMatrix {
   /**
    * Copy a matrix.
    *
-   * @eexample RMatrix
+   RMatrix
    * @param src source matrix from where to copy the matrix
-   * @usage Geometry
-   * @related apply ( )
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * apply ( )
+   * translate ( )
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public RMatrix(RMatrix src) {
     set(src.m00, src.m01, src.m02,
@@ -176,18 +176,18 @@ public class RMatrix {
    * Multiply the matrix with another matrix. This is mostly use to chain
    * transformations.
    *
-   * @eexample RMatrix_apply
+   RMatrix_apply
    * @param n00 coefficient 00 of the matrix to be applied
    * @param n01 coefficient 01 of the matrix to be applied
    * @param n02 coefficient 02 of the matrix to be applied
    * @param n10 coefficient 10 of the matrix to be applied
    * @param n11 coefficient 11 of the matrix to be applied
    * @param n12 coefficient 12 of the matrix to be applied
-   * @usage Geometry
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * translate ( )
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public final void apply(float n00, float n01, float n02,
     float n10, float n11, float n12) {
@@ -212,13 +212,13 @@ public class RMatrix {
    * Multiply the matrix with another matrix. This is mostly use to chain
    * transformations.
    *
-   * @eexample RMatrix_apply
+   RMatrix_apply
    * @param rhs right hand side matrix
-   * @usage Geometry
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * translate ( )
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public void apply(RMatrix rhs) {
     apply(rhs.m00, rhs.m01, rhs.m02,
@@ -228,13 +228,13 @@ public class RMatrix {
   /**
    * Apply a translation to the matrix, given the coordinates.
    *
-   * @eexample RMatrix_translate
+   RMatrix_translate
    * @param tx x coordinate translation
    * @param ty y coordinate translation
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public final void translate(float tx, float ty) {
     apply(1, 0, tx, 0, 1, ty);
@@ -247,12 +247,12 @@ public class RMatrix {
   /**
    * Apply a translation to the matrix, given a point.
    *
-   * @eexample RMatrix_translate
+   RMatrix_translate
    * @param t vector translation
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related shear ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * shear ( )
    */
   public void translate(RPoint t) {
     translate(t.x, t.y);
@@ -262,14 +262,14 @@ public class RMatrix {
    * Apply a rotation to the matrix, given an angle and optionally a rotation
    * center.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param vx the x coordinate of the center of rotation
    * @param vy the y coordinate of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public final void rotate(float angle, float vx, float vy) {
     translate(vx, vy);
@@ -287,13 +287,13 @@ public class RMatrix {
    * Apply a rotation to the matrix, given an angle and optionally a rotation
    * center.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param v the position vector of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public void rotate(float angle, RPoint v) {
     rotate(angle, v.x, v.y);
@@ -303,15 +303,15 @@ public class RMatrix {
    * Apply a scale to the matrix, given scaling factors and optionally a scaling
    * center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param sx the scaling coefficient over the x axis
    * @param sy the scaling coefficient over the y axis
    * @param x x coordinate of the position vector of the center of the scaling
    * @param y y coordinate of the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float sx, float sy, float x, float y) {
     translate(x, y);
@@ -327,14 +327,14 @@ public class RMatrix {
    * Apply a scale to the matrix, given scaling factors and optionally a scaling
    * center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling coefficient for a uniform scaling
    * @param x x coordinate of the position vector of the center of the scaling
    * @param y y coordinate of the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float s, float x, float y) {
     scale(s, s, x, y);
@@ -344,14 +344,14 @@ public class RMatrix {
    * Apply a scale to the matrix, given scaling factors and optionally a scaling
    * center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param sx the scaling coefficient over the x axis
    * @param sy the scaling coefficient over the y axis
    * @param p the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float sx, float sy, RPoint p) {
     scale(sx, sy, p.x, p.y);
@@ -361,13 +361,13 @@ public class RMatrix {
    * Apply a scale to the matrix, given scaling factors and optionally a scaling
    * center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling coefficient for a uniform scaling
    * @param p the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float s, RPoint p) {
     scale(s, s, p.x, p.y);
@@ -380,12 +380,12 @@ public class RMatrix {
   /**
    * Use this to apply a skewing to the matrix.
    *
-   * @eexample RMatrix_skewing
+   RMatrix_skewing
    * @param angle skewing angle
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related translate ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * translate ( )
    */
   public final void skewX(float angle) {
     apply(1, (float) Math.tan(angle), 0, 0, 1, 0);
@@ -398,13 +398,13 @@ public class RMatrix {
   /**
    * Use this to apply a shearing to the matrix.
    *
-   * @eexample RMatrix_translate
+   RMatrix_translate
    * @param shx x coordinate shearing
    * @param shy y coordinate shearing
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related translate ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * translate ( )
    */
   public void shear(float shx, float shy) {
     apply(1, -shx, 0, shy, 1, 0);

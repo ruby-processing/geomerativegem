@@ -28,24 +28,24 @@ import processing.core.PGraphics;
  * selfintersecting and can contain holes. This interface also allows you to
  * transform shapes into polygons by segmenting the curves forming the shape.
  *
- * @eexample RShape
- * @usage Geometry
- * @related RPath
+ RShape
+ * Geometry
+ * RPath
  */
 public class RShape extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.SHAPE;
 
   /**
    * Array of RPath objects holding the paths of the polygon.
    *
-   * @eexample paths
-   * @related RPath
-   * @related countPaths ( )
-   * @related addPath ( )
+   paths
+   * RPath
+   * countPaths ( )
+   * addPath ( )
    */
   public RPath[] paths = null;
   protected int currentPath = 0;
@@ -59,7 +59,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new empty shape.
    *
-   * @eexample RShape
+   RShape
    */
   public RShape() {
     type = RGeomElem.SHAPE;
@@ -106,7 +106,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new line.
    *
-   * @eexample createRing
+   createRing
    * @param x1 x coordinate of the first point of the line
    * @param y1 y coordinate of the first point of the line
    * @param x2 x coordinate of the last point of the line
@@ -127,7 +127,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new ring polygon.
    *
-   * @eexample createRing
+   createRing
    * @param x x coordinate of the center of the shape
    * @param y y coordinate of the center of the shape
    * @param widthBig the outer width of the ring polygon
@@ -150,7 +150,7 @@ public class RShape extends RGeomElem {
    *
    * @param x
    * @param y
-   * @eexample createStar
+   createStar
    * @param widthBig the outer width of the star polygon
    * @param widthSmall the inner width of the star polygon
    * @param spikes the amount of spikes on the star polygon
@@ -176,7 +176,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new circle shape.
    *
-   * @eexample createRectangle
+   createRectangle
    * @param x the x position of the rectangle
    * @param y the y position of the rectangle
    * @param w the width of the rectangle
@@ -196,7 +196,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new elliptical shape.
    *
-   * @eexample createEllipse
+   createEllipse
    * @param x the x position of the ellipse
    * @param y the y position of the ellipse
    * @param w the width of the ellipse
@@ -250,10 +250,10 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to get the centroid of the element.
    *
-   * @eexample RGroup_getCentroid
+   RGroup_getCentroid
    * @return RPoint, the centroid point of the element
-   * @related getBounds ( )
-   * @related getCenter ( )
+   * getBounds ( )
+   * getCenter ( )
    */
   @Override
   public RPoint getCentroid() {
@@ -275,9 +275,9 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to count the number of paths in the shape.
    *
-   * @eexample countPaths
+   countPaths
    * @return
-   * @related addPath ( )
+   * addPath ( )
    */
   public int countPaths() {
     if (this.paths == null) {
@@ -299,11 +299,11 @@ public class RShape extends RGeomElem {
    * Use this method to add a new shape. The paths of the shape we are adding
    * will simply be added to the current shape.
    *
-   * @eexample addShape
+   addShape
    * @param s RShape, the shape to be added.
-   * @related setPath ( )
-   * @related addMoveTo ( )
-   * @invisible
+   * setPath ( )
+   * addMoveTo ( )
+   *
    */
   public void addShape(RShape s) {
     for (int i = 0; i < s.countPaths(); i++) {
@@ -316,10 +316,10 @@ public class RShape extends RGeomElem {
    * be set to (0,0). Use addMoveTo ( ) in order to add a new path with a
    * different first point.
    *
-   * @eexample addPath
+   addPath
    * @param s the path to be added.
-   * @related setPath ( )
-   * @related addMoveTo ( )
+   * setPath ( )
+   * addMoveTo ( )
    */
   public void addPath(RPath s) {
     this.append(s);
@@ -341,12 +341,12 @@ public class RShape extends RGeomElem {
    * Use this method to set the current path.
    *
    * @param indPath
-   * @eexample setPath
-   * @related addMoveTo ( )
-   * @related addLineTo ( )
-   * @related addQuadTo ( )
-   * @related addBezierTo ( )
-   * @related addPath ( )
+   setPath
+   * addMoveTo ( )
+   * addLineTo ( )
+   * addQuadTo ( )
+   * addBezierTo ( )
+   * addPath ( )
    */
   public void setPath(int indPath) {
     this.currentPath = indPath;
@@ -358,14 +358,14 @@ public class RShape extends RGeomElem {
    * to its borthers classes Polygon and Mesh. MoveTo creates a new path in the
    * shape. It's similar to adding a new contour to a polygon.
    *
-   * @eexample addMoveTo
+   addMoveTo
    * @param endx the x coordinate of the first point for the new path.
    * @param endy the y coordinate of the first point for the new path.
-   * @related addLineTo ( )
-   * @related addQuadTo ( )
-   * @related addBezierTo ( )
-   * @related addPath ( )
-   * @related setPath ( )
+   * addLineTo ( )
+   * addQuadTo ( )
+   * addBezierTo ( )
+   * addPath ( )
+   * setPath ( )
    */
   public void addMoveTo(float endx, float endy) {
     if (paths == null) {
@@ -385,14 +385,14 @@ public class RShape extends RGeomElem {
    * Use this method to add a new lineTo command to the current path. This will
    * add a line from the last point added to the point passed as argument.
    *
-   * @eexample addLineTo
+   addLineTo
    * @param endx the x coordinate of the ending point of the line.
    * @param endy the y coordinate of the ending point of the line.
-   * @related addMoveTo ( )
-   * @related addQuadTo ( )
-   * @related addBezierTo ( )
-   * @related addPath ( )
-   * @related setPath ( )
+   * addMoveTo ( )
+   * addQuadTo ( )
+   * addBezierTo ( )
+   * addPath ( )
+   * setPath ( )
    */
   public void addLineTo(float endx, float endy) {
     if (paths == null) {
@@ -410,16 +410,16 @@ public class RShape extends RGeomElem {
    * add a quadratic bezier from the last point added with the control and
    * ending points passed as arguments.
    *
-   * @eexample addQuadTo
+   addQuadTo
    * @param cp1x the x coordinate of the control point of the bezier.
    * @param cp1y the y coordinate of the control point of the bezier.
    * @param endx the x coordinate of the ending point of the bezier.
    * @param endy the y coordinate of the ending point of the bezier.
-   * @related addMoveTo ( )
-   * @related addLineTo ( )
-   * @related addBezierTo ( )
-   * @related addPath ( )
-   * @related setPath ( )
+   * addMoveTo ( )
+   * addLineTo ( )
+   * addBezierTo ( )
+   * addPath ( )
+   * setPath ( )
    */
   public void addQuadTo(float cp1x, float cp1y, float endx, float endy) {
     if (paths == null) {
@@ -437,18 +437,18 @@ public class RShape extends RGeomElem {
    * will add a cubic bezier from the last point added with the control and
    * ending points passed as arguments.
    *
-   * @eexample addArcTo
+   addArcTo
    * @param cp1x the x coordinate of the first control point of the bezier.
    * @param cp1y the y coordinate of the first control point of the bezier.
    * @param cp2x the x coordinate of the second control point of the bezier.
    * @param cp2y the y coordinate of the second control point of the bezier.
    * @param endx the x coordinate of the ending point of the bezier.
    * @param endy the y coordinate of the ending point of the bezier.
-   * @related addMoveTo ( )
-   * @related addLineTo ( )
-   * @related addQuadTo ( )
-   * @related addPath ( )
-   * @related setPath ( )
+   * addMoveTo ( )
+   * addLineTo ( )
+   * addQuadTo ( )
+   * addPath ( )
+   * setPath ( )
    */
   public void addBezierTo(float cp1x, float cp1y, float cp2x, float cp2y, float endx, float endy) {
     if (paths == null) {
@@ -471,10 +471,10 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new mesh from a given polygon.
    *
-   * @eexample toMesh
+   toMesh
    * @return RMesh, the mesh made of tristrips resulting of a tesselation of the
    * polygonization followed by tesselation of the shape.
-   * @related draw ( )
+   * draw ( )
    */
   @Override
   public RMesh toMesh() {
@@ -484,10 +484,10 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to create a new polygon from a given shape.
    *
-   * @eexample toPolygon
+   toPolygon
    * @return RPolygon, the polygon resulting of the segmentation of the commands
    * in each path.
-   * @related draw ( )
+   * draw ( )
    */
   @Override
   public RPolygon toPolygon() {
@@ -528,7 +528,7 @@ public class RShape extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() {
@@ -539,12 +539,12 @@ public class RShape extends RGeomElem {
    * Use this method to get the intersection of this polygon with the polygon
    * passed in as a parameter.
    *
-   * @eexample intersection
+   intersection
    * @param p RShape, the polygon with which to perform the intersection
    * @return RShape, the intersection of the two polygons
-   * @related union ( )
-   * @related xor ( )
-   * @related diff ( )
+   * union ( )
+   * xor ( )
+   * diff ( )
    */
   public RShape intersection(RShape p) {
     int numPaths = countPaths();
@@ -589,12 +589,12 @@ public class RShape extends RGeomElem {
    * Use this method to get the union of this polygon with the polygon passed in
    * as a parameter.
    *
-   * @eexample union
+   union
    * @param p RShape, the polygon with which to perform the union
    * @return RShape, the union of the two polygons
-   * @related intersection ( )
-   * @related xor ( )
-   * @related diff ( )
+   * intersection ( )
+   * xor ( )
+   * diff ( )
    */
   public RShape union(RShape p) {
     int numPaths = countPaths();
@@ -637,12 +637,12 @@ public class RShape extends RGeomElem {
    * Use this method to get the xor of this polygon with the polygon passed in
    * as a parameter.
    *
-   * @eexample xor
+   xor
    * @param p RShape, the polygon with which to perform the xor
    * @return RShape, the xor of the two polygons
-   * @related union ( )
-   * @related intersection ( )
-   * @related diff ( )
+   * union ( )
+   * intersection ( )
+   * diff ( )
    */
   public RShape xor(RShape p) {
     int numPaths = countPaths();
@@ -687,12 +687,12 @@ public class RShape extends RGeomElem {
    * Use this method to get the difference between this polygon and the polygon
    * passed in as a parameter.
    *
-   * @eexample diff
+   diff
    * @param p RShape, the polygon with which to perform the difference
    * @return RShape, the difference of the two polygons
-   * @related union ( )
-   * @related xor ( )
-   * @related intersection ( )
+   * union ( )
+   * xor ( )
+   * intersection ( )
    */
   public RShape diff(RShape p) {
     int numPaths = countPaths();
@@ -736,7 +736,7 @@ public class RShape extends RGeomElem {
    * Use this to return the start, control and end points of the shape. It
    * returns the points as an array of RPoint.
    *
-   * @eexample RShape_getHandles
+   RShape_getHandles
    * @return RPoint[], the start, control and end points returned in an array.
    *
    */
@@ -784,7 +784,7 @@ public class RShape extends RGeomElem {
    * returns the point as an RPoint.
    *
    * @param t
-   * @eexample RShape_getPoints
+   RShape_getPoints
    * @return RPoint[], the point on the curve.
    *
    */
@@ -805,7 +805,7 @@ public class RShape extends RGeomElem {
    * Use this to return the points on the curve of the shape. It returns the
    * points as an array of RPoint.
    *
-   * @eexample RShape_getPoints
+   RShape_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -854,7 +854,7 @@ public class RShape extends RGeomElem {
    * returns the point as an RPoint.
    *
    * @param t
-   * @eexample RShape_getTangents
+   RShape_getTangents
    * @return RPoint[], the point on the curve.
    *
    */
@@ -940,7 +940,7 @@ public class RShape extends RGeomElem {
    * Use this to return the points on the curve of the shape. It returns the
    * point as an RPoint.
    *
-   * @eexample RShape_getTangents
+   RShape_getTangents
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -986,7 +986,7 @@ public class RShape extends RGeomElem {
    * Use this to return the points of each path of the group. It returns the
    * points as an array of arrays of RPoint.
    *
-   * @eexample RGroup_getPoints
+   RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -1143,7 +1143,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this to insert a split point into the shape.
    *
-   * @eexample insertHandle
+   insertHandle
    * @param t the parameter of advancement on the curve. t must have values
    * between 0 and 1.
    *
@@ -1170,7 +1170,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this to insert a split point into each command of the shape.
    *
-   * @eexample insertHandleInPaths
+   insertHandleInPaths
    * @param t the parameter of advancement on the curve. t must have values
    * between 0 and 1.
    *
@@ -1503,7 +1503,7 @@ public class RShape extends RGeomElem {
    *
    * @param wght
    * @param lngthOffset
-   * @eexample RGroup_adapt
+   RGroup_adapt
    * @param shp the path to which to adapt
    */
   public void adapt(RShape shp, float wght, float lngthOffset) throws RuntimeException {
@@ -1592,7 +1592,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to get the type of element this is.
    *
-   * @eexample RShape_getType
+   RShape_getType
    * @return int, will allways return RGeomElem.SHAPE
    */
   @Override
@@ -1660,7 +1660,7 @@ public class RShape extends RGeomElem {
   /**
    * Use this method to draw the shape.
    *
-   * @eexample drawShape
+   drawShape
    * @param g PGraphics, the graphics object on which to draw the shape
    */
   private void drawPaths(PGraphics g) {

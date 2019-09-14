@@ -24,7 +24,7 @@ import processing.core.PGraphics;
 import processing.data.XML;
 
 /**
- * @extended
+
  */
 public class RSVG {
 
@@ -331,7 +331,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RGroup elemToGroup(XML elem) {
     RGroup grp = new RGroup();
@@ -459,7 +459,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToCompositeShape(XML elem) {
     RShape shp = new RShape();
@@ -591,7 +591,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToPolyline(XML elem) {
     RShape shp = getPolyline(elem.getString("points").trim());
@@ -604,7 +604,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToPolygon(XML elem) {
     RShape poly = elemToPolyline(elem);
@@ -619,7 +619,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToRect(XML elem) {
 
@@ -633,7 +633,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToLine(XML elem) {
     RShape shp = getLine(elem.getFloat("x1"), elem.getFloat("y1"), elem.getFloat("x2"), elem.getFloat("y2"));
@@ -646,7 +646,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToEllipse(XML elem) {
     RShape shp = getEllipse(elem.getFloat("cx"), elem.getFloat("cy"), elem.getFloat("rx"), elem.getFloat("ry"));
@@ -659,7 +659,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToCircle(XML elem) {
     float r = elem.getFloat("r");
@@ -673,7 +673,7 @@ public class RSVG {
   /**
    * @param elem
    * @return
-   * @invisible
+   *
    */
   public RShape elemToShape(XML elem) {
     RShape shp = getShape(elem.getString("d"));
@@ -684,7 +684,7 @@ public class RSVG {
   }
 
   /**
-   * @invisible
+   *
    */
   private RShape getRect(float x, float y, float w, float h) {
     RShape shp = RShape.createRectangle(x, y, w, h);
@@ -695,7 +695,7 @@ public class RSVG {
   }
 
   /**
-   * @invisible
+   *
    */
   private RShape getLine(float x1, float y1, float x2, float y2) {
     RShape shp = new RShape();
@@ -707,7 +707,7 @@ public class RSVG {
   }
 
   /**
-   * @invisible
+   *
    */
   private RShape getEllipse(float cx, float cy, float rx, float ry) {
     // RShape createEllipse takes as input the width and height of the ellipses
@@ -715,7 +715,7 @@ public class RSVG {
   }
 
   /**
-   * @invisible
+   *
    */
   private RShape getPolyline(String s) {
     RShape poly = new RShape();
@@ -756,7 +756,7 @@ public class RSVG {
   }
 
   /**
-   * @invisible
+   *
    */
   private RShape getShape(String s) {
     RShape shp = new RShape();

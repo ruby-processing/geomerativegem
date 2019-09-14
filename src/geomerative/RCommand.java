@@ -22,12 +22,12 @@ import processing.core.PApplet;
 import processing.core.PGraphics;
 
 /**
- * @extended
+
  */
 public class RCommand extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.COMMAND;
 
@@ -39,33 +39,33 @@ public class RCommand extends RGeomElem {
   RPoint[] curvePoints;
 
   /**
-   * @invisible
+   *
    *
    */
   public static final int LINETO = 0;
   /**
-   * @invisible
+   *
    *
    */
   public static final int QUADBEZIERTO = 1;
   /**
-   * @invisible
+   *
    *
    */
   public static final int CUBICBEZIERTO = 2;
 
   /**
-   * @invisible
+   *
    *
    */
   public static final int ADAPTATIVE = 0;
   /**
-   * @invisible
+   *
    *
    */
   public static final int UNIFORMLENGTH = 1;
   /**
-   * @invisible
+   *
    *
    */
   public static final int UNIFORMSTEP = 2;
@@ -160,7 +160,7 @@ public class RCommand extends RGeomElem {
   /**
    * Create an empty command
    *
-   * @invisible
+   *
    */
   public RCommand() {
     controlPoints = null;
@@ -171,7 +171,7 @@ public class RCommand extends RGeomElem {
    * transform one but at the same time keep the original.
    *
    * @param c the object of which to make the copy
-   * @invisible
+   *
    */
   public RCommand(RCommand c) {
     this.startPoint = new RPoint(c.startPoint);
@@ -293,7 +293,7 @@ public class RCommand extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() {
@@ -320,7 +320,7 @@ public class RCommand extends RGeomElem {
    * the amount of segments necessary for our specific application.
    *
    * @param segmentatorType
-   * @eexample setSegment
+   setSegment
    *
    */
   public static void setSegmentator(int segmentatorType) {
@@ -330,7 +330,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this to set the segmentator graphic context.
    *
-   * @eexample setSegmentGraphic
+   setSegmentGraphic
    * @param g graphics object too which to adapt the segmentation of the
    * command.
    *
@@ -354,7 +354,7 @@ public class RCommand extends RGeomElem {
    * Use this to set the segmentator angle tolerance for the ADAPTATIVE
    * segmentator and set the segmentator to ADAPTATIVE.
    *
-   * @eexample setSegmentAngle
+   setSegmentAngle
    * @param segmentAngleTolerance an angle from 0 to PI/2 it defines the maximum
    * angle between segments.
    *
@@ -369,7 +369,7 @@ public class RCommand extends RGeomElem {
    * Use this to set the segmentator length for the UNIFORMLENGTH segmentator
    * and set the segmentator to UNIFORMLENGTH.
    *
-   * @eexample setSegmentLength
+   setSegmentLength
    * @param segmentLngth the length of each resulting segment.
    *
    */
@@ -386,7 +386,7 @@ public class RCommand extends RGeomElem {
    * Use this to set the segmentator offset for the UNIFORMLENGTH segmentator
    * and set the segmentator to UNIFORMLENGTH.
    *
-   * @eexample setSegmentOffset
+   setSegmentOffset
    * @param segmentOffst the offset of the first point on the path.
    *
    */
@@ -403,7 +403,7 @@ public class RCommand extends RGeomElem {
    * Use this to set the segmentator step for the UNIFORMSTEP segmentator and
    * set the segmentator to UNIFORMSTEP.
    *
-   * @eexample setSegmentStep
+   setSegmentStep
    * @param segmentStps if a float from +0.0 to 1.0 is passed it's considered as
    * the step, else it's considered as the number of steps. When a value of 0.0
    * is used the steps will be calculated automatically depending on an
@@ -475,7 +475,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this to return the number of control points of the curve.
    *
-   * @eexample countControlPoints
+   countControlPoints
    * @return int, the number of control points.
    *
    */
@@ -489,7 +489,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this to return the command type.
    *
-   * @eexample getCommandType
+   getCommandType
    * @return int, an integer which can take the following values:
    * RCommand.LINETO, RCommand.QUADBEZIERTO, RCommand.CUBICBEZIERTO.
    *
@@ -501,9 +501,9 @@ public class RCommand extends RGeomElem {
   /**
    * Use this to return the start point of the curve.
    *
-   * @eexample getStartPoint
+   getStartPoint
    * @return RPoint, the start point of the curve.
-   * @invisible
+   *
    *
    */
   RPoint getStartPoint() {
@@ -513,9 +513,9 @@ public class RCommand extends RGeomElem {
   /**
    * Use this to return the end point of the curve.
    *
-   * @eexample getEndPoint
+   getEndPoint
    * @return RPoint, the end point of the curve.
-   * @invisible
+   *
    *
    */
   RPoint getEndPoint() {
@@ -526,9 +526,9 @@ public class RCommand extends RGeomElem {
    * Use this to return the control points of the curve. It returns the points
    * in the way of an array of RPoint.
    *
-   * @eexample getControlPoints
+   getControlPoints
    * @return RPoint[], the control points returned in an array.
-   * @invisible
+   *
    *
    */
   RPoint[] getControlPoints() {
@@ -539,7 +539,7 @@ public class RCommand extends RGeomElem {
    * Use this to return the points on the curve. It returns the points in the
    * way of an array of RPoint.
    *
-   * @eexample getPoints
+   getPoints
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -642,7 +642,7 @@ public class RCommand extends RGeomElem {
    * Use this to return a specific point on the curve. It returns the RPoint for
    * a given advancement parameter t on the curve.
    *
-   * @eexample getPoint
+   getPoint
    * @param t float, the parameter of advancement on the curve. t must have
    * values between 0 and 1.
    * @return RPoint, the vertice returned.
@@ -698,7 +698,7 @@ public class RCommand extends RGeomElem {
    * Use this to return the tangents on the curve. It returns the vectors in the
    * form of an array of RPoint.
    *
-   * @eexample getTangents
+   getTangents
    * @param segments int, the number of segments in which to divide the curve.
    * @return RPoint[], the tangent vectors returned in an array.
    *
@@ -737,7 +737,7 @@ public class RCommand extends RGeomElem {
    * representing the tangent vector for a given value of the advancement
    * parameter t on the curve.
    *
-   * @eexample getTangent
+   getTangent
    * @param t float, the parameter of advancement on the curve. t must have
    * values between 0 and 1.
    * @return RPoint, the vertice returned.
@@ -783,11 +783,11 @@ public class RCommand extends RGeomElem {
    * current implementation of this function is very slow, not recommended for
    * using during frame draw.
    *
-   * @eexample RCommand_getCurveLength
+   RCommand_getCurveLength
    * @param t float, the parameter of advancement on the curve. t must have
    * values between 0 and 1.
    * @return float, the length returned.
-   * @invisible
+   *
    *
    */
   public float getCurveLength(float t) {
@@ -826,9 +826,9 @@ public class RCommand extends RGeomElem {
    * current implementation of this function is very slow, not recommended for
    * using during frame draw.
    *
-   * @eexample RCommand_getCurveLength
+   RCommand_getCurveLength
    * @return float, the length returned.
-   * @invisible
+   *
    *
    */
   @Override
@@ -863,7 +863,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this method to draw the command.
    *
-   * @eexample drawCommand
+   drawCommand
    * @param g PGraphics, the graphics object on which to draw the command
    */
   @Override
@@ -882,7 +882,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this method to draw the command.
    *
-   * @eexample drawCommand
+   drawCommand
    * @param a the applet object on which to draw the command
    */
   @Override
@@ -903,7 +903,7 @@ public class RCommand extends RGeomElem {
    * Use this to return the start, control and end points of the curve. It
    * returns the points in the way of an array of RPoint.
    *
-   * @eexample getHandles
+   getHandles
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -926,7 +926,7 @@ public class RCommand extends RGeomElem {
   /**
    * Returns two commands resulting of splitting the command.
    *
-   * @eexample split
+   split
    * @param t the advancement on the curve where command should be split.
    * @return RPoint[], the tangent vectors returned in an array.
    *
@@ -1687,7 +1687,7 @@ public class RCommand extends RGeomElem {
   /**
    * Use this method to transform the command.
    *
-   * @eexample transformCommand
+   transformCommand
    * @param g PGraphics, the graphics object on which to apply an affine
    * transformation to the command
    */

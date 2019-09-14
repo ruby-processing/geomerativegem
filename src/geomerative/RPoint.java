@@ -22,40 +22,40 @@ package geomerative;
  * RPoint is a very simple interface for creating, holding and drawing 2D
  * points.
  *
- * @eexample RPoint
- * @usage Geometry
- * @related x
- * @related y
+ RPoint
+ * Geometry
+ * x
+ * y
  */
 public class RPoint {
 
   /**
    * The x coordinate of the point.
    *
-   * @eexample RPoint_x
-   * @usage Geometry
-   * @related y
+   RPoint_x
+   * Geometry
+   * y
    */
   public float x;
 
   /**
    * The y coordinate of the point.
    *
-   * @eexample RPoint_y
-   * @usage Geometry
-   * @related x
+   RPoint_y
+   * Geometry
+   * x
    */
   public float y;
 
   /**
    * Create a new point, given the coordinates.
    *
-   * @eexample RPoint_constructor
-   * @usage Geometry
+   RPoint_constructor
+   * Geometry
    * @param x the x coordinate of the new point
    * @param y the y coordinate of the new point
-   * @related x
-   * @related y
+   * x
+   * y
    */
   public RPoint(float x, float y) {
     this.x = x;
@@ -70,10 +70,10 @@ public class RPoint {
   /**
    * Create a new point at (0, 0).
    *
-   * @eexample RPoint_constructor
-   * @usage Geometry
-   * @related x
-   * @related y
+   RPoint_constructor
+   * Geometry
+   * x
+   * y
    */
   public RPoint() {
     x = 0;
@@ -83,11 +83,11 @@ public class RPoint {
   /**
    * Copy a point.
    *
-   * @eexample RPoint_constructor
-   * @usage Geometry
+   RPoint_constructor
+   * Geometry
    * @param p the point we wish to make a copy of
-   * @related x
-   * @related y
+   * x
+   * y
    */
   public RPoint(RPoint p) {
     this.x = p.x;
@@ -95,21 +95,21 @@ public class RPoint {
   }
 
   /**
-   * @invisible
+   *
    */
   float getX() {
     return this.x;
   }
 
   /**
-   * @invisible
+   *
    */
   float getY() {
     return this.y;
   }
 
   /**
-   * @invisible
+   *
    */
   void setLocation(float nx, float ny) {
     this.x = nx;
@@ -119,12 +119,12 @@ public class RPoint {
   /**
    * Use this to apply a transformation to the point.
    *
-   * @eexample RPoint_transform
-   * @usage Geometry
+   RPoint_transform
+   * Geometry
    * @param m the transformation matrix to be applied
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
+   * translate ( )
+   * rotate ( )
+   * scale ( )
    */
   public void transform(RMatrix m) {
     float tempx = m.m00 * x + m.m01 * y + m.m02;
@@ -137,13 +137,13 @@ public class RPoint {
   /**
    * Apply a translation to the point.
    *
-   * @eexample RPoint_translate
-   * @usage Geometry
+   RPoint_translate
+   * Geometry
    * @param tx the coefficient of x translation
    * @param ty the coefficient of y translation
-   * @related transform ( )
-   * @related rotate ( )
-   * @related scale ( )
+   * transform ( )
+   * rotate ( )
+   * scale ( )
    */
   public void translate(float tx, float ty) {
     x += tx;
@@ -153,12 +153,12 @@ public class RPoint {
   /**
    * Apply a translation to the point.
    *
-   * @eexample RPoint_translate
-   * @usage Geometry
+   RPoint_translate
+   * Geometry
    * @param t the translation vector to be applied
-   * @related transform ( )
-   * @related rotate ( )
-   * @related scale ( )
+   * transform ( )
+   * rotate ( )
+   * scale ( )
    */
   public void translate(RPoint t) {
     x += t.x;
@@ -169,14 +169,14 @@ public class RPoint {
    * Apply a rotation to the point, given the angle and optionally the
    * coordinates of the center of rotation.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param vx the x coordinate of the center of rotation
    * @param vy the y coordinate of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public void rotate(float angle, float vx, float vy) {
     float c = (float) Math.cos(angle);
@@ -210,13 +210,13 @@ public class RPoint {
    * Apply a rotation to the point, given the angle and optionally the point of
    * the center of rotation.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param v the position vector of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public void rotate(float angle, RPoint v) {
     float c = (float) Math.cos(angle);
@@ -238,13 +238,13 @@ public class RPoint {
   /**
    * Apply a scaling to the point, given the scaling factors.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param sx the scaling coefficient over the x axis
    * @param sy the scaling coefficient over the y axis
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float sx, float sy) {
     x *= sx;
@@ -254,12 +254,12 @@ public class RPoint {
   /**
    * Apply a scaling to the point, given a scaling factor.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling coefficient for a uniform scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float s) {
     x *= s;
@@ -269,12 +269,12 @@ public class RPoint {
   /**
    * Apply a scaling to the point, given a scaling vector.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling vector
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(RPoint s) {
     x *= s.x;
@@ -285,12 +285,12 @@ public class RPoint {
    * Use this to normalize the point. This means that after applying, it's norm
    * will be equal to 1.
    *
-   * @eexample RPoint_normalize
-   * @usage Geometry
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
-   * @related scale ( )
+   RPoint_normalize
+   * Geometry
+   * transform ( )
+   * translate ( )
+   * rotate ( )
+   * scale ( )
    */
   public void normalize() {
     float norma = norm();
@@ -302,12 +302,12 @@ public class RPoint {
   /**
    * Use this to subtract a vector from this point.
    *
-   * @eexample RPoint_sub
-   * @usage Geometry
+   RPoint_sub
+   * Geometry
    * @param p the vector to substract
-   * @related add ( )
-   * @related mult ( )
-   * @related cross ( )
+   * add ( )
+   * mult ( )
+   * cross ( )
    */
   public void sub(RPoint p) {
     x -= p.x;
@@ -317,12 +317,12 @@ public class RPoint {
   /**
    * Use this to add a vector to this point.
    *
-   * @eexample RPoint_add
-   * @usage Geometry
+   RPoint_add
+   * Geometry
    * @param p the vector to add
-   * @related sub ( )
-   * @related mult ( )
-   * @related cross ( )
+   * sub ( )
+   * mult ( )
+   * cross ( )
    */
   public void add(RPoint p) {
     x += p.x;
@@ -333,13 +333,13 @@ public class RPoint {
    * Use this to multiply a vector to this point. This returns a float
    * corresponding to the scalar product of both vectors.
    *
-   * @eexample RPoint_mult
-   * @usage Geometry
+   RPoint_mult
+   * Geometry
    * @param p the vector to multiply
    * @return float, the result of the scalar product
-   * @related add ( )
-   * @related sub ( )
-   * @related cross ( )
+   * add ( )
+   * sub ( )
+   * cross ( )
    */
   public float mult(RPoint p) {
     return (x * p.x + y * p.y);
@@ -349,13 +349,13 @@ public class RPoint {
    * Use this to perform a cross product of the point with another point. This
    * returns a RPoint corresponding to the cross product of both vectors.
    *
-   * @eexample RPoint_cross
-   * @usage Geometry
+   RPoint_cross
+   * Geometry
    * @param p the vector to perform the cross product with
    * @return RPoint, the resulting vector of the cross product
-   * @related add ( )
-   * @related sub ( )
-   * @related mult ( )
+   * add ( )
+   * sub ( )
+   * mult ( )
    */
   public RPoint cross(RPoint p) {
     return new RPoint(x * p.y - p.x * y, y * p.x - p.y * x);
@@ -364,10 +364,10 @@ public class RPoint {
   /**
    * Use this to obtain the norm of the point.
    *
-   * @eexample RPoint_norm
-   * @usage Geometry
+   RPoint_norm
+   * Geometry
    * @return float, the norm of the point
-   * @related angle ( )
+   * angle ( )
    */
   public float norm() {
     return (float) Math.sqrt(mult(this));
@@ -376,10 +376,10 @@ public class RPoint {
   /**
    * Use this to obtain the square norm of the point.
    *
-   * @eexample RPoint_norm
-   * @usage Geometry
+   RPoint_norm
+   * Geometry
    * @return float, the norm of the point
-   * @related angle ( )
+   * angle ( )
    */
   public float sqrnorm() {
     return (float) mult(this);
@@ -388,11 +388,11 @@ public class RPoint {
   /**
    * Use this to obtain the angle between the vector and another vector
    *
-   * @eexample RPoint_angle
-   * @usage Geometry
+   RPoint_angle
+   * Geometry
    * @param p the vector relative to which we want to evaluate the angle
    * @return float, the angle between the two vectors
-   * @related norm ( )
+   * norm ( )
    */
   public float angle(RPoint p) {
     float normp = p.norm();
@@ -403,11 +403,11 @@ public class RPoint {
   /**
    * Use this to obtain the distance between the vector and another vector
    *
-   * @eexample RPoint_dist
-   * @usage Geometry
+   RPoint_dist
+   * Geometry
    * @param p the vector relative to which we want to evaluate the distance
    * @return float, the distance between the two vectors
-   * @related norm ( )
+   * norm ( )
    */
   public float dist(RPoint p) {
     return (float) Math.hypot(p.x - this.x, p.y - this.y);

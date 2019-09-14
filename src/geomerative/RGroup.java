@@ -24,13 +24,13 @@ import processing.core.*;
  * RGroup is a holder for a group of geometric elements that can be drawn and
  * transformed, such as shapes, polygons or meshes.
  *
- * @usage geometry
- * @extended
+ * geometry
+
  */
 public class RGroup extends RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.GROUP;
 
@@ -42,20 +42,20 @@ public class RGroup extends RGeomElem {
    * target class it will throw a RuntimeException, to ignore these, use
    * try-catch syntax.
    *
-   * @eexample RGroup_elements
-   * @related RShape
-   * @related RPolygon
-   * @related RMesh
-   * @related countElements ( )
-   * @related addElement ( )
-   * @related removeElement ( )
+   RGroup_elements
+   * RShape
+   * RPolygon
+   * RMesh
+   * countElements ( )
+   * addElement ( )
+   * removeElement ( )
    */
   public RGeomElem[] elements;
 
   /**
    * Use this method to create a new empty group.
    *
-   * @eexample RGroup
+   RGroup
    */
   public RGroup() {
     elements = null;
@@ -65,7 +65,7 @@ public class RGroup extends RGeomElem {
    * Use this method to create a copy of a group.
    *
    * @param grp
-   * @eexample RGroup
+   RGroup
    */
   public RGroup(RGroup grp) {
     for (int i = 0; i < grp.countElements(); i++) {
@@ -96,10 +96,10 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to get the centroid of the element.
    *
-   * @eexample RGroup_getCentroid
+   RGroup_getCentroid
    * @return RPoint, the centroid point of the element
-   * @related getBounds ( )
-   * @related getCenter ( )
+   * getBounds ( )
+   * getCenter ( )
    */
   @Override
   public RPoint getCentroid() {
@@ -121,10 +121,10 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to count the number of elements in the group.
    *
-   * @eexample RGroup_countElements
+   RGroup_countElements
    * @return int, the number elements in the group.
-   * @related addElement ( )
-   * @related removeElement ( )
+   * addElement ( )
+   * removeElement ( )
    */
   public int countElements() {
     if (elements == null) {
@@ -149,7 +149,7 @@ public class RGroup extends RGeomElem {
    * between having a shape with multiple paths and having a group with multiple
    * shapes.
    *
-   * @eexample RGroup_draw
+   RGroup_draw
    * @param g PGraphics, the graphics object on which to draw the group
    */
   @Override
@@ -187,10 +187,10 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to add a new element.
    *
-   * @eexample RGroup_addElement
+   RGroup_addElement
    * @param elem RGeomElem, any kind of RGeomElem to add. It accepts the classes
    * RShape, RPolygon and RMesh.
-   * @related removeElement ( )
+   * removeElement ( )
    */
   public final void addElement(RGeomElem elem) {
     this.append(elem);
@@ -199,9 +199,9 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to add a new element.
    *
-   * @eexample RGroup_addGroup
+   RGroup_addGroup
    * @param grupo RGroup, A group of elements to add to this group.
-   * @related removeElement ( )
+   * removeElement ( )
    */
   public void addGroup(RGroup grupo) {
     for (int i = 0; i < grupo.countElements(); i++) {
@@ -212,9 +212,9 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to remove an element.
    *
-   * @eexample RGroup_removeElement
+   RGroup_removeElement
    * @param i int, the index of the element to remove from the group.
-   * @related addElement ( )
+   * addElement ( )
    */
   public void removeElement(int i) throws RuntimeException {
     this.extract(i);
@@ -225,10 +225,10 @@ public class RGroup extends RGeomElem {
    * meshes of the elements in the current group. This can be used for
    * increasing performance in exchange of losing abstraction.
    *
-   * @eexample RGroup_toMeshGroup
+   RGroup_toMeshGroup
    * @return RGroup, the new group made of RMeshes
-   * @related toPolygonGroup ( )
-   * @related toShapeGroup ( )
+   * toPolygonGroup ( )
+   * toShapeGroup ( )
    */
   public RGroup toMeshGroup() throws RuntimeException {
     RGroup result = new RGroup();
@@ -244,10 +244,10 @@ public class RGroup extends RGeomElem {
    * implementation for transforming a mesh to a polygon so applying this method
    * to groups holding mesh elements will generate an exception.
    *
-   * @eexample RGroup_toPolygonGroup
+   RGroup_toPolygonGroup
    * @return RGroup, the new group made of RPolygons
-   * @related toMeshGroup ( )
-   * @related toShapeGroup ( )
+   * toMeshGroup ( )
+   * toShapeGroup ( )
    */
   public RGroup toPolygonGroup() throws RuntimeException {
     RGroup result = new RGroup();
@@ -271,10 +271,10 @@ public class RGroup extends RGeomElem {
    * this method to groups holding mesh or polygon elements will generate an
    * exception.
    *
-   * @eexample RGroup_toShapeGroup
+   RGroup_toShapeGroup
    * @return RGroup, the new group made of RShapes
-   * @related toMeshGroup ( )
-   * @related toPolygonGroup ( )
+   * toMeshGroup ( )
+   * toPolygonGroup ( )
    */
   public RGroup toShapeGroup() throws RuntimeException {
     RGroup result = new RGroup();
@@ -292,7 +292,7 @@ public class RGroup extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RMesh toMesh() throws RuntimeException {
@@ -310,7 +310,7 @@ public class RGroup extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RPolygon toPolygon() throws RuntimeException {
@@ -328,7 +328,7 @@ public class RGroup extends RGeomElem {
   }
 
   /**
-   * @return @invisible
+   * @return
    */
   @Override
   public RShape toShape() throws RuntimeException {
@@ -348,7 +348,7 @@ public class RGroup extends RGeomElem {
    * Use this to return the points of the group. It returns the points as an
    * array of RPoint.
    *
-   * @eexample RGroup_getHandles
+   RGroup_getHandles
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -396,7 +396,7 @@ public class RGroup extends RGeomElem {
    * Use this to return the points of the group. It returns the points as an
    * array of RPoint.
    *
-   * @eexample RGroup_getPoints
+   RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -441,7 +441,7 @@ public class RGroup extends RGeomElem {
    * Use this to return the points of the group. It returns the points as an
    * array of RPoint.
    *
-   * @eexample RGroup_getPoints
+   RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -475,7 +475,7 @@ public class RGroup extends RGeomElem {
    * Use this to return the points of each path of the group. It returns the
    * points as an array of arrays of RPoint.
    *
-   * @eexample RGroup_getPoints
+   RGroup_getPoints
    * @return RPoint[], the points returned in an array.
    *
    */
@@ -591,7 +591,7 @@ public class RGroup extends RGeomElem {
   /**
    * Use this method to get the type of element this is.
    *
-   * @eexample RPolygon_getType
+   RPolygon_getType
    * @return int, will allways return RGeomElem.POLYGON
    */
   @Override
@@ -757,7 +757,7 @@ public class RGroup extends RGeomElem {
   /**
    * Use this to insert a split point into each command of the group.
    *
-   * @eexample insertHandleInPaths
+   insertHandleInPaths
    * @param t float, the parameter of advancement on the curve. t must have
    * values between 0 and 1.
    *
@@ -797,7 +797,7 @@ public class RGroup extends RGeomElem {
    *
    * @param wght
    * @param lngthOffset
-   * @eexample RGroup_adapt
+   RGroup_adapt
    * @param grp the path to which to adapt
    */
   public void adapt(RGroup grp, float wght, float lngthOffset) throws RuntimeException {

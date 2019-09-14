@@ -18,8 +18,6 @@
  */
 package geomerative;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -27,48 +25,48 @@ import processing.core.PGraphics;
  * RGeomElem is an interface to any geometric element that can be drawn and
  * transformed, such as shapes, polygons or meshes.
  *
- * @extended
+
  */
 public abstract class RGeomElem {
 
   /**
-   * @invisible
+   *
    */
   public static final int SHAPE = 0;
   /**
-   * @invisible
+   *
    */
   public static final int SUBSHAPE = 1;
   /**
-   * @invisible
+   *
    */
   public static final int COMMAND = 2;
 
   /**
-   * @invisible
+   *
    */
   public static final int POLYGON = 3;
   /**
-   * @invisible
+   *
    */
   public static final int CONTOUR = 4;
 
   /**
-   * @invisible
+   *
    */
   public static final int MESH = 5;
   /**
-   * @invisible
+   *
    */
   public static final int TRISTRIP = 6;
 
   /**
-   * @invisible
+   *
    */
   public static final int GROUP = 7;
 
   /**
-   * @invisible
+   *
    */
   public static final int UNKNOWN = 8;
 
@@ -122,11 +120,11 @@ public abstract class RGeomElem {
    * shape.
    *
    * @param shp
-   * @eexample contains
+   contains
    * @return boolean, true if the shape contains all the points of the other
    * shape
-   * @related containsBounds ( )
-   * @related containsHandles ( )
+   * containsBounds ( )
+   * containsHandles ( )
    */
   public boolean containsShape(RShape shp) {
     return containsPoints(shp.getPoints());
@@ -137,11 +135,11 @@ public abstract class RGeomElem {
    * shape.
    *
    * @param shp
-   * @eexample contains
+   contains
    * @return boolean, true if the shape contains the bounding box of the other
    * shape
-   * @related contains ( )
-   * @related containsHandles ( )
+   * contains ( )
+   * containsHandles ( )
    */
   public boolean containsBounds(RGeomElem shp) {
     RPoint tl = shp.getTopLeft();
@@ -161,11 +159,11 @@ public abstract class RGeomElem {
    * perfect.
    *
    * @param shp
-   * @eexample contains
+   contains
    * @return boolean, true if the shape contains all the handles of the other
    * shape
-   * @related containsBounds ( )
-   * @related contains ( )
+   * containsBounds ( )
+   * contains ( )
    */
   public boolean containsHandles(RGeomElem shp) {
     return containsPoints(shp.getHandles());
@@ -175,11 +173,11 @@ public abstract class RGeomElem {
    * Use this method to test if the shape contains an array of points.
    *
    * @param pts
-   * @eexample contains
+   contains
    * @return boolean, true if the shape contains all the points
-   * @related containsShape ( )
-   * @related containsBounds ( )
-   * @related containsHandles ( )
+   * containsShape ( )
+   * containsBounds ( )
+   * containsHandles ( )
    */
   public boolean containsPoints(RPoint[] pts) {
     if (pts.length == 0) {
@@ -199,11 +197,11 @@ public abstract class RGeomElem {
    * Use this method to test if the shape intersects another shape.
    *
    * @param shp
-   * @eexample intersects
+   intersects
    * @return boolean, true if the shape intersects all the points of the other
    * shape
-   * @related intersectsBounds ( )
-   * @related intersectsHandles ( )
+   * intersectsBounds ( )
+   * intersectsHandles ( )
    */
   public boolean intersects(RGeomElem shp) {
     return intersects(shp.getPoints());
@@ -214,11 +212,11 @@ public abstract class RGeomElem {
    * shape.
    *
    * @param shp
-   * @eexample intersects
+   intersects
    * @return boolean, true if the shape intersects the bounding box of the other
    * shape
-   * @related intersects ( )
-   * @related intersectsHandles ( )
+   * intersects ( )
+   * intersectsHandles ( )
    */
   public boolean intersectsBounds(RGeomElem shp) {
     RPoint tl = shp.getTopLeft();
@@ -237,11 +235,11 @@ public abstract class RGeomElem {
    * be perfect.
    *
    * @param shp
-   * @eexample intersects
+   intersects
    * @return boolean, true if the shape intersects all the handles of the other
    * shape
-   * @related intersectsBounds ( )
-   * @related intersects ( )
+   * intersectsBounds ( )
+   * intersects ( )
    */
   public boolean intersectsHandles(RGeomElem shp) {
     return intersects(shp.getHandles());
@@ -251,11 +249,11 @@ public abstract class RGeomElem {
    * Use this method to test if the shape intersects an array of points.
    *
    * @param ps
-   * @eexample intersects
+   intersects
    * @return boolean, true if the shape intersects all the points
-   * @related intersects ( )
-   * @related intersectsBounds ( )
-   * @related intersectsHandles ( )
+   * intersects ( )
+   * intersectsBounds ( )
+   * intersectsHandles ( )
    */
   public boolean intersects(RPoint[] ps) {
     boolean intersects = false;
@@ -421,7 +419,7 @@ public abstract class RGeomElem {
   /**
    * Use this to return arclengths of each command on the curve.
    *
-   * @eexample getCurveLength
+   getCurveLength
    * @return float[], the arclengths of each command on the curve.
    *
    */
@@ -437,7 +435,7 @@ public abstract class RGeomElem {
   /**
    * Use this to return the length of the curve.
    *
-   * @eexample getCurveLength
+   getCurveLength
    * @return float, the arclength of the path.
    *
    */
@@ -481,8 +479,8 @@ public abstract class RGeomElem {
    * @param w
    * @param h
    * @param keepAspectRatio
-   * @eexample getBounds
-   * @related getCenter ( )
+   getBounds
+   * getCenter ( )
    */
   public void transform(float x, float y, float w, float h, boolean keepAspectRatio) {
     RMatrix mtx = new RMatrix();
@@ -508,10 +506,10 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the bounding box of the element.
    *
-   * @eexample getBounds
+   getBounds
    * @return RRectangle, the bounding box of the element in the form of a
    * four-point contour
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public RRectangle getBounds() {
     float xmax = Float.NEGATIVE_INFINITY;
@@ -547,10 +545,10 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the points of the bounding box of the element.
    *
-   * @eexample getBounds
+   getBounds
    * @return RRectangle, the bounding box of the element in the form of a
    * four-point contour
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public RPoint[] getBoundsPoints() {
     return getBounds().getPoints();
@@ -561,12 +559,12 @@ public abstract class RGeomElem {
    *
    * @e
    * @return example getX
-   * @related getTopRight ( )
-   * @related getBottomLeft ( )
-   * @related getBottomRight ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   * getTopRight ( )
+   * getBottomLeft ( )
+   * getBottomRight ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public RPoint getTopLeft() {
     RRectangle orig = this.getBounds();
@@ -577,13 +575,13 @@ public abstract class RGeomElem {
    * Use this method to get the top right position of the element.
    *
    * @return
-   * @eexample getX
-   * @related getTopRight ( )
-   * @related getBottomLeft ( )
-   * @related getBottomRight ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   getX
+   * getTopRight ( )
+   * getBottomLeft ( )
+   * getBottomRight ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public RPoint getTopRight() {
     RRectangle orig = this.getBounds();
@@ -594,13 +592,13 @@ public abstract class RGeomElem {
    * Use this method to get the bottom left position of the element.
    *
    * @return
-   * @eexample getX
-   * @related getTopRight ( )
-   * @related getBottomLeft ( )
-   * @related getBottomRight ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   getX
+   * getTopRight ( )
+   * getBottomLeft ( )
+   * getBottomRight ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public RPoint getBottomLeft() {
     RRectangle orig = this.getBounds();
@@ -611,13 +609,13 @@ public abstract class RGeomElem {
    * Use this method to get the bottom right position of the element.
    *
    * @return
-   * @eexample getX
-   * @related getTopRight ( )
-   * @related getBottomLeft ( )
-   * @related getBottomRight ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   getX
+   * getTopRight ( )
+   * getBottomLeft ( )
+   * getBottomRight ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public RPoint getBottomRight() {
     RRectangle orig = this.getBounds();
@@ -627,12 +625,12 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the x (left side) position of the element.
    *
-   * @eexample getX
+   getX
    * @return float, the x coordinate of the element
-   * @related getY ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   * getY ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public float getX() {
     RRectangle orig = this.getBounds();
@@ -642,12 +640,12 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the y position of the element.
    *
-   * @eexample getY
+   getY
    * @return float, the y coordinate of the element
-   * @related getY ( )
-   * @related getWidth ( )
-   * @related getHeight ( )
-   * @related getCenter ( )
+   * getY ( )
+   * getWidth ( )
+   * getHeight ( )
+   * getCenter ( )
    */
   public float getY() {
     RRectangle orig = this.getBounds();
@@ -657,10 +655,10 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the original height of the element.
    *
-   * @eexample getOrigHeight
+   getOrigHeight
    * @return float, the original height of the element before applying any
    * transformations
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public float getOrigHeight() {
     return origHeight != 0.0 ? origHeight : getHeight();
@@ -669,10 +667,10 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the original width of the element.
    *
-   * @eexample getOrigWidth
+   getOrigWidth
    * @return float, the original width of the element before applying any
    * transformations
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public float getOrigWidth() {
     return origWidth != 0.0 ? origWidth : getWidth();
@@ -686,9 +684,9 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the width of the element.
    *
-   * @eexample getWidth
+   getWidth
    * @return float, the width of the element
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public float getWidth() {
     RRectangle orig = this.getBounds();
@@ -698,9 +696,9 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the height of the element.
    *
-   * @eexample getHeight
+   getHeight
    * @return float, the height of the element
-   * @related getCenter ( )
+   * getCenter ( )
    */
   public float getHeight() {
     RRectangle orig = this.getBounds();
@@ -710,9 +708,9 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the center point of the element.
    *
-   * @eexample RGroup_getCenter
+   RGroup_getCenter
    * @return RPoint, the center point of the element
-   * @related getBounds ( )
+   * getBounds ( )
    */
   public RPoint getCenter() {
     RRectangle c = getBounds();
@@ -722,10 +720,10 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the centroid of the element.
    *
-   * @eexample RGroup_getCentroid
+   RGroup_getCentroid
    * @return RPoint, the centroid point of the element
-   * @related getBounds ( )
-   * @related getCenter ( )
+   * getBounds ( )
+   * getCenter ( )
    */
   public RPoint getCentroid() {
     RPoint[] ps = getPoints();
@@ -747,11 +745,11 @@ public abstract class RGeomElem {
   /**
    * Use this method to get the area of an element.
    *
-   * @eexample RGroup_getArea
+   RGroup_getArea
    * @return float, the area point of the element
-   * @related getBounds ( )
-   * @related getCenter ( )
-   * @related getCentroid ( )
+   * getBounds ( )
+   * getCenter ( )
+   * getCentroid ( )
    */
   public float getArea() {
     RPoint[] ps = getPoints();
@@ -768,8 +766,8 @@ public abstract class RGeomElem {
    * Use this method to know if the shape is inside a graphics object. This
    * might be useful if we want to delete objects that go offscreen.
    *
-   * @eexample RShape_isIn
-   * @usage Geometry
+   RShape_isIn
+   * Geometry
    * @param g the graphics object
    * @return boolean, whether the shape is in or not the graphics object
    */
@@ -816,7 +814,7 @@ public abstract class RGeomElem {
    * the element on the canvas. Scaling and translation damping parameters are
    * available, in order to create animations.
    *
-   * @eexample RGeomElem_getCenteringTransf
+   RGeomElem_getCenteringTransf
    * @return RMatrix, the transformation matrix
    * @param g the canvas to which to fit and center the path
    * @param margin the margin to take into account when fitting
@@ -824,7 +822,7 @@ public abstract class RGeomElem {
    * scale, if the value is 0, then no scaling is applied.
    * @param trnsDamping a value from 0 to 1. The damping coefficient for the
    * translation, if the value is 0, then no translation is applied.
-   * @related getBounds ( )
+   * getBounds ( )
    */
   public RMatrix getCenteringTransf(PGraphics g, float margin, float sclDamping, float trnsDamping) throws RuntimeException {
     RMatrix transf;
@@ -869,13 +867,13 @@ public abstract class RGeomElem {
   /**
    * Apply a translation to the element, given translation coordinates.
    *
-   * @eexample RGeomElem_translate
-   * @usage Geometry
+   RGeomElem_translate
+   * Geometry
    * @param tx the coefficient of x translation
    * @param ty the coefficient of y translation
-   * @related transform ( )
-   * @related rotate ( )
-   * @related scale ( )
+   * transform ( )
+   * rotate ( )
+   * scale ( )
    */
   public void translate(float tx, float ty) {
     RMatrix transf = new RMatrix();
@@ -886,12 +884,12 @@ public abstract class RGeomElem {
   /**
    * Apply a translation to the element, given a point.
    *
-   * @eexample RGeomElem_translate
-   * @usage Geometry
+   RGeomElem_translate
+   * Geometry
    * @param t the translation vector to be applied
-   * @related transform ( )
-   * @related rotate ( )
-   * @related scale ( )
+   * transform ( )
+   * rotate ( )
+   * scale ( )
    */
   public void translate(RPoint t) {
     RMatrix transf = new RMatrix();
@@ -903,14 +901,14 @@ public abstract class RGeomElem {
    * Apply a rotation to the element, given an angle and optionally a rotation
    * center.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param vx the x coordinate of the center of rotation
    * @param vy the y coordinate of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public void rotate(float angle, float vx, float vy) {
     RMatrix transf = new RMatrix();
@@ -928,13 +926,13 @@ public abstract class RGeomElem {
    * Apply a rotation to the element, given an angle and optionally a rotation
    * center.
    *
-   * @eexample RPoint_rotate
-   * @usage Geometry
+   RPoint_rotate
+   * Geometry
    * @param angle the angle of rotation to be applied
    * @param v the position vector of the center of rotation
-   * @related transform ( )
-   * @related translate ( )
-   * @related scale ( )
+   * transform ( )
+   * translate ( )
+   * scale ( )
    */
   public void rotate(float angle, RPoint v) {
     RMatrix transf = new RMatrix();
@@ -946,14 +944,14 @@ public abstract class RGeomElem {
    * Apply a scale to the element, given scaling factors and optionally a
    * scaling center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param sx the scaling coefficient over the x axis
    * @param sy the scaling coefficient over the y axis
    * @param p the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float sx, float sy, RPoint p) {
     RMatrix transf = new RMatrix();
@@ -971,15 +969,15 @@ public abstract class RGeomElem {
    * Apply a scale to the element, given scaling factors and optionally a
    * scaling center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param sx the scaling coefficient over the x axis
    * @param sy the scaling coefficient over the y axis
    * @param x x coordinate of the position vector of the center of the scaling
    * @param y y coordinate of the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float sx, float sy, float x, float y) {
     RMatrix transf = new RMatrix();
@@ -991,13 +989,13 @@ public abstract class RGeomElem {
    * Apply a scale to the element, given scaling factors and optionally a
    * scaling center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling coefficient for a uniform scaling
    * @param p the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float s, RPoint p) {
     RMatrix transf = new RMatrix();
@@ -1015,14 +1013,14 @@ public abstract class RGeomElem {
    * Apply a scale to the element, given scaling factors and optionally a
    * scaling center.
    *
-   * @eexample RPoint_scale
-   * @usage Geometry
+   RPoint_scale
+   * Geometry
    * @param s the scaling coefficient for a uniform scaling
    * @param x x coordinate of the position vector of the center of the scaling
    * @param y y coordinate of the position vector of the center of the scaling
-   * @related transform ( )
-   * @related translate ( )
-   * @related rotate ( )
+   * transform ( )
+   * translate ( )
+   * rotate ( )
    */
   public void scale(float s, float x, float y) {
     RMatrix transf = new RMatrix();
@@ -1033,12 +1031,12 @@ public abstract class RGeomElem {
   /**
    * Apply a horizontal skew to the element, given skewing angle
    *
-   * @eexample RMatrix_skewing
+   RMatrix_skewing
    * @param angle skewing angle
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related translate ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * translate ( )
    */
   public void skewX(float angle) {
     RMatrix transf = new RMatrix();
@@ -1049,12 +1047,12 @@ public abstract class RGeomElem {
   /**
    * Apply a vertical skew to the element, given skewing angle
    *
-   * @eexample RMatrix_skewing
+   RMatrix_skewing
    * @param angle skewing angle
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related translate ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * translate ( )
    */
   public void skewY(float angle) {
     RMatrix transf = new RMatrix();
@@ -1065,13 +1063,13 @@ public abstract class RGeomElem {
   /**
    * Apply a shear to the element, given shearing factors
    *
-   * @eexample RMatrix_translate
+   RMatrix_translate
    * @param shx x coordinate shearing
    * @param shy y coordinate shearing
-   * @usage Geometry
-   * @related rotate ( )
-   * @related scale ( )
-   * @related translate ( )
+   * Geometry
+   * rotate ( )
+   * scale ( )
+   * translate ( )
    */
   public void shear(float shx, float shy) {
     RMatrix transf = new RMatrix();

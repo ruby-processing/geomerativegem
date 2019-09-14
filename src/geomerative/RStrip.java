@@ -26,26 +26,26 @@ import processing.core.PGraphics;
  * strips. Triangle strips are ordered lists of points (RPoint) which define the
  * vertices of a mesh.
  *
- * @eexample RStrip
- * @usage Geometry
- * @related RPoint
- * @related RMesh
- * @extended
+ RStrip
+ * Geometry
+ * RPoint
+ * RMesh
+
  */
 public class RStrip {
 
   /**
-   * @invisible
+   *
    */
   public int type = RGeomElem.TRISTRIP;
 
   /**
    * Array of RPoint objects holding the vertices of the strip.
    *
-   * @eexample vertices
-   * @related RPoint
-   * @related countVertices ( )
-   * @related addVertex ( )
+   vertices
+   * RPoint
+   * countVertices ( )
+   * addVertex ( )
    */
   public RPoint vertices[];
 
@@ -55,8 +55,8 @@ public class RStrip {
   /**
    * Use this method to create a new strip.
    *
-   * @eexample RStrip ( )
-   * @related addVertex ( )
+   RStrip ( )
+   * addVertex ( )
    * @param s the object of which to make a copy
    */
   public RStrip(RStrip s) {
@@ -72,7 +72,7 @@ public class RStrip {
   /**
    * Use this method to count the number of vertices in the strip.
    *
-   * @eexample countVertices
+   countVertices
    * @return int, the number vertices in the strip
    */
   public int countVertices() {
@@ -86,7 +86,7 @@ public class RStrip {
   /**
    * Use this method to draw the strip.
    *
-   * @eexample drawStrip
+   drawStrip
    * @param g PGraphics, the graphics object on which to draw the strip
    */
   public void draw(PGraphics g) {
@@ -102,7 +102,7 @@ public class RStrip {
    * Use this method to add new vertices to the strip.
    *
    * @param p
-   * @eexample addVertex ( )
+   addVertex ( )
    */
   public void addVertex(RPoint p) {
     this.append(p);
@@ -115,10 +115,10 @@ public class RStrip {
   /**
    * Use this method to get the bounding box of the strip.
    *
-   * @eexample getBounds
+   getBounds
    * @return RContour, the bounding box of the strip in the form of a four-point
    * contour
-   * @related draw ( )
+   * draw ( )
    */
   public RContour getBounds() {
     float xmin = Float.MAX_VALUE;
@@ -155,7 +155,7 @@ public class RStrip {
    * Use this to get the vertices of the strip. It returns the points as an
    * array of RPoint.
    *
-   * @eexample RStrip_getHandles
+   RStrip_getHandles
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -167,7 +167,7 @@ public class RStrip {
    * Use this to get the vertices of the strip. It returns the points as an
    * array of RPoint.
    *
-   * @eexample RStrip_getPoints
+   RStrip_getPoints
    * @return RPoint[], the vertices returned in an array.
    *
    */
@@ -178,7 +178,7 @@ public class RStrip {
   /**
    * Use this method to transform the strip.
    *
-   * @eexample transformStrip
+   transformStrip
    * @param m RMatrix, the matrix of the affine transformation to apply to the
    * strip
    */

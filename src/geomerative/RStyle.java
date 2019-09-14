@@ -24,7 +24,7 @@ import processing.core.PGraphics;
 import processing.core.PImage;
 
 /**
- * @extended
+
  */
 public class RStyle {
 
