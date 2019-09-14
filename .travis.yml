@@ -2,8 +2,8 @@ language: ruby
 sudo: false
 
 rvm:
-  - jruby-9.1.12.0
+  - jruby-9.2.8.0
 jdk:
-  - oraclejdk8
+  - openjdk11
 os:
   - linux
