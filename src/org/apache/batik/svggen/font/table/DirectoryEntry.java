@@ -26,48 +26,48 @@ import org.apache.batik.svggen.font.*;
  */
 public class DirectoryEntry {
 
-    private final int tag;
-    private final int checksum;
-    private final int offset;
-    private final int length;
-    private final Table table = null;
+  private final int tag;
+  private final int checksum;
+  private final int offset;
+  private final int length;
+  private final Table table = null;
 
-    protected DirectoryEntry(RandomAccessFileEmulator raf) throws IOException {
-        tag = raf.readInt();
-        checksum = raf.readInt();
-        offset = raf.readInt();
-        length = raf.readInt();
-    }
+  protected DirectoryEntry(RandomAccessFileEmulator raf) throws IOException {
+    tag = raf.readInt();
+    checksum = raf.readInt();
+    offset = raf.readInt();
+    length = raf.readInt();
+  }
 
-    public int getChecksum() {
-        return checksum;
-    }
+  public int getChecksum() {
+    return checksum;
+  }
 
-    public int getLength() {
-        return length;
-    }
+  public int getLength() {
+    return length;
+  }
 
-    public int getOffset() {
-        return offset;
-    }
+  public int getOffset() {
+    return offset;
+  }
 
-    public int getTag() {
-        return tag;
-    }
+  public int getTag() {
+    return tag;
+  }
 
-    @Override
-    public String toString() {
-        return new StringBuilder()
-            .append((char)((tag>>24)&0xff))
-            .append((char)((tag>>16)&0xff))
-            .append((char)((tag>>8)&0xff))
-            .append((char)((tag)&0xff))
-            .append(", offset: ")
-            .append(offset)
-            .append(", length: ")
-            .append(length)
-            .append(", checksum: 0x")
-            .append(Integer.toHexString(checksum))
-            .toString();
-    }
+  @Override
+  public String toString() {
+    return new StringBuilder()
+      .append((char) ((tag >> 24) & 0xff))
+      .append((char) ((tag >> 16) & 0xff))
+      .append((char) ((tag >> 8) & 0xff))
+      .append((char) ((tag) & 0xff))
+      .append(", offset: ")
+      .append(offset)
+      .append(", length: ")
+      .append(length)
+      .append(", checksum: 0x")
+      .append(Integer.toHexString(checksum))
+      .toString();
+  }
 }

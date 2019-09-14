@@ -27,30 +27,33 @@ import org.apache.batik.svggen.font.*;
  */
 public class Feature {
 
-    private final int featureParams;
-    private final int lookupCount;
-    private final int[] lookupListIndex;
+  private final int featureParams;
+  private final int lookupCount;
+  private final int[] lookupListIndex;
 
-    /** Creates new Feature
-     * @param raf
-     * @param offset
-     * @throws java.io.IOException */
-    protected Feature(RandomAccessFileEmulator raf, int offset) throws IOException {
-        raf.seek(offset);
-        featureParams = raf.readUnsignedShort();
-        lookupCount = raf.readUnsignedShort();
-        lookupListIndex = new int[lookupCount];
-        for (int i = 0; i < lookupCount; i++) {
-            lookupListIndex[i] = raf.readUnsignedShort();
-        }
+  /**
+   * Creates new Feature
+   *
+   * @param raf
+   * @param offset
+   * @throws java.io.IOException
+   */
+  protected Feature(RandomAccessFileEmulator raf, int offset) throws IOException {
+    raf.seek(offset);
+    featureParams = raf.readUnsignedShort();
+    lookupCount = raf.readUnsignedShort();
+    lookupListIndex = new int[lookupCount];
+    for (int i = 0; i < lookupCount; i++) {
+      lookupListIndex[i] = raf.readUnsignedShort();
     }
+  }
 
-    public int getLookupCount() {
-        return lookupCount;
-    }
+  public int getLookupCount() {
+    return lookupCount;
+  }
 
-    public int getLookupListIndex(int i) {
-        return lookupListIndex[i];
-    }
+  public int getLookupListIndex(int i) {
+    return lookupListIndex[i];
+  }
 
 }

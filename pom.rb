@@ -1,7 +1,7 @@
 project 'geomerative' do
 
   model_version '4.0.0'
-  id 'ruby-processing:geomerative:1.1.0'
+  id 'ruby-processing:geomerative:2.0.0'
   packaging 'jar'
 
   description 'geomerative-library for JRubyArt'
@@ -24,20 +24,19 @@ project 'geomerative' do
 
   properties( 'maven.compiler.source' => '1.8',
               'project.build.sourceEncoding' => 'UTF-8',
-              'maven.compiler.target' => '1.8',
+              'maven.compiler.target' => '12',
               'polyglot.dump.pom' => 'pom.xml'
             )
 
   jar 'org.processing:core:3.3.6'
 
-  plugin( :compiler, '3.8.0',
-          'source' =>  '${maven.compiler.source}',
-          'target' =>  '${maven.compiler.target}' )
-  plugin( :jar, '3.0.2',
+  plugin( :compiler, '3.8.1',
+          'release' =>  '11' )
+  plugin( :jar, '3.1.1',
           'archive' => {
             'manifestFile' =>  'MANIFEST.MF'
           } )
-  plugin :resources, '2.6'
+  plugin :resources, '2.7'
 
   build do
     default_goal 'package'
@@ -46,12 +45,12 @@ project 'geomerative' do
   end
 
   reporting do
-    plugin( :pmd, '3.6',
+    plugin( :pmd, '3.12',
       'linkXRef' =>  'true',
       'sourceEncoding' =>  'utf-8',
       'minimumTokens' =>  '100',
       'targetJdk' => '${maven.compiler.target}' )
-    plugin( :checkstyle, '2.17',
+    plugin( :checkstyle, '3.1.0',
       'configLocation' =>  'config/sun_checks.xml' )
   end
 end

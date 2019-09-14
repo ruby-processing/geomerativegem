@@ -26,42 +26,42 @@ import org.apache.batik.svggen.font.*;
  */
 public class NameTable implements Table {
 
-    private final short formatSelector;
-    private final short numberOfNameRecords;
-    private final short stringStorageOffset;
-    private final NameRecord[] records;
+  private final short formatSelector;
+  private final short numberOfNameRecords;
+  private final short stringStorageOffset;
+  private final NameRecord[] records;
 
-    protected NameTable(DirectoryEntry de,RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        formatSelector = raf.readShort();
-        numberOfNameRecords = raf.readShort();
-        stringStorageOffset = raf.readShort();
-        records = new NameRecord[numberOfNameRecords];
-        
-        // Load the records, which contain the encoding information and string offsets
-        for (int i = 0; i < numberOfNameRecords; i++) {
-            records[i] = new NameRecord(raf);
-        }
-        
-        // Now load the strings
-        for (int i = 0; i < numberOfNameRecords; i++) {
-            records[i].loadString(raf, de.getOffset() + stringStorageOffset);
-        }
+  protected NameTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    formatSelector = raf.readShort();
+    numberOfNameRecords = raf.readShort();
+    stringStorageOffset = raf.readShort();
+    records = new NameRecord[numberOfNameRecords];
+
+    // Load the records, which contain the encoding information and string offsets
+    for (int i = 0; i < numberOfNameRecords; i++) {
+      records[i] = new NameRecord(raf);
     }
 
-    public String getRecord(short nameId) {
-
-        // Search for the first instance of this name ID
-        for (int i = 0; i < numberOfNameRecords; i++) {
-            if (records[i].getNameId() == nameId) {
-                return records[i].getRecordString();
-            }
-        }
-        return "";
+    // Now load the strings
+    for (int i = 0; i < numberOfNameRecords; i++) {
+      records[i].loadString(raf, de.getOffset() + stringStorageOffset);
     }
+  }
 
-    @Override
-    public int getType() {
-        return name;
+  public String getRecord(short nameId) {
+
+    // Search for the first instance of this name ID
+    for (int i = 0; i < numberOfNameRecords; i++) {
+      if (records[i].getNameId() == nameId) {
+        return records[i].getRecordString();
+      }
     }
+    return "";
+  }
+
+  @Override
+  public int getType() {
+    return NAME;
+  }
 }

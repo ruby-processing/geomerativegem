@@ -28,36 +28,36 @@ import org.apache.batik.svggen.font.*;
  */
 public class LigatureSubstFormat1 extends LigatureSubst {
 
-    private final int coverageOffset;
-    private final int ligSetCount;
-    private final int[] ligatureSetOffsets;
-    private final Coverage coverage;
-    private final LigatureSet[] ligatureSets;
+  private final int coverageOffset;
+  private final int ligSetCount;
+  private final int[] ligatureSetOffsets;
+  private final Coverage coverage;
+  private final LigatureSet[] ligatureSets;
 
-    /**
-     * Creates new LigatureSubstFormat1
-     *
-     * @param raf
-     * @param offset
-     * @throws java.io.IOException
-     */
-    protected LigatureSubstFormat1(RandomAccessFileEmulator raf, int offset) throws IOException {
-        coverageOffset = raf.readUnsignedShort();
-        ligSetCount = raf.readUnsignedShort();
-        ligatureSetOffsets = new int[ligSetCount];
-        ligatureSets = new LigatureSet[ligSetCount];
-        for (int i = 0; i < ligSetCount; i++) {
-            ligatureSetOffsets[i] = raf.readUnsignedShort();
-        }
-        raf.seek(offset + coverageOffset);
-        coverage = Coverage.read(raf);
-        for (int i = 0; i < ligSetCount; i++) {
-            ligatureSets[i] = new LigatureSet(raf, offset + ligatureSetOffsets[i]);
-        }
+  /**
+   * Creates new LigatureSubstFormat1
+   *
+   * @param raf
+   * @param offset
+   * @throws java.io.IOException
+   */
+  protected LigatureSubstFormat1(RandomAccessFileEmulator raf, int offset) throws IOException {
+    coverageOffset = raf.readUnsignedShort();
+    ligSetCount = raf.readUnsignedShort();
+    ligatureSetOffsets = new int[ligSetCount];
+    ligatureSets = new LigatureSet[ligSetCount];
+    for (int i = 0; i < ligSetCount; i++) {
+      ligatureSetOffsets[i] = raf.readUnsignedShort();
     }
+    raf.seek(offset + coverageOffset);
+    coverage = Coverage.read(raf);
+    for (int i = 0; i < ligSetCount; i++) {
+      ligatureSets[i] = new LigatureSet(raf, offset + ligatureSetOffsets[i]);
+    }
+  }
 
-    public int getFormat() {
-        return 1;
-    }
+  public int getFormat() {
+    return 1;
+  }
 
 }

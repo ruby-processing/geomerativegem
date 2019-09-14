@@ -27,32 +27,34 @@ import org.apache.batik.svggen.font.*;
  */
 public class LangSys {
 
-    private final int lookupOrder;
-    private final int reqFeatureIndex;
-    private final int featureCount;
-    private final int[] featureIndex;
-    
-    /** Creates new LangSys
-     * @param raf
-     * @throws java.io.IOException */
-    protected LangSys(RandomAccessFileEmulator raf) throws IOException {
-        lookupOrder = raf.readUnsignedShort();
-        reqFeatureIndex = raf.readUnsignedShort();
-        featureCount = raf.readUnsignedShort();
-        featureIndex = new int[featureCount];
-        for (int i = 0; i < featureCount; i++) {
-            featureIndex[i] = raf.readUnsignedShort();
-        }
+  private final int lookupOrder;
+  private final int reqFeatureIndex;
+  private final int featureCount;
+  private final int[] featureIndex;
+
+  /**
+   * Creates new LangSys
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  protected LangSys(RandomAccessFileEmulator raf) throws IOException {
+    lookupOrder = raf.readUnsignedShort();
+    reqFeatureIndex = raf.readUnsignedShort();
+    featureCount = raf.readUnsignedShort();
+    featureIndex = new int[featureCount];
+    for (int i = 0; i < featureCount; i++) {
+      featureIndex[i] = raf.readUnsignedShort();
     }
-    
-    protected boolean isFeatureIndexed(int n) {
-        for (int i = 0; i < featureCount; i++) {
-            if (featureIndex[i] == n) {
-                return true;
-            }
-        }
-        return false;
+  }
+
+  protected boolean isFeatureIndexed(int n) {
+    for (int i = 0; i < featureCount; i++) {
+      if (featureIndex[i] == n) {
+        return true;
+      }
     }
+    return false;
+  }
 
 }
-

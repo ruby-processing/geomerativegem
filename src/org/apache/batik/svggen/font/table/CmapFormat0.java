@@ -28,33 +28,40 @@ import org.apache.batik.svggen.font.*;
  */
 public class CmapFormat0 extends CmapFormat {
 
-    private final int[] glyphIdArray = new int[256];
-    private int first, last;
+  private final int[] glyphIdArray = new int[256];
+  private int first, last;
 
-    protected CmapFormat0(RandomAccessFileEmulator raf) throws IOException {
-        super(raf);
-        format = 0;
-        first = -1;
-        for (int i = 0; i < 256; i++) {
-            glyphIdArray[i] = raf.readUnsignedByte();
-            if (glyphIdArray[i] > 0) {
-                if (first == -1) first = i;
-                last = i;
-            }
+  protected CmapFormat0(RandomAccessFileEmulator raf) throws IOException {
+    super(raf);
+    format = 0;
+    first = -1;
+    for (int i = 0; i < 256; i++) {
+      glyphIdArray[i] = raf.readUnsignedByte();
+      if (glyphIdArray[i] > 0) {
+        if (first == -1) {
+          first = i;
         }
+        last = i;
+      }
     }
+  }
 
-    @Override
-    public int getFirst() { return first; }
-    @Override
-    public int getLast()  { return last; }
+  @Override
+  public int getFirst() {
+    return first;
+  }
 
-    @Override
-    public int mapCharCode(int charCode) {
-        if (0 <= charCode && charCode < 256) {
-            return glyphIdArray[charCode];
-        } else {
-            return 0;
-        }
+  @Override
+  public int getLast() {
+    return last;
+  }
+
+  @Override
+  public int mapCharCode(int charCode) {
+    if (0 <= charCode && charCode < 256) {
+      return glyphIdArray[charCode];
+    } else {
+      return 0;
     }
+  }
 }

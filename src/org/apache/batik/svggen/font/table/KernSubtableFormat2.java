@@ -27,30 +27,32 @@ import org.apache.batik.svggen.font.*;
  */
 public class KernSubtableFormat2 extends KernSubtable {
 
-    private final int rowWidth;
-    private final int leftClassTable;
-    private final int rightClassTable;
-    private final int array;
+  private final int rowWidth;
+  private final int leftClassTable;
+  private final int rightClassTable;
+  private final int array;
 
-    /** Creates new KernSubtableFormat2
-     * @param raf
-     * @throws java.io.IOException
-     */
-    protected KernSubtableFormat2(RandomAccessFileEmulator raf) throws IOException {
-        rowWidth = raf.readUnsignedShort();
-        leftClassTable = raf.readUnsignedShort();
-        rightClassTable = raf.readUnsignedShort();
-        array = raf.readUnsignedShort();
-    }
+  /**
+   * Creates new KernSubtableFormat2
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  protected KernSubtableFormat2(RandomAccessFileEmulator raf) throws IOException {
+    rowWidth = raf.readUnsignedShort();
+    leftClassTable = raf.readUnsignedShort();
+    rightClassTable = raf.readUnsignedShort();
+    array = raf.readUnsignedShort();
+  }
 
-    @Override
-    public int getKerningPairCount() {
-        return 0;
-    }
+  @Override
+  public int getKerningPairCount() {
+    return 0;
+  }
 
-    @Override
-    public KerningPair getKerningPair(int i) {
-        return null;
-    }
+  @Override
+  public KerningPair getKerningPair(int i) {
+    return null;
+  }
 
 }

@@ -27,29 +27,32 @@ import org.apache.batik.svggen.font.*;
  */
 public class ClassDefFormat1 extends ClassDef {
 
-    private final int startGlyph;
-    private final int glyphCount;
-    private final int[] classValues;
+  private final int startGlyph;
+  private final int glyphCount;
+  private final int[] classValues;
 
-    /** Creates new ClassDefFormat1
-     * @param raf
-     * @throws java.io.IOException */
-    public ClassDefFormat1(RandomAccessFileEmulator raf) throws IOException {
-        startGlyph = raf.readUnsignedShort();
-        glyphCount = raf.readUnsignedShort();
-        classValues = new int[glyphCount];
-        for (int i = 0; i < glyphCount; i++) {
-            classValues[i] = raf.readUnsignedShort();
-        }
+  /**
+   * Creates new ClassDefFormat1
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  public ClassDefFormat1(RandomAccessFileEmulator raf) throws IOException {
+    startGlyph = raf.readUnsignedShort();
+    glyphCount = raf.readUnsignedShort();
+    classValues = new int[glyphCount];
+    for (int i = 0; i < glyphCount; i++) {
+      classValues[i] = raf.readUnsignedShort();
     }
+  }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int getFormat() {
-        return 1;
-    }
+  /**
+   *
+   * @return
+   */
+  @Override
+  public int getFormat() {
+    return 1;
+  }
 
 }

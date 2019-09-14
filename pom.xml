@@ -11,7 +11,7 @@ DO NOT MODIFIY - GENERATED CODE
   <modelVersion>4.0.0</modelVersion>
   <groupId>ruby-processing</groupId>
   <artifactId>geomerative</artifactId>
-  <version>1.1.0</version>
+  <version>2.0.0</version>
   <name>geomerative</name>
   <description>geomerative-library for JRubyArt</description>
   <organization>
@@ -45,7 +45,7 @@ DO NOT MODIFIY - GENERATED CODE
   </issueManagement>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.target>12</maven.compiler.target>
     <polyglot.dump.pom>pom.xml</polyglot.dump.pom>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -63,15 +63,14 @@ DO NOT MODIFIY - GENERATED CODE
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.1.1</version>
         <configuration>
           <archive>
             <manifestFile>MANIFEST.MF</manifestFile>
@@ -80,7 +79,7 @@ DO NOT MODIFIY - GENERATED CODE
       </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.6</version>
+        <version>2.7</version>
       </plugin>
     </plugins>
   </build>
@@ -88,7 +87,7 @@ DO NOT MODIFIY - GENERATED CODE
     <plugins>
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.6</version>
+        <version>3.12</version>
         <configuration>
           <linkXRef>true</linkXRef>
           <sourceEncoding>utf-8</sourceEncoding>
@@ -98,7 +97,7 @@ DO NOT MODIFIY - GENERATED CODE
       </plugin>
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>3.1.0</version>
         <configuration>
           <configLocation>config/sun_checks.xml</configLocation>
         </configuration>

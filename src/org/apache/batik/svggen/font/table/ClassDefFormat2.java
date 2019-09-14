@@ -27,23 +27,26 @@ import org.apache.batik.svggen.font.*;
  */
 public class ClassDefFormat2 extends ClassDef {
 
-    private final int classRangeCount;
-    private final RangeRecord[] classRangeRecords;
+  private final int classRangeCount;
+  private final RangeRecord[] classRangeRecords;
 
-    /** Creates new ClassDefFormat2
-     * @param raf
-     * @throws java.io.IOException */
-    public ClassDefFormat2(RandomAccessFileEmulator raf) throws IOException {
-        classRangeCount = raf.readUnsignedShort();
-        classRangeRecords = new RangeRecord[classRangeCount];
-        for (int i = 0; i < classRangeCount; i++) {
-            classRangeRecords[i] = new RangeRecord(raf);
-        }
+  /**
+   * Creates new ClassDefFormat2
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  public ClassDefFormat2(RandomAccessFileEmulator raf) throws IOException {
+    classRangeCount = raf.readUnsignedShort();
+    classRangeRecords = new RangeRecord[classRangeCount];
+    for (int i = 0; i < classRangeCount; i++) {
+      classRangeRecords[i] = new RangeRecord(raf);
     }
+  }
 
-    @Override
-    public int getFormat() {
-        return 2;
-    }
+  @Override
+  public int getFormat() {
+    return 2;
+  }
 
 }

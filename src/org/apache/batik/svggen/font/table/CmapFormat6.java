@@ -26,35 +26,39 @@ import org.apache.batik.svggen.font.*;
  */
 public class CmapFormat6 extends CmapFormat {
 
-    private final short cformat;
-    private short clength;
-    private short cversion;
-    private short firstCode;
-    private short entryCount;
-    private short[] glyphIdArray;
+  private final short cformat;
+  private short clength;
+  private short cversion;
+  private short firstCode;
+  private short entryCount;
+  private short[] glyphIdArray;
 
-    protected CmapFormat6(RandomAccessFileEmulator raf) throws IOException {
-        super(raf);
-        cformat = 6;
-    }
+  protected CmapFormat6(RandomAccessFileEmulator raf) throws IOException {
+    super(raf);
+    cformat = 6;
+  }
 
-    @Override
-    public int getFirst() { return 0; }
+  @Override
+  public int getFirst() {
+    return 0;
+  }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int getLast()  { return 0; }
-    
-    /**
-     *
-     * @param charCode
-     * @return
-     */
-    @Override
-    public int mapCharCode(int charCode) {
-        return 0;
-    }
+  /**
+   *
+   * @return
+   */
+  @Override
+  public int getLast() {
+    return 0;
+  }
+
+  /**
+   *
+   * @param charCode
+   * @return
+   */
+  @Override
+  public int mapCharCode(int charCode) {
+    return 0;
+  }
 }

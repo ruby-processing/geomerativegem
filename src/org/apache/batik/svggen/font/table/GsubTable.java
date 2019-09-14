@@ -27,92 +27,95 @@ import org.apache.batik.svggen.font.*;
  */
 public class GsubTable implements Table, LookupSubtableFactory {
 
-    private final ScriptList scriptList;
-    private final FeatureList featureList;
-    private final LookupList lookupList;
-    
-    protected GsubTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
+  private final ScriptList scriptList;
+  private final FeatureList featureList;
+  private final LookupList lookupList;
 
-        // GSUB Header
-        /* int version = */     raf.readInt();
-        int scriptListOffset  = raf.readUnsignedShort();
-        int featureListOffset = raf.readUnsignedShort();
-        int lookupListOffset  = raf.readUnsignedShort();
+  protected GsubTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
 
-        // Script List
-        scriptList = new ScriptList(raf, de.getOffset() + scriptListOffset);
 
-        // Feature List
-        featureList = new FeatureList(raf, de.getOffset() + featureListOffset);
-        
-        // Lookup List
-        lookupList = new LookupList(raf, de.getOffset() + lookupListOffset, this);
-    }
+    // GSUB Header
+    /* int version = */ raf.readInt();
+    int scriptListOffset = raf.readUnsignedShort();
+    int featureListOffset = raf.readUnsignedShort();
+    int lookupListOffset = raf.readUnsignedShort();
 
-    /**
-     * 1 - Single - Replace one glyph with one glyph 
-     * 2 - Multiple - Replace one glyph with more than one glyph 
-     * 3 - Alternate - Replace one glyph with one of many glyphs 
-     * 4 - Ligature - Replace multiple glyphs with one glyph 
-     * 5 - Context - Replace one or more glyphs in context 
-     * 6 - Chaining - Context Replace one or more glyphs in chained context
-     * @param type
-     * @param raf
-     * @param offset
-     * @return 
-     * @throws java.io.IOException 
-     */
-    @Override
-    public LookupSubtable read(int type, RandomAccessFileEmulator raf, int offset)
+    // Script List
+    scriptList = new ScriptList(raf, de.getOffset() + scriptListOffset);
+
+    // Feature List
+    featureList = new FeatureList(raf, de.getOffset() + featureListOffset);
+
+    // Lookup List
+    lookupList = new LookupList(raf, de.getOffset() + lookupListOffset, this);
+  }
+
+  /**
+   * 1 - Single - Replace one glyph with one glyph 2 - Multiple - Replace one
+   * glyph with more than one glyph 3 - Alternate - Replace one glyph with one
+   * of many glyphs 4 - Ligature - Replace multiple glyphs with one glyph 5 -
+   * Context - Replace one or more glyphs in context 6 - Chaining - Context
+   * Replace one or more glyphs in chained context
+   *
+   * @param type
+   * @param raf
+   * @param offset
+   * @return
+   * @throws java.io.IOException
+   */
+  @Override
+  public LookupSubtable read(int type, RandomAccessFileEmulator raf, int offset)
     throws IOException {
-        LookupSubtable s = null;
-        switch (type) {
-        case 1:
-            s = SingleSubst.read(raf, offset);
-            break;
-        case 2:
+    LookupSubtable s = null;
+    switch (type) {
+      case 1:
+        s = SingleSubst.read(raf, offset);
+        break;
+      case 2:
 //            s = MultipleSubst.read(raf, offset);
-            break;
-        case 3:
+        break;
+      case 3:
 //            s = AlternateSubst.read(raf, offset);
-            break;
-        case 4:
-            s = LigatureSubst.read(raf, offset);
-            break;
-        case 5:
+        break;
+      case 4:
+        s = LigatureSubst.read(raf, offset);
+        break;
+      case 5:
 //            s = ContextSubst.read(raf, offset);
-            break;
-        case 6:
+        break;
+      case 6:
 //            s = ChainingSubst.read(raf, offset);
-            break;
-        }
-        return s;
+        break;
     }
+    return s;
+  }
 
-    /** Get the table type, as a table directory value.
-     * @return The table type
-     */
-    @Override
-    public int getType() {
-        return GSUB;
-    }
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return The table type
+   */
+  @Override
+  public int getType() {
+    return GSUB;
+  }
 
-    public ScriptList getScriptList() {
-        return scriptList;
-    }
+  public ScriptList getScriptList() {
+    return scriptList;
+  }
 
-    public FeatureList getFeatureList() {
-        return featureList;
-    }
+  public FeatureList getFeatureList() {
+    return featureList;
+  }
 
-    public LookupList getLookupList() {
-        return lookupList;
-    }
+  public LookupList getLookupList() {
+    return lookupList;
+  }
 
-    @Override
-    public String toString() {
-        return "GSUB";
-    }
+  @Override
+  public String toString() {
+    return "GSUB";
+  }
 
 }

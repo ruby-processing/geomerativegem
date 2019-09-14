@@ -26,23 +26,23 @@ import org.apache.batik.svggen.font.*;
  */
 public class CvtTable implements Table {
 
-    private final short[] values;
+  private final short[] values;
 
-    protected CvtTable(DirectoryEntry de,RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        int len = de.getLength() / 2;
-        values = new short[len];
-        for (int i = 0; i < len; i++) {
-            values[i] = raf.readShort();
-        }
+  protected CvtTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    int len = de.getLength() / 2;
+    values = new short[len];
+    for (int i = 0; i < len; i++) {
+      values[i] = raf.readShort();
     }
+  }
 
-    @Override
-    public int getType() {
-        return cvt;
-    }
+  @Override
+  public int getType() {
+    return CVT;
+  }
 
-    public short[] getValues() {
-        return values;
-    }
+  public short[] getValues() {
+    return values;
+  }
 }

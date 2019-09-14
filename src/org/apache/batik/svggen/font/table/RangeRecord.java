@@ -28,30 +28,31 @@ import org.apache.batik.svggen.font.*;
  */
 public class RangeRecord {
 
-    private final int start;
-    private final int end;
-    private final int startCoverageIndex;
+  private final int start;
+  private final int end;
+  private final int startCoverageIndex;
 
-    /** Creates new RangeRecord
-     * @param raf
-     * @throws java.io.IOException 
-     */
-    public RangeRecord(RandomAccessFileEmulator raf) throws IOException {
-        start = raf.readUnsignedShort();
-        end = raf.readUnsignedShort();
-        startCoverageIndex = raf.readUnsignedShort();
-    }
+  /**
+   * Creates new RangeRecord
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  public RangeRecord(RandomAccessFileEmulator raf) throws IOException {
+    start = raf.readUnsignedShort();
+    end = raf.readUnsignedShort();
+    startCoverageIndex = raf.readUnsignedShort();
+  }
 
-    public boolean isInRange(int glyphId) {
-        return (start <= glyphId && glyphId <= end);
+  public boolean isInRange(int glyphId) {
+    return (start <= glyphId && glyphId <= end);
+  }
+
+  public int getCoverageIndex(int glyphId) {
+    if (isInRange(glyphId)) {
+      return startCoverageIndex + glyphId - start;
     }
-    
-    public int getCoverageIndex(int glyphId) {
-        if (isInRange(glyphId)) {
-            return startCoverageIndex + glyphId - start;
-        }
-        return -1;
-    }
+    return -1;
+  }
 
 }
-

@@ -26,84 +26,84 @@ import org.apache.batik.svggen.font.*;
  */
 public class HheaTable implements Table {
 
-    private final int version;
-    private final short ascender;
-    private final short descender;
-    private final short lineGap;
-    private final short advanceWidthMax;
-    private final short minLeftSideBearing;
-    private final short minRightSideBearing;
-    private final short xMaxExtent;
-    private final short caretSlopeRise;
-    private final short caretSlopeRun;
-    private final short metricDataFormat;
-    private final short numberOfHMetrics;
+  private final int version;
+  private final short ascender;
+  private final short descender;
+  private final short lineGap;
+  private final short advanceWidthMax;
+  private final short minLeftSideBearing;
+  private final short minRightSideBearing;
+  private final short xMaxExtent;
+  private final short caretSlopeRise;
+  private final short caretSlopeRun;
+  private final short metricDataFormat;
+  private final short numberOfHMetrics;
 
-    protected HheaTable(DirectoryEntry de,RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        version = raf.readInt();
-        ascender = raf.readShort();
-        descender = raf.readShort();
-        lineGap = raf.readShort();
-        advanceWidthMax = raf.readShort();
-        minLeftSideBearing = raf.readShort();
-        minRightSideBearing = raf.readShort();
-        xMaxExtent = raf.readShort();
-        caretSlopeRise = raf.readShort();
-        caretSlopeRun = raf.readShort();
-        for (int i = 0; i < 5; i++) {
-            raf.readShort();
-        }
-        metricDataFormat = raf.readShort();
-        numberOfHMetrics = raf.readShort();
+  protected HheaTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    version = raf.readInt();
+    ascender = raf.readShort();
+    descender = raf.readShort();
+    lineGap = raf.readShort();
+    advanceWidthMax = raf.readShort();
+    minLeftSideBearing = raf.readShort();
+    minRightSideBearing = raf.readShort();
+    xMaxExtent = raf.readShort();
+    caretSlopeRise = raf.readShort();
+    caretSlopeRun = raf.readShort();
+    for (int i = 0; i < 5; i++) {
+      raf.readShort();
     }
+    metricDataFormat = raf.readShort();
+    numberOfHMetrics = raf.readShort();
+  }
 
-    public short getAdvanceWidthMax() {
-        return advanceWidthMax;
-    }
+  public short getAdvanceWidthMax() {
+    return advanceWidthMax;
+  }
 
-    public short getAscender() {
-        return ascender;
-    }
+  public short getAscender() {
+    return ascender;
+  }
 
-    public short getCaretSlopeRise() {
-        return caretSlopeRise;
-    }
+  public short getCaretSlopeRise() {
+    return caretSlopeRise;
+  }
 
-    public short getCaretSlopeRun() {
-        return caretSlopeRun;
-    }
+  public short getCaretSlopeRun() {
+    return caretSlopeRun;
+  }
 
-    public short getDescender() {
-        return descender;
-    }
+  public short getDescender() {
+    return descender;
+  }
 
-    public short getLineGap() {
-        return lineGap;
-    }
+  public short getLineGap() {
+    return lineGap;
+  }
 
-    public short getMetricDataFormat() {
-        return metricDataFormat;
-    }
+  public short getMetricDataFormat() {
+    return metricDataFormat;
+  }
 
-    public short getMinLeftSideBearing() {
-        return minLeftSideBearing;
-    }
+  public short getMinLeftSideBearing() {
+    return minLeftSideBearing;
+  }
 
-    public short getMinRightSideBearing() {
-        return minRightSideBearing;
-    }
+  public short getMinRightSideBearing() {
+    return minRightSideBearing;
+  }
 
-    public short getNumberOfHMetrics() {
-        return numberOfHMetrics;
-    }
+  public short getNumberOfHMetrics() {
+    return numberOfHMetrics;
+  }
 
-    @Override
-    public int getType() {
-        return hhea;
-    }
+  @Override
+  public int getType() {
+    return HHEA;
+  }
 
-    public short getXMaxExtent() {
-        return xMaxExtent;
-    }
+  public short getXMaxExtent() {
+    return xMaxExtent;
+  }
 }

@@ -27,33 +27,36 @@ import org.apache.batik.svggen.font.*;
  */
 public class CoverageFormat1 extends Coverage {
 
-    private final int glyphCount;
-    private final int[] glyphIds;
+  private final int glyphCount;
+  private final int[] glyphIds;
 
-    /** Creates new CoverageFormat1
-     * @param raf
-     * @throws java.io.IOException */
-    protected CoverageFormat1(RandomAccessFileEmulator raf) throws IOException {
-        glyphCount = raf.readUnsignedShort();
-        glyphIds = new int[glyphCount];
-        for (int i = 0; i < glyphCount; i++) {
-            glyphIds[i] = raf.readUnsignedShort();
-        }
+  /**
+   * Creates new CoverageFormat1
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  protected CoverageFormat1(RandomAccessFileEmulator raf) throws IOException {
+    glyphCount = raf.readUnsignedShort();
+    glyphIds = new int[glyphCount];
+    for (int i = 0; i < glyphCount; i++) {
+      glyphIds[i] = raf.readUnsignedShort();
     }
+  }
 
-    @Override
-    public int getFormat() {
-        return 1;
-    }
+  @Override
+  public int getFormat() {
+    return 1;
+  }
 
-    @Override
-    public int findGlyph(int glyphId) {
-        for (int i = 0; i < glyphCount; i++) {
-            if (glyphIds[i] == glyphId) {
-                return i;
-            }
-        }
-        return -1;
+  @Override
+  public int findGlyph(int glyphId) {
+    for (int i = 0; i < glyphCount; i++) {
+      if (glyphIds[i] == glyphId) {
+        return i;
+      }
     }
+    return -1;
+  }
 
 }

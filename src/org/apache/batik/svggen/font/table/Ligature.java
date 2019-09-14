@@ -27,31 +27,31 @@ import org.apache.batik.svggen.font.*;
  */
 public class Ligature {
 
-    private final int ligGlyph;
-    private final int compCount;
-    private final int[] components;
+  private final int ligGlyph;
+  private final int compCount;
+  private final int[] components;
 
-    /**
-     * Creates new Ligature
-     *
-     * @param raf
-     * @throws java.io.IOException
-     */
-    public Ligature(RandomAccessFileEmulator raf) throws IOException {
-        ligGlyph = raf.readUnsignedShort();
-        compCount = raf.readUnsignedShort();
-        components = new int[compCount - 1];
-        for (int i = 0; i < compCount - 1; i++) {
-            components[i] = raf.readUnsignedShort();
-        }
+  /**
+   * Creates new Ligature
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  public Ligature(RandomAccessFileEmulator raf) throws IOException {
+    ligGlyph = raf.readUnsignedShort();
+    compCount = raf.readUnsignedShort();
+    components = new int[compCount - 1];
+    for (int i = 0; i < compCount - 1; i++) {
+      components[i] = raf.readUnsignedShort();
     }
+  }
 
-    public int getGlyphCount() {
-        return compCount;
-    }
+  public int getGlyphCount() {
+    return compCount;
+  }
 
-    public int getGlyphId(int i) {
-        return (i == 0) ? ligGlyph : components[i - 1];
-    }
+  public int getGlyphId(int i) {
+    return (i == 0) ? ligGlyph : components[i - 1];
+  }
 
 }

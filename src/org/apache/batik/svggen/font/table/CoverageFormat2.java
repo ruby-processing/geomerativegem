@@ -27,30 +27,32 @@ import org.apache.batik.svggen.font.*;
  */
 public class CoverageFormat2 extends Coverage {
 
-    private int rangeCount;
-    private RangeRecord[] rangeRecords;
+  private int rangeCount;
+  private RangeRecord[] rangeRecords;
 
-    /** Creates new CoverageFormat2 */
-    protected CoverageFormat2(RandomAccessFileEmulator raf) throws IOException {
-        rangeCount = raf.readUnsignedShort();
-        rangeRecords = new RangeRecord[rangeCount];
-        for (int i = 0; i < rangeCount; i++) {
-            rangeRecords[i] = new RangeRecord(raf);
-        }
+  /**
+   * Creates new CoverageFormat2
+   */
+  protected CoverageFormat2(RandomAccessFileEmulator raf) throws IOException {
+    rangeCount = raf.readUnsignedShort();
+    rangeRecords = new RangeRecord[rangeCount];
+    for (int i = 0; i < rangeCount; i++) {
+      rangeRecords[i] = new RangeRecord(raf);
     }
+  }
 
-    public int getFormat() {
-        return 2;
-    }
+  public int getFormat() {
+    return 2;
+  }
 
-    public int findGlyph(int glyphId) {
-        for (int i = 0; i < rangeCount; i++) {
-            int n = rangeRecords[i].getCoverageIndex(glyphId);
-            if (n > -1) {
-                return n;
-            }
-        }
-        return -1;
+  public int findGlyph(int glyphId) {
+    for (int i = 0; i < rangeCount; i++) {
+      int n = rangeRecords[i].getCoverageIndex(glyphId);
+      if (n > -1) {
+        return n;
+      }
     }
+    return -1;
+  }
 
 }

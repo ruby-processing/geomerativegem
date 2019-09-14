@@ -27,51 +27,52 @@ import org.apache.batik.svggen.font.*;
  */
 public class Lookup {
 
-    // LookupFlag bit enumeration
-    public static final int IGNORE_BASE_GLYPHS = 0x0002;
-    public static final int IGNORE_BASE_LIGATURES = 0x0004;
-    public static final int IGNORE_BASE_MARKS = 0x0008;
-    public static final int MARK_ATTACHMENT_TYPE = 0xFF00;
+  // LookupFlag bit enumeration
+  public static final int IGNORE_BASE_GLYPHS = 0x0002;
+  public static final int IGNORE_BASE_LIGATURES = 0x0004;
+  public static final int IGNORE_BASE_MARKS = 0x0008;
+  public static final int MARK_ATTACHMENT_TYPE = 0xFF00;
 
-    private final int type;
-    private final int flag;
-    private final int subTableCount;
-    private final int[] subTableOffsets;
-    private final LookupSubtable[] subTables;
+  private final int type;
+  private final int flag;
+  private final int subTableCount;
+  private final int[] subTableOffsets;
+  private final LookupSubtable[] subTables;
 
-    /** Creates new Lookup
-     * @param factory
-     * @param raf
-     * @param offset 
-     * @throws java.io.IOException 
-     */
-    public Lookup(LookupSubtableFactory factory, RandomAccessFileEmulator raf, int offset)
+  /**
+   * Creates new Lookup
+   *
+   * @param factory
+   * @param raf
+   * @param offset
+   * @throws java.io.IOException
+   */
+  public Lookup(LookupSubtableFactory factory, RandomAccessFileEmulator raf, int offset)
     throws IOException {
-        raf.seek(offset);
-        type = raf.readUnsignedShort();
-        flag = raf.readUnsignedShort();
-        subTableCount = raf.readUnsignedShort();
-        subTableOffsets = new int[subTableCount];
-        subTables = new LookupSubtable[subTableCount];
-        for (int i = 0; i < subTableCount; i++) {
-            subTableOffsets[i] = raf.readUnsignedShort();
-        }
-        for (int i = 0; i < subTableCount; i++) {
-            subTables[i] = factory.read(type, raf, offset + subTableOffsets[i]);
-        }
+    raf.seek(offset);
+    type = raf.readUnsignedShort();
+    flag = raf.readUnsignedShort();
+    subTableCount = raf.readUnsignedShort();
+    subTableOffsets = new int[subTableCount];
+    subTables = new LookupSubtable[subTableCount];
+    for (int i = 0; i < subTableCount; i++) {
+      subTableOffsets[i] = raf.readUnsignedShort();
     }
+    for (int i = 0; i < subTableCount; i++) {
+      subTables[i] = factory.read(type, raf, offset + subTableOffsets[i]);
+    }
+  }
 
-    public int getType() {
-        return type;
-    }
+  public int getType() {
+    return type;
+  }
 
-    public int getSubtableCount() {
-        return subTableCount;
-    }
+  public int getSubtableCount() {
+    return subTableCount;
+  }
 
-    public LookupSubtable getSubtable(int i) {
-        return subTables[i];
-    }
+  public LookupSubtable getSubtable(int i) {
+    return subTables[i];
+  }
 
 }
-

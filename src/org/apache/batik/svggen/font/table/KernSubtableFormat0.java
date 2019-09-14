@@ -26,40 +26,43 @@ import org.apache.batik.svggen.font.*;
  * @version $Id: KernSubtableFormat0.java,v 1.3 2004/08/18 07:15:21 vhardy Exp $
  */
 public class KernSubtableFormat0 extends KernSubtable {
-    
-    private final int nPairs;
-    private final int searchRange;
-    private final int entrySelector;
-    private final int rangeShift;
-    private final KerningPair[] kerningPairs;
 
-    /** Creates new KernSubtableFormat0
-     * @param raf
-     * @throws java.io.IOException */
-    protected KernSubtableFormat0(RandomAccessFileEmulator raf) throws IOException {
-        nPairs = raf.readUnsignedShort();
-        searchRange = raf.readUnsignedShort();
-        entrySelector = raf.readUnsignedShort();
-        rangeShift = raf.readUnsignedShort();
-        kerningPairs = new KerningPair[nPairs];
-        for (int i = 0; i < nPairs; i++) {
-            kerningPairs[i] = new KerningPair(raf);
-        }
-    }
+  private final int nPairs;
+  private final int searchRange;
+  private final int entrySelector;
+  private final int rangeShift;
+  private final KerningPair[] kerningPairs;
 
-    @Override
-    public int getKerningPairCount() {
-        return nPairs;
+  /**
+   * Creates new KernSubtableFormat0
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  protected KernSubtableFormat0(RandomAccessFileEmulator raf) throws IOException {
+    nPairs = raf.readUnsignedShort();
+    searchRange = raf.readUnsignedShort();
+    entrySelector = raf.readUnsignedShort();
+    rangeShift = raf.readUnsignedShort();
+    kerningPairs = new KerningPair[nPairs];
+    for (int i = 0; i < nPairs; i++) {
+      kerningPairs[i] = new KerningPair(raf);
     }
+  }
 
-    /**
-     *
-     * @param i
-     * @return
-     */
-    @Override
-    public KerningPair getKerningPair(int i) {
-        return kerningPairs[i];
-    }
+  @Override
+  public int getKerningPairCount() {
+    return nPairs;
+  }
+
+  /**
+   *
+   * @param i
+   * @return
+   */
+  @Override
+  public KerningPair getKerningPair(int i) {
+    return kerningPairs[i];
+  }
 
 }

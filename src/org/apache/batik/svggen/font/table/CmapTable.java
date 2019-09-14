@@ -26,62 +26,62 @@ import org.apache.batik.svggen.font.*;
  */
 public class CmapTable implements Table {
 
-    private final int version;
-    private final int numTables;
-    private final CmapIndexEntry[] entries;
-    private final CmapFormat[] formats;
+  private final int version;
+  private final int numTables;
+  private final CmapIndexEntry[] entries;
+  private final CmapFormat[] formats;
 
-    protected CmapTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
-        long fp = de.getOffset();
-        raf.seek(fp);
-        version = raf.readUnsignedShort();
-        numTables = raf.readUnsignedShort();
-        entries = new CmapIndexEntry[numTables];
-        formats = new CmapFormat[numTables];
+  protected CmapTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    long fp = de.getOffset();
+    raf.seek(fp);
+    version = raf.readUnsignedShort();
+    numTables = raf.readUnsignedShort();
+    entries = new CmapIndexEntry[numTables];
+    formats = new CmapFormat[numTables];
 
-        // Get each of the index entries
-        for (int i = 0; i < numTables; i++) {
-            entries[i] = new CmapIndexEntry(raf);
-        }
-
-        // Get each of the tables
-        for (int i = 0; i < numTables; i++) {
-            raf.seek(fp + entries[i].getOffset());
-            int format = raf.readUnsignedShort();
-            formats[i] = CmapFormat.create(format, raf);
-        }
+    // Get each of the index entries
+    for (int i = 0; i < numTables; i++) {
+      entries[i] = new CmapIndexEntry(raf);
     }
 
-    public CmapFormat getCmapFormat(short platformId, short encodingId) {
+    // Get each of the tables
+    for (int i = 0; i < numTables; i++) {
+      raf.seek(fp + entries[i].getOffset());
+      int format = raf.readUnsignedShort();
+      formats[i] = CmapFormat.create(format, raf);
+    }
+  }
 
-        // Find the requested format
-        for (int i = 0; i < numTables; i++) {
-            if (entries[i].getPlatformId() == platformId
-                && entries[i].getEncodingId() == encodingId) {
-                return formats[i];
-            }
-        }
-        return null;
+  public CmapFormat getCmapFormat(short platformId, short encodingId) {
+
+    // Find the requested format
+    for (int i = 0; i < numTables; i++) {
+      if (entries[i].getPlatformId() == platformId
+        && entries[i].getEncodingId() == encodingId) {
+        return formats[i];
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public int getType() {
+    return CMAP;
+  }
+
+  @Override
+  public String toString() {
+    StringBuffer sb = new StringBuffer().append("cmap\n");
+
+    // Get each of the index entries
+    for (int i = 0; i < numTables; i++) {
+      sb.append("\t").append(entries[i].toString()).append("\n");
     }
 
-    @Override
-    public int getType() {
-        return cmap;
+    // Get each of the tables
+    for (int i = 0; i < numTables; i++) {
+      sb.append("\t").append(formats[i].toString()).append("\n");
     }
-
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer().append("cmap\n");
-
-        // Get each of the index entries
-        for (int i = 0; i < numTables; i++) {
-            sb.append("\t").append(entries[i].toString()).append("\n");
-        }
-
-        // Get each of the tables
-        for (int i = 0; i < numTables; i++) {
-            sb.append("\t").append(formats[i].toString()).append("\n");
-        }
-        return sb.toString();
-    }
+    return sb.toString();
+  }
 }

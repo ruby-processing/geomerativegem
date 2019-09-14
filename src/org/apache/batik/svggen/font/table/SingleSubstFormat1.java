@@ -27,41 +27,41 @@ import org.apache.batik.svggen.font.*;
  */
 public class SingleSubstFormat1 extends SingleSubst {
 
-    private final int coverageOffset;
-    private final short deltaGlyphID;
-    private final Coverage coverage;
+  private final int coverageOffset;
+  private final short deltaGlyphID;
+  private final Coverage coverage;
 
-    /**
-     * Creates new SingleSubstFormat1
-     *
-     * @param raf
-     * @param offset
-     * @throws java.io.IOException
-     */
-    protected SingleSubstFormat1(RandomAccessFileEmulator raf, int offset) throws IOException {
-        coverageOffset = raf.readUnsignedShort();
-        deltaGlyphID = raf.readShort();
-        raf.seek(offset + coverageOffset);
-        coverage = Coverage.read(raf);
-    }
+  /**
+   * Creates new SingleSubstFormat1
+   *
+   * @param raf
+   * @param offset
+   * @throws java.io.IOException
+   */
+  protected SingleSubstFormat1(RandomAccessFileEmulator raf, int offset) throws IOException {
+    coverageOffset = raf.readUnsignedShort();
+    deltaGlyphID = raf.readShort();
+    raf.seek(offset + coverageOffset);
+    coverage = Coverage.read(raf);
+  }
 
-    @Override
-    public int getFormat() {
-        return 1;
-    }
+  @Override
+  public int getFormat() {
+    return 1;
+  }
 
-    /**
-     *
-     * @param glyphId
-     * @return
-     */
-    @Override
-    public int substitute(int glyphId) {
-        int i = coverage.findGlyph(glyphId);
-        if (i > -1) {
-            return glyphId + deltaGlyphID;
-        }
-        return glyphId;
+  /**
+   *
+   * @param glyphId
+   * @return
+   */
+  @Override
+  public int substitute(int glyphId) {
+    int i = coverage.findGlyph(glyphId);
+    if (i > -1) {
+      return glyphId + deltaGlyphID;
     }
+    return glyphId;
+  }
 
 }

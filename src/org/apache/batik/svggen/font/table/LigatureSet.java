@@ -27,29 +27,29 @@ import org.apache.batik.svggen.font.*;
  */
 public class LigatureSet {
 
-    private final int ligatureCount;
-    private final int[] ligatureOffsets;
-    private final Ligature[] ligatures;
+  private final int ligatureCount;
+  private final int[] ligatureOffsets;
+  private final Ligature[] ligatures;
 
-    /**
-     * Creates new LigatureSet
-     *
-     * @param raf
-     * @param offset
-     * @throws java.io.IOException
-     */
-    public LigatureSet(RandomAccessFileEmulator raf, int offset) throws IOException {
-        raf.seek(offset);
-        ligatureCount = raf.readUnsignedShort();
-        ligatureOffsets = new int[ligatureCount];
-        ligatures = new Ligature[ligatureCount];
-        for (int i = 0; i < ligatureCount; i++) {
-            ligatureOffsets[i] = raf.readUnsignedShort();
-        }
-        for (int i = 0; i < ligatureCount; i++) {
-            raf.seek(offset + ligatureOffsets[i]);
-            ligatures[i] = new Ligature(raf);
-        }
+  /**
+   * Creates new LigatureSet
+   *
+   * @param raf
+   * @param offset
+   * @throws java.io.IOException
+   */
+  public LigatureSet(RandomAccessFileEmulator raf, int offset) throws IOException {
+    raf.seek(offset);
+    ligatureCount = raf.readUnsignedShort();
+    ligatureOffsets = new int[ligatureCount];
+    ligatures = new Ligature[ligatureCount];
+    for (int i = 0; i < ligatureCount; i++) {
+      ligatureOffsets[i] = raf.readUnsignedShort();
     }
+    for (int i = 0; i < ligatureCount; i++) {
+      raf.seek(offset + ligatureOffsets[i]);
+      ligatures[i] = new Ligature(raf);
+    }
+  }
 
 }

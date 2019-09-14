@@ -27,14 +27,14 @@ import org.apache.batik.svggen.font.*;
  */
 public class GlyfTable implements Table {
 
-    private byte[] buf = null;
-    private GlyfDescript[] descript;
+  private byte[] buf = null;
+  private GlyfDescript[] descript;
 
-    protected GlyfTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        buf = new byte[de.getLength()];
-        raf.read(buf);
-/*
+  protected GlyfTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    buf = new byte[de.getLength()];
+    raf.read(buf);
+    /*
         TableMaxp t_maxp = (TableMaxp) td.getEntryByTag(maxp).getTable();
         TableLoca t_loca = (TableLoca) td.getEntryByTag(loca).getTable();
         descript = new TableGlyfDescript[t_maxp.getNumGlyphs()];
@@ -63,49 +63,49 @@ public class GlyfTable implements Table {
                 }
             }
         }
-*/
-    }
+     */
+  }
 
-    public void init(int numGlyphs, LocaTable loca) {
-        if (buf == null) {
-            return;
+  public void init(int numGlyphs, LocaTable loca) {
+    if (buf == null) {
+      return;
+    }
+    descript = new GlyfDescript[numGlyphs];
+    ByteArrayInputStream bais = new ByteArrayInputStream(buf);
+    for (int i = 0; i < numGlyphs; i++) {
+      int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
+      if (len > 0) {
+        bais.reset();
+        bais.skip(loca.getOffset(i));
+        short numberOfContours = (short) (bais.read() << 8 | bais.read());
+        if (numberOfContours >= 0) {
+          descript[i] = new GlyfSimpleDescript(this, numberOfContours, bais);
         }
-        descript = new GlyfDescript[numGlyphs];
-        ByteArrayInputStream bais = new ByteArrayInputStream(buf);
-        for (int i = 0; i < numGlyphs; i++) {
-            int len = loca.getOffset((short)(i + 1)) - loca.getOffset(i);
-            if (len > 0) {
-                bais.reset();
-                bais.skip(loca.getOffset(i));
-                short numberOfContours = (short)(bais.read()<<8 | bais.read());
-                if (numberOfContours >= 0) {
-                    descript[i] = new GlyfSimpleDescript(this, numberOfContours, bais);
-                }
-            } else {
-                descript[i] = null;
-            }
+      } else {
+        descript[i] = null;
+      }
+    }
+
+    for (int i = 0; i < numGlyphs; i++) {
+      int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
+      if (len > 0) {
+        bais.reset();
+        bais.skip(loca.getOffset(i));
+        short numberOfContours = (short) (bais.read() << 8 | bais.read());
+        if (numberOfContours < 0) {
+          descript[i] = new GlyfCompositeDescript(this, bais);
         }
-
-        for (int i = 0; i < numGlyphs; i++) {
-            int len = loca.getOffset((short)(i + 1)) - loca.getOffset(i);
-            if (len > 0) {
-                bais.reset();
-                bais.skip(loca.getOffset(i));
-                short numberOfContours = (short)(bais.read()<<8 | bais.read());
-                if (numberOfContours < 0) {
-                    descript[i] = new GlyfCompositeDescript(this, bais);
-                }
-            }
-        }
-        buf = null;
+      }
     }
+    buf = null;
+  }
 
-    public GlyfDescript getDescription(int i) {
-        return descript[i];
-    }
+  public GlyfDescript getDescription(int i) {
+    return descript[i];
+  }
 
-    @Override
-    public int getType() {
-        return glyf;
-    }
+  @Override
+  public int getType() {
+    return GLYF;
+  }
 }

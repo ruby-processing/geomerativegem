@@ -27,15 +27,16 @@ import org.apache.batik.svggen.font.*;
  */
 public class GposTable implements Table {
 
-    protected GposTable(DirectoryEntry de,RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
+  protected GposTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
 
-        // GPOS Header
-        /* int version     = */ raf.readInt();
-        /* int scriptList  = */ raf.readInt();
-        /* int featureList = */ raf.readInt();
-        /* int lookupList  = */ raf.readInt();
-/*        
+
+    // GPOS Header
+    /* int version     = */ raf.readInt();
+    /* int scriptList  = */ raf.readInt();
+    /* int featureList = */ raf.readInt();
+    /* int lookupList  = */ raf.readInt();
+    /*        
         for (int i = 0; i < t_maxp.getNumGlyphs(); i++) {
             raf.seek(tde.getOffset() + t_loca.getOffset(i));
             int len = t_loca.getOffset((short)(i + 1)) - t_loca.getOffset(i);
@@ -61,20 +62,22 @@ public class GposTable implements Table {
                 }
             }
         }
-*/
-    }
-
-    /** Get the table type, as a table directory value.
-     * @return The table type
      */
-    @Override
-    public int getType() {
-        return GPOS;
-    }
-    
-    @Override
-    public String toString() {
-        return "GPOS";
-    }
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return The table type
+   */
+  @Override
+  public int getType() {
+    return GPOS;
+  }
+
+  @Override
+  public String toString() {
+    return "GPOS";
+  }
 
 }

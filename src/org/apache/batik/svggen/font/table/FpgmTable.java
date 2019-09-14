@@ -26,13 +26,13 @@ import org.apache.batik.svggen.font.*;
  */
 public class FpgmTable extends Program implements Table {
 
-    protected FpgmTable(DirectoryEntry de,RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        readInstructions(raf, de.getLength());
-    }
+  protected FpgmTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    readInstructions(raf, de.getLength());
+  }
 
-    @Override
-    public int getType() {
-        return fpgm;
-    }
+  @Override
+  public int getType() {
+    return FPGM;
+  }
 }

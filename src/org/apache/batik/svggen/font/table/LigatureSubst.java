@@ -27,14 +27,14 @@ import org.apache.batik.svggen.font.*;
  */
 public abstract class LigatureSubst extends LookupSubtable {
 
-    public static LigatureSubst read(RandomAccessFileEmulator raf, int offset) throws IOException {
-        LigatureSubst ls = null;
-        raf.seek(offset);
-        int format = raf.readUnsignedShort();
-        if (format == 1) {
-            ls = new LigatureSubstFormat1(raf, offset);
-        }
-        return ls;
+  public static LigatureSubst read(RandomAccessFileEmulator raf, int offset) throws IOException {
+    LigatureSubst ls = null;
+    raf.seek(offset);
+    int format = raf.readUnsignedShort();
+    if (format == 1) {
+      ls = new LigatureSubstFormat1(raf, offset);
     }
+    return ls;
+  }
 
 }

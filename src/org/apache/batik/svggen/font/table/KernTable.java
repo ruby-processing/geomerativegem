@@ -26,39 +26,44 @@ import org.apache.batik.svggen.font.*;
  * @version $Id: KernTable.java,v 1.3 2004/08/18 07:15:21 vhardy Exp $
  */
 public class KernTable implements Table {
-    
-    private final int version;
-    private final int nTables;
-    private final KernSubtable[] tables;
 
-    /** Creates new KernTable
-     * @param de
-     * @param raf
-     * @throws java.io.IOException */
-    protected KernTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
-        raf.seek(de.getOffset());
-        version = raf.readUnsignedShort();
-        nTables = raf.readUnsignedShort();
-        tables = new KernSubtable[nTables];
-        for (int i = 0; i < nTables; i++) {
-            tables[i] = KernSubtable.read(raf);
-        }
-    }
+  private final int version;
+  private final int nTables;
+  private final KernSubtable[] tables;
 
-    public int getSubtableCount() {
-        return nTables;
+  /**
+   * Creates new KernTable
+   *
+   * @param de
+   * @param raf
+   * @throws java.io.IOException
+   */
+  protected KernTable(DirectoryEntry de, RandomAccessFileEmulator raf) throws IOException {
+    raf.seek(de.getOffset());
+    version = raf.readUnsignedShort();
+    nTables = raf.readUnsignedShort();
+    tables = new KernSubtable[nTables];
+    for (int i = 0; i < nTables; i++) {
+      tables[i] = KernSubtable.read(raf);
     }
-    
-    public KernSubtable getSubtable(int i) {
-        return tables[i];
-    }
+  }
 
-    /** Get the table type, as a table directory value.
-     * @return The table type
-     */
-    @Override
-    public int getType() {
-        return kern;
-    }
+  public int getSubtableCount() {
+    return nTables;
+  }
+
+  public KernSubtable getSubtable(int i) {
+    return tables[i];
+  }
+
+  /**
+   * Get the table type, as a table directory value.
+   *
+   * @return The table type
+   */
+  @Override
+  public int getType() {
+    return KERN;
+  }
 
 }

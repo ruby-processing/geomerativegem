@@ -26,73 +26,73 @@ import org.apache.batik.svggen.font.*;
  */
 public class NameRecord {
 
-    private final short platformId;
-    private final short encodingId;
-    private final short languageId;
-    private final short nameId;
-    private final short stringLength;
-    private final short stringOffset;
-    private String record;
+  private final short platformId;
+  private final short encodingId;
+  private final short languageId;
+  private final short nameId;
+  private final short stringLength;
+  private final short stringOffset;
+  private String record;
 
-    protected NameRecord(RandomAccessFileEmulator raf) throws IOException {
-        platformId = raf.readShort();
-        encodingId = raf.readShort();
-        languageId = raf.readShort();
-        nameId = raf.readShort();
-        stringLength = raf.readShort();
-        stringOffset = raf.readShort();
-    }
-    
-    public short getEncodingId() {
-        return encodingId;
-    }
-    
-    public short getLanguageId() {
-        return languageId;
-    }
-    
-    public short getNameId() {
-        return nameId;
-    }
-    
-    public short getPlatformId() {
-        return platformId;
-    }
+  protected NameRecord(RandomAccessFileEmulator raf) throws IOException {
+    platformId = raf.readShort();
+    encodingId = raf.readShort();
+    languageId = raf.readShort();
+    nameId = raf.readShort();
+    stringLength = raf.readShort();
+    stringOffset = raf.readShort();
+  }
 
-    public String getRecordString() {
-        return record;
-    }
+  public short getEncodingId() {
+    return encodingId;
+  }
 
-    protected void loadString(RandomAccessFileEmulator raf, int stringStorageOffset) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        raf.seek(stringStorageOffset + stringOffset);
-        if (platformId == Table.platformAppleUnicode) {
-            
-            // Unicode (big-endian)
-            for (int i = 0; i < stringLength/2; i++) {
-                sb.append(raf.readChar());
-            }
-        } else if (platformId == Table.platformMacintosh) {
+  public short getLanguageId() {
+    return languageId;
+  }
 
-            // Macintosh encoding, ASCII
-            for (int i = 0; i < stringLength; i++) {
-                sb.append((char) raf.readByte());
-            }
-        } else if (platformId == Table.platformISO) {
-            
-            // ISO encoding, ASCII
-            for (int i = 0; i < stringLength; i++) {
-                sb.append((char) raf.readByte());
-            }
-        } else if (platformId == Table.platformMicrosoft) {
-            
-            // Microsoft encoding, Unicode
-            char c;
-            for (int i = 0; i < stringLength/2; i++) {
-                c = raf.readChar();
-                sb.append(c);
-            }
-        }
-        record = sb.toString();
+  public short getNameId() {
+    return nameId;
+  }
+
+  public short getPlatformId() {
+    return platformId;
+  }
+
+  public String getRecordString() {
+    return record;
+  }
+
+  protected void loadString(RandomAccessFileEmulator raf, int stringStorageOffset) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    raf.seek(stringStorageOffset + stringOffset);
+    if (platformId == Table.platformAppleUnicode) {
+
+      // Unicode (big-endian)
+      for (int i = 0; i < stringLength / 2; i++) {
+        sb.append(raf.readChar());
+      }
+    } else if (platformId == Table.platformMacintosh) {
+
+      // Macintosh encoding, ASCII
+      for (int i = 0; i < stringLength; i++) {
+        sb.append((char) raf.readByte());
+      }
+    } else if (platformId == Table.platformISO) {
+
+      // ISO encoding, ASCII
+      for (int i = 0; i < stringLength; i++) {
+        sb.append((char) raf.readByte());
+      }
+    } else if (platformId == Table.platformMicrosoft) {
+
+      // Microsoft encoding, Unicode
+      char c;
+      for (int i = 0; i < stringLength / 2; i++) {
+        c = raf.readChar();
+        sb.append(c);
+      }
     }
+    record = sb.toString();
+  }
 }

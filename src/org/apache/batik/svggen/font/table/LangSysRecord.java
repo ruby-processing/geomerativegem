@@ -27,26 +27,26 @@ import org.apache.batik.svggen.font.*;
  */
 public class LangSysRecord {
 
-    private final int tag;
-    private final int offset;
+  private final int tag;
+  private final int offset;
 
-    /**
-     * Creates new LangSysRecord
-     *
-     * @param raf
-     * @throws java.io.IOException
-     */
-    public LangSysRecord(RandomAccessFileEmulator raf) throws IOException {
-        tag = raf.readInt();
-        offset = raf.readUnsignedShort();
-    }
+  /**
+   * Creates new LangSysRecord
+   *
+   * @param raf
+   * @throws java.io.IOException
+   */
+  public LangSysRecord(RandomAccessFileEmulator raf) throws IOException {
+    tag = raf.readInt();
+    offset = raf.readUnsignedShort();
+  }
 
-    public int getTag() {
-        return tag;
-    }
+  public int getTag() {
+    return tag;
+  }
 
-    public int getOffset() {
-        return offset;
-    }
+  public int getOffset() {
+    return offset;
+  }
 
 }

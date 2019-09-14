@@ -34,9 +34,11 @@ public class Panose {
   byte bMidline = 0;
   byte bXHeight = 0;
 
-  /** Creates new Panose
-     * @param panose 
-     */
+  /**
+   * Creates new Panose
+   *
+   * @param panose
+   */
   public Panose(byte[] panose) {
     bFamilyType = panose[0];
     bSerifStyle = panose[1];
@@ -53,11 +55,11 @@ public class Panose {
   public byte getFamilyType() {
     return bFamilyType;
   }
-  
+
   public byte getSerifStyle() {
     return bSerifStyle;
   }
-  
+
   public byte getWeight() {
     return bWeight;
   }
@@ -65,31 +67,31 @@ public class Panose {
   public byte getProportion() {
     return bProportion;
   }
-  
+
   public byte getContrast() {
     return bContrast;
   }
-  
+
   public byte getStrokeVariation() {
     return bStrokeVariation;
   }
-  
+
   public byte getArmStyle() {
     return bArmStyle;
   }
-  
+
   public byte getLetterForm() {
     return bLetterform;
   }
-  
+
   public byte getMidline() {
     return bMidline;
   }
-  
+
   public byte getXHeight() {
     return bXHeight;
   }
-  
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
