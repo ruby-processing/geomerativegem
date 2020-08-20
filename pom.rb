@@ -28,14 +28,16 @@ project 'geomerative' do
               'polyglot.dump.pom' => 'pom.xml'
             )
 
-  jar 'org.processing:core:3.3.6'
+  jar 'org.processing:core:4.0.0'
 
   plugin( :compiler, '3.8.1',
           'release' =>  '11' )
-  plugin( :jar, '3.1.1',
-          'archive' => {
-            'manifestFile' =>  'MANIFEST.MF'
-          } )
+          plugin( :jar, '3.2.0',
+            'archive' => {
+              'manifestEntries' => {
+                'Automatic-Module-Name' =>  'org.processing.core'
+              }
+              } )
   plugin :resources, '2.7'
 
   build do

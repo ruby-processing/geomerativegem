@@ -6,7 +6,7 @@ DO NOT MODIFIY - GENERATED CODE
 
 
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ruby-processing</groupId>
@@ -53,7 +53,7 @@ DO NOT MODIFIY - GENERATED CODE
     <dependency>
       <groupId>org.processing</groupId>
       <artifactId>core</artifactId>
-      <version>3.3.6</version>
+      <version>4.0.0</version>
     </dependency>
   </dependencies>
   <build>
@@ -70,10 +70,12 @@ DO NOT MODIFIY - GENERATED CODE
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.1</version>
+        <version>3.2.0</version>
         <configuration>
           <archive>
-            <manifestFile>MANIFEST.MF</manifestFile>
+            <manifestEntries>
+              <Automatic-Module-Name>org.processing.core</Automatic-Module-Name>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>

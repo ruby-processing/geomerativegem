@@ -23,6 +23,5 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency 'maven', '~> 3.3', '>= 3.3.3'
   spec.platform = 'java'
   spec.requirements << 'A decent graphics card'
-  spec.requirements << 'java runtime >= 1.8+'
-  spec.requirements << 'processing = 3.4+'
+  spec.requirements << 'java runtime >= 11+'
 end

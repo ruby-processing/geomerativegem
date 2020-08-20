@@ -1,7 +1,6 @@
 # geomerative gem
 
 [![Gem Version](https://badge.fury.io/rb/geomerative.svg)](https://badge.fury.io/rb/geomerative)
-![travis status](https://travis-ci.org/ruby-processing/geomerativegem.svg)
 
 Gem wrapper for [Ricard Marxer Geomerative library][] for [JRubyArt][jruby_art], [propane][propane] and [PiCrate][picrate]
 Create amazing stuff with fonts svg etc.

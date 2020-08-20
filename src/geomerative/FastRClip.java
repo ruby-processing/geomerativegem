@@ -43,6 +43,7 @@ package geomerative;
 import java.util.ArrayList;
 import java.util.List;
 import geomerative.RClip.OperationType;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * <code>Clip</code> is a Java version of the <i>General RPolygon Clipper</i>
@@ -108,13 +109,14 @@ class FastRClip {
    * Create a new <code>RPolygon</code> type object using
    * <code>polyClass</code>.
    */
-  private static RPolygon createNewPoly(Class polyClass) {
-    try {
-      return (RPolygon) polyClass.newInstance();
-    } catch (InstantiationException | IllegalAccessException e) {
-      throw new RuntimeException(e);
+  private static RPolygon createNewPoly(Class polyClass) {  
+      try {
+        return (RPolygon)polyClass.getConstructor().newInstance();
+      } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
+        return null;
     }
   }
+  
 
   /**
    * <code>clip()</code> is the main method of the clipper algorithm. This is

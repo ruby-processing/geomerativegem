@@ -1,24 +1,11 @@
 require_relative 'lib/geomerative/version'
 
-def create_manifest
-  title =  'Implementation-Title: geomerative (java extension for geomerative gem)'        
-  version =  format('Implementation-Version: %s', Geomerative::VERSION)
-  file = File.open('MANIFEST.MF', 'w') do |f|
-    f.puts(title)
-    f.puts(version)
-  end
-end
 
-task default: [:init, :compile, :gem]
-
-desc 'Create Manifest'
-task :init do
-  create_manifest
-end
+task default: [:compile, :gem]
 
 desc 'Build gem'
 task :gem do
-  sh "gem build geomerative.gemspec" 
+  sh "jgem build geomerative.gemspec"
 end
 
 desc 'Compile'

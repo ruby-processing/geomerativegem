@@ -17,9 +17,15 @@
  * Geomerative. If not, see <http://www.gnu.org/licenses/>.
  */
 package geomerative;
-
-import org.apache.batik.svggen.font.*;
-import org.apache.batik.svggen.font.table.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import org.apache.batik.svggen.font.Font;
+import org.apache.batik.svggen.font.Glyph;
+import org.apache.batik.svggen.font.Point;
+import org.apache.batik.svggen.font.table.CmapFormat;
+import org.apache.batik.svggen.font.table.SingleSubst;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
@@ -86,20 +92,24 @@ public class RFont implements PConstants {
    * toMesh ( )
    * draw ( )
    */
-  public RFont(String fontPath, int size, int align) throws RuntimeException {
-    // Try to find the font as font path
-    byte[] bs = RG.parent().loadBytes(fontPath);
-    f = Font.create(bs);
-
-    setSize(size);
-    setAlign(align);
+  public RFont(String fontPath, int size, int align) {
+    try {
+      // Try to find the font as font path
+      Path path = Paths.get(fontPath);
+      f = Font.create(Files.readAllBytes(path));
+      setSize(size);
+      setAlign(align);
+    } catch (IOException ex) {
+      System.err.println(fontPath + " not found or unreadable");
+      System.exit(2);
+   }
   }
 
-  public RFont(String fontPath, int size) throws RuntimeException {
+  public RFont(String fontPath, int size)  {
     this(fontPath, size, DEFAULT_ALIGN);
   }
 
-  public RFont(String fontPath) throws RuntimeException {
+  public RFont(String fontPath)  {
     this(fontPath, DEFAULT_SIZE, DEFAULT_ALIGN);
   }
 
