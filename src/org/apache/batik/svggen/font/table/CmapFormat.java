@@ -18,7 +18,7 @@
 package org.apache.batik.svggen.font.table;
 
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  * @version $Id: CmapFormat.java,v 1.4 2004/09/01 09:35:23 deweese Exp $

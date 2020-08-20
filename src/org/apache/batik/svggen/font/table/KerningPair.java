@@ -18,7 +18,7 @@
 package org.apache.batik.svggen.font.table;
 
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  *
@@ -27,12 +27,14 @@ import org.apache.batik.svggen.font.*;
  */
 public class KerningPair {
 
-  private int left;
-  private int right;
-  private short value;
+  private final int left;
+  private final int right;
+  private final short value;
 
   /**
    * Creates new KerningPair
+   * @param raf
+   * @throws java.io.IOException
    */
   protected KerningPair(RandomAccessFileEmulator raf) throws IOException {
     left = raf.readUnsignedShort();

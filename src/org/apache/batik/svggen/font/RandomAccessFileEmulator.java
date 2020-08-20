@@ -1,6 +1,8 @@
 package org.apache.batik.svggen.font;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
 
 public class RandomAccessFileEmulator extends DataInputStream {
 

@@ -18,7 +18,7 @@
 package org.apache.batik.svggen.font.table;
 
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  * Simple Macintosh cmap table, mapping only the ASCII character set to glyphs.

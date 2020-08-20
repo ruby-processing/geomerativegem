@@ -18,7 +18,7 @@
 package org.apache.batik.svggen.font.table;
 
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  * @version $Id: NameRecord.java,v 1.3 2004/08/18 07:15:22 vhardy Exp $
@@ -66,32 +66,31 @@ public class NameRecord {
   protected void loadString(RandomAccessFileEmulator raf, int stringStorageOffset) throws IOException {
     StringBuilder sb = new StringBuilder();
     raf.seek(stringStorageOffset + stringOffset);
-    if (platformId == Table.platformAppleUnicode) {
-
-      // Unicode (big-endian)
-      for (int i = 0; i < stringLength / 2; i++) {
-        sb.append(raf.readChar());
-      }
-    } else if (platformId == Table.platformMacintosh) {
-
-      // Macintosh encoding, ASCII
-      for (int i = 0; i < stringLength; i++) {
-        sb.append((char) raf.readByte());
-      }
-    } else if (platformId == Table.platformISO) {
-
-      // ISO encoding, ASCII
-      for (int i = 0; i < stringLength; i++) {
-        sb.append((char) raf.readByte());
-      }
-    } else if (platformId == Table.platformMicrosoft) {
-
-      // Microsoft encoding, Unicode
-      char c;
-      for (int i = 0; i < stringLength / 2; i++) {
-        c = raf.readChar();
-        sb.append(c);
-      }
+    switch (platformId) {
+      case Table.platformAppleUnicode:
+        // Unicode (big-endian)
+        for (int i = 0; i < stringLength / 2; i++) {
+          sb.append(raf.readChar());
+        } break;
+      case Table.platformMacintosh:
+        // Macintosh encoding, ASCII
+        for (int i = 0; i < stringLength; i++) {
+          sb.append((char) raf.readByte());
+        } break;
+      case Table.platformISO:
+        // ISO encoding, ASCII
+        for (int i = 0; i < stringLength; i++) {
+          sb.append((char) raf.readByte());
+        } break;
+      case Table.platformMicrosoft:
+        // Microsoft encoding, Unicode
+        char c;
+        for (int i = 0; i < stringLength / 2; i++) {
+          c = raf.readChar();
+          sb.append(c);
+        } break;
+      default:
+        break;
     }
     record = sb.toString();
   }

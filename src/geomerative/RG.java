@@ -58,13 +58,13 @@ public class RG {
 
   /**
    * The adaptor adapts the shape to a particular shape by adapting each of the
-   * groups elements positions. This mantains the proportions of the shapes.
+   * groups elements positions. This maintains the proportions of the shapes.
    */
   public final static int BYELEMENTPOSITION = 1;
 
   /**
    * The adaptor adapts the shape to a particular shape by adapting each of the
-   * groups elements indices. This mantains the proportions of the shapes.
+   * groups elements indices. This maintains the proportions of the shapes.
    */
   public final static int BYELEMENTINDEX = 2;
 

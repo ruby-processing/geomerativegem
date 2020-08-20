@@ -18,7 +18,9 @@
  */
 package geomerative;
 
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PGraphics;
+
 
 /**
  * RGroup is a holder for a group of geometric elements that can be drawn and

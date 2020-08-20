@@ -18,7 +18,7 @@
 package org.apache.batik.svggen.font.table;
 
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  * @version $Id: MaxpTable.java,v 1.3 2004/08/18 07:15:21 vhardy Exp $

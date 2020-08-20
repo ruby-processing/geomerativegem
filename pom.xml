@@ -74,7 +74,7 @@ DO NOT MODIFIY - GENERATED CODE
         <configuration>
           <archive>
             <manifestEntries>
-              <Automatic-Module-Name>org.processing.core</Automatic-Module-Name>
+              <Automatic-Module-Name>geomerative.gem</Automatic-Module-Name>
             </manifestEntries>
           </archive>
         </configuration>

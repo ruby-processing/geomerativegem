@@ -19,7 +19,7 @@ package org.apache.batik.svggen.font.table;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import org.apache.batik.svggen.font.*;
+import org.apache.batik.svggen.font.RandomAccessFileEmulator;
 
 /**
  * @version $Id: HmtxTable.java,v 1.4 2004/08/18 07:15:21 vhardy Exp $
@@ -93,6 +93,7 @@ public class HmtxTable implements Table {
     }
   }
 
+  @Override
   public int getType() {
     return HMTX;
   }

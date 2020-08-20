@@ -560,6 +560,7 @@ public class RPolygon extends RGeomElem {
    RPolygon_getType
    * @return int, will allways return RGeomElem.POLYGON
    */
+  @Override
   public int getType() {
     return type;
   }

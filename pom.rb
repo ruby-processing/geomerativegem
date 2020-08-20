@@ -35,7 +35,7 @@ project 'geomerative' do
           plugin( :jar, '3.2.0',
             'archive' => {
               'manifestEntries' => {
-                'Automatic-Module-Name' =>  'org.processing.core'
+                'Automatic-Module-Name' =>  'geomerative.gem'
               }
               } )
   plugin :resources, '2.7'
