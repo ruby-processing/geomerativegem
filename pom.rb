@@ -22,22 +22,18 @@ project 'geomerative' do
                   :connection => 'scm:git:git://github.com/ruby-processing/geomerative.git',
                   :developer_connection => 'scm:git:git@github.com:ruby-processing/geomerative.git' )
 
-  properties( 'maven.compiler.source' => '1.8',
+  properties( 'maven.compiler.source' => '11',
               'project.build.sourceEncoding' => 'UTF-8',
-              'maven.compiler.target' => '12',
               'polyglot.dump.pom' => 'pom.xml'
             )
 
   jar 'org.processing:core:4.0.0'
 
-  plugin( :compiler, '3.8.1',
-          'release' =>  '11' )
-          plugin( :jar, '3.2.0',
-            'archive' => {
-              'manifestEntries' => {
-                'Automatic-Module-Name' =>  'geomerative.gem'
-              }
-              } )
+  plugin(
+         :compiler, '3.8.1',
+         'release' => '${maven.compiler.source}'
+        )
+  plugin(:jar, '3.2.0')
   plugin :resources, '2.7'
 
   build do
@@ -51,7 +47,7 @@ project 'geomerative' do
       'linkXRef' =>  'true',
       'sourceEncoding' =>  'utf-8',
       'minimumTokens' =>  '100',
-      'targetJdk' => '${maven.compiler.target}' )
+      'targetJdk' => '${maven.compiler.source}' )
     plugin( :checkstyle, '3.1.0',
       'configLocation' =>  'config/sun_checks.xml' )
   end

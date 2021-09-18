@@ -1,5 +1,5 @@
 ### version-2.0.0
-Compiled with jdk-12 for use with JRubyArt and propane use version 1.1 for anything else.
+For jdk11+, for JRubyArt-2.4+, propane-3.6+ and PiCrate-2.1+, remove dependency on PApplet instance method readBytes(String).
 
 ### version-1.1
 Bump versions processing-3.4 (changes to smooth) , jruby-9.2.1.0. Fix `contains(RRoints[])` then rename to `containsPoints` and similarly `contains(RGeomElement shp)` to `containsShape(RShape shp)` in this respect we are deviating for original geomerative library that was flawed (and overloading `contains` method way too much).
