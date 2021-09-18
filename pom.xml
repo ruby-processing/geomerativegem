@@ -2,16 +2,16 @@
 <!--
 
 
-DO NOT MODIFIY - GENERATED CODE
+DO NOT MODIFY - GENERATED CODE
 
 
 -->
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ruby-processing</groupId>
   <artifactId>geomerative</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
   <name>geomerative</name>
   <description>geomerative-library for JRubyArt</description>
   <organization>
@@ -44,8 +44,7 @@ DO NOT MODIFIY - GENERATED CODE
     <url>https://github.com/ruby-processing/geomerative/issues</url>
   </issueManagement>
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>12</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
     <polyglot.dump.pom>pom.xml</polyglot.dump.pom>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -65,19 +64,12 @@ DO NOT MODIFIY - GENERATED CODE
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>11</release>
+          <release>${maven.compiler.source}</release>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.2.0</version>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Automatic-Module-Name>geomerative.gem</Automatic-Module-Name>
-            </manifestEntries>
-          </archive>
-        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
@@ -94,7 +86,7 @@ DO NOT MODIFIY - GENERATED CODE
           <linkXRef>true</linkXRef>
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
-          <targetJdk>${maven.compiler.target}</targetJdk>
+          <targetJdk>${maven.compiler.source}</targetJdk>
         </configuration>
       </plugin>
       <plugin>

@@ -1,3 +1,6 @@
+### version-2.1.0
+First crack at java module, and other changes that seem to be necessary for JRuby-3.0+
+
 ### version-2.0.0
 For jdk11+, for JRubyArt-2.4+, propane-3.6+ and PiCrate-2.1+, remove dependency on PApplet instance method readBytes(String).
 
