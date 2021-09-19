@@ -24,7 +24,8 @@ project 'geomerative' do
 
   properties( 'maven.compiler.source' => '11',
               'project.build.sourceEncoding' => 'UTF-8',
-              'polyglot.dump.pom' => 'pom.xml'
+              'polyglot.dump.pom' => 'pom.xml',
+              'maven.deploy.skip' => 'true'
             )
 
   jar 'org.processing:core:4.0.0'
